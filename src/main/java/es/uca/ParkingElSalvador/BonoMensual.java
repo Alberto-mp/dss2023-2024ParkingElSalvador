@@ -1,10 +1,13 @@
 public class BonoMensual extends Bono {
-    private long pMes;
+    public static long pMes = 0;
     private int nMeses;
 
     public BonoMensual(int nMeses){
-        pMes = 0;
         this.nMeses = nMeses;
+    }
+
+    public static long precioMensual() {
+        return pMes;
     }
 
     public void ponerPrecioBono(long precioM){

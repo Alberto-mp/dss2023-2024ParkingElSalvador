@@ -1,10 +1,13 @@
 public class BonoAnual extends Bono {
-    private long pAnual;
+    public static long pAnual = 0;
     private int nAnos;
 
     public BonoAnual(int nAnos){
-        pAnual = 0;
         this.nAnos = nAnos;
+    }
+
+    public static long precioAnual() {
+        return pAnual;
     }
 
     public void ponerPrecioBono(long precioA){

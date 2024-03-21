@@ -7,9 +7,6 @@ public class Parking {
     private Barrera barrera;
     private QRservice qr;
     private Estandar tarifa;
-    private BonoMensual bonoM;
-    private BonoTrimestral bonoT;
-    private BonoAnual bonoA;
     private CarList vehiculos;
     private CarList libro;
     private Informe informe;
@@ -23,9 +20,6 @@ public class Parking {
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        bonoM = new BonoMensual();
-        bonoT = new BonoTrimestral();
-        bonoA = new BonoAnual();
         vehiculos = new CarList();
         libro = new CarList();
         informe = new Informe();
@@ -33,6 +27,12 @@ public class Parking {
 
     public void precioEstandar(long min){
         tarifa.ponerPrecioAlMinuto(min);;
+    }
+
+    public void ponerPrecioBonos(long mes, long tri, long anno){
+        BonoMensual.pMes = mes;
+        BonoTrimestral.pTrimestre = tri; 
+        BonoAnual.pAnual = anno;
     }
 
 
@@ -66,11 +66,6 @@ public class Parking {
         return qr;
     }
 
-    public Tarifacion getTarifa() {
-        return tarifa;
-    }
-
-
     public CarList getVehiculos() {
         return vehiculos;
     }
@@ -84,7 +79,7 @@ public class Parking {
     }
 
     public void entrada(){
-
+        
     }
 
     public void salida(){

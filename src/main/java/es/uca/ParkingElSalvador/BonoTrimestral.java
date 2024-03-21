@@ -1,10 +1,13 @@
 public class BonoTrimestral extends Bono {
-    private long pTrimestre;
+    public static long pTrimestre = 0;
     private int nTrimestres;
 
     public BonoTrimestral(int nTrimestres){
-        pTrimestre = 0;
         this.nTrimestres = nTrimestres;
+    }
+
+    public static long precioTrimestral() {
+        return pTrimestre;
     }
 
     public void ponerPrecioBono(long precioT){
