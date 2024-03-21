@@ -26,7 +26,7 @@ public class pagoBono{
         Vehiculo vehiculo = vehiculos.obtener(matricula);
         BonoTrimestral bono = new BonoTrimestral(trimestres);
         long pago = bono.precioBono();
-        vehiculo.compraBono();
+        vehiculo.compraBono();  
         vehiculo.setFinBono(LocalDateTime.now().plusMonths(3*trimestres));
         return pago;
     }
