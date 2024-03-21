@@ -1,3 +1,8 @@
+import java.io.IOException;
+
+import javax.naming.NameAlreadyBoundException;
+import javax.naming.NameNotFoundException;
+
 public class Parking {
     private final String nombre;
     private final String direccion_postal;
@@ -78,12 +83,39 @@ public class Parking {
         return informe;
     }
 
-    public void entrada(){
-        
+    public void entrada() throws IOException, NameNotFoundException {
+        // Se lee la matricula del qr generado cuando llega el ultimo coche
+        String matricula = qr.leerCodigoQR();
+        Vehiculo vehiculo = new Vehiculo(matricula);
+        // Comprobamos que haya espacio
+        if(plazasDisponibles > 0){
+            // Abrimos la barrera en caso de estar cerrada
+            if(!barrera.estaAbierta())
+                barrera.abrirBarrera();
+            // Generamos el ticket y le damos acceso
+            qr.generarCodigoQR(matricula);
+            vehiculos.meter(vehiculo);
+            libro.meter(vehiculo);
+            vehiculo.llega();
+            barrera.cerrarBarrera();
+            plazasDisponibles--;
+            plazasOcupadas++;
+
+        }
     }
 
-    public void salida(){
+    public void salida() throws IOException, NameNotFoundException{
+        String matricula = qr.leerCodigoQR();
+        Vehiculo vehiculo = vehiculos.obtener(matricula);
+        if(vehiculo.haPagado() || vehiculo.poseeBono()){
+            barrera.abrirBarrera();
+            // Sale del parking
+            barrera.cerrarBarrera();
+            vehiculos.sacar(vehiculo);
+            plazasDisponibles++;
+            plazasOcupadas--;
 
+        }
     }
 
 }

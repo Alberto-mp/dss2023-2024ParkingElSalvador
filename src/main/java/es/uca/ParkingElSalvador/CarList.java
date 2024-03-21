@@ -7,11 +7,11 @@ public class CarList {
     }
 
     // Tratamiento de vehiculos
-    public void meter(String matricula, Vehiculo veh){
-        vehiculos.put(matricula, veh);
+    public void meter(Vehiculo veh){
+        vehiculos.put(veh.matricula(), veh);
     }
-    public void sacar(String matricula, Vehiculo veh){
-        vehiculos.remove(matricula, veh);
+    public void sacar(Vehiculo veh){
+        vehiculos.remove(veh.matricula(), veh);
     }
 
 
