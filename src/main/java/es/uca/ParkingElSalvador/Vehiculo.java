@@ -6,6 +6,7 @@ import java.time.Duration;
 public class Vehiculo {
     private final String matricula;
     private LocalDateTime llegada;
+    private LocalDateTime finBono;
     private LocalDateTime salida;
     private boolean pagado;
     private boolean tieneBono;
@@ -29,13 +30,34 @@ public class Vehiculo {
         return Duration.between(llegada,salida).toMinutes();
     }
 
-    public void pagarBono(){
+    public void compraBono(){
+        tieneBono = true;
+    }
+
+    public void pagarEstandar(){
         pagado = true;
+    }
+
+    public void setFinBono(LocalDateTime f){
+        finBono = f;
     }
 
     // Metodos observadores
     public String matricula(){
         return matricula;
+    }
+
+    public boolean bonoValido(){
+        if(tieneBono){
+            if(LocalDateTime.now().isBefore(finBono))
+                return true;
+            else
+                return false;
+        }
+
+        else
+            return false;
+
     }
 
     public String horaLlegada(){

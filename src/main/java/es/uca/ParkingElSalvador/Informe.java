@@ -22,16 +22,34 @@ public class Informe {
         String fechaHoraString = creacion.format(formatter);
         return fechaHoraString;
     }
+    public LocalDateTime fechaInforme(){
+        return creacion;
+    }
 
     public long ingresoDiario(){
         return ingresoDiario;
+    }
+
+    public void sumaDiaria(long cant){
+        ingresoDiario+=cant;
+        ingresoSemanal+=cant;
+        ingresoMensual+=cant;
     }
 
     public long ingresoSemanal(){
         return ingresoSemanal;
     }
 
+    public void sumaSemanal(long cant){
+        ingresoSemanal+=cant;
+        ingresoMensual+=cant;
+    }
+
     public long ingresoMensual(){
         return ingresoMensual;
     }
+
+    public void sumaMensual(long cant){
+        ingresoMensual+=cant;
+    } 
 }
