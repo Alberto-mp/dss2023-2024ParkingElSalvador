@@ -6,7 +6,10 @@ public class Parking {
     private int plazasOcupadas;
     private Barrera barrera;
     private QRservice qr;
-    private Tarifacion tarifa;
+    private Estandar tarifa;
+    private BonoMensual bonoM;
+    private BonoTrimestral bonoT;
+    private BonoAnual bonoA;
     private CarList vehiculos;
     private CarList libro;
     private Informe informe;
@@ -19,14 +22,19 @@ public class Parking {
         plazasOcupadas = 0;
         barrera = new Barrera();
         qr = new QRservice();
+        tarifa = new Estandar(); 
+        bonoM = new BonoMensual();
+        bonoT = new BonoTrimestral();
+        bonoA = new BonoAnual();
         vehiculos = new CarList();
         libro = new CarList();
         informe = new Informe();
     }
 
-    public void nuevaTarifa(Tarifacion tar){
-        tarifa = tar;
+    public void precioEstandar(long min){
+        tarifa.ponerPrecioAlMinuto(min);;
     }
+
 
     // Observadores
     public String getNombre() {
@@ -80,7 +88,7 @@ public class Parking {
     }
 
     public void salida(){
-        
+
     }
 
 }
