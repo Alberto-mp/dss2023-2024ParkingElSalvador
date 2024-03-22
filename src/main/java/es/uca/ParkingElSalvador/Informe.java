@@ -22,7 +22,7 @@ public class Informe {
         String fechaHoraString = creacion.format(formatter);
         return fechaHoraString;
     }
-    public LocalDateTime fechaInforme(){
+    public LocalDateTime fechaInformeLT(){
         return creacion;
     }
 

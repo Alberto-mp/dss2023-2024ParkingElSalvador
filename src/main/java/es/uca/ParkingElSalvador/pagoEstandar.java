@@ -1,4 +1,6 @@
-import java.time.LocalDateTime;
+import java.io.IOException;
+
+import javax.naming.NameNotFoundException;
 
 public class pagoEstandar{
     private CarList vehiculos;
@@ -15,7 +17,7 @@ public class pagoEstandar{
         return minutos*tarifa.precioMinuto();
     }
 
-    public long pagar() {
+    public long pagar() throws NameNotFoundException, IOException {
         // Persona pasa el qr por el escaner
         String matricula = qr.leerCodigoQR();
         Vehiculo vehiculo = vehiculos.obtener(matricula);

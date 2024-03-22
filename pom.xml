@@ -20,11 +20,6 @@
             <artifactId>core</artifactId>
             <version>3.4.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.4.1</version>
-        </dependency>
         <!-- Dependencia para ImageIO (parte de la JDK) -->
         <dependency>
             <groupId>javax.media</groupId>

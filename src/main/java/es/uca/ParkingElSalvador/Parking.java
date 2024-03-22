@@ -1,6 +1,8 @@
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.WeekFields;
+import java.util.HashMap;
 
-import javax.naming.NameAlreadyBoundException;
 import javax.naming.NameNotFoundException;
 
 public class Parking {
@@ -29,7 +31,7 @@ public class Parking {
         vehiculos = new CarList();
         libro = new CarList();
         informeActual = new Informe();
-        informes = new HashMap<>();
+        informes = new HashMap<LocalDateTime,Informe>();
     }
 
     public void precioEstandar(long min){
@@ -85,6 +87,14 @@ public class Parking {
         return informeActual;
     }
 
+    public void guardarInforme(){
+        informes.put(LocalDateTime.now(), informeActual);
+    }
+
+    public void nuevoInforme(){
+        informeActual = new Informe();
+    }
+
     public void entrada() throws IOException, NameNotFoundException {
         // Se lee la matricula del qr generado cuando llega el ultimo coche
         String matricula = qr.leerCodigoQR();
@@ -122,70 +132,70 @@ public class Parking {
     }
 
     // Operaciones de pago de tarifa estándar y bonos
-    public void vehiculoPagaEstandar(){
+    public void vehiculoPagaEstandar() throws NameNotFoundException, IOException{
         pagoEstandar pEstandar = new pagoEstandar(vehiculos,tarifa);
         long cantidad = pEstandar.pagar();
-        LocalDateTime fechaInf = informeActual.fechaInforme().withHour(0).withMinute(0).withSecond(0).withNano(0);
+        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
         LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
         if(fechaInf.isEqual(hoy))
-            informeActual.ingresoDiario(cantidad);
+            informeActual.sumaDiaria(cantidad);
         else{
             if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.ingresoSemanal(cantidad);
+                informeActual.sumaSemanal(cantidad);
             else{
                 if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.ingresoMensual(cant);
+                    informeActual.sumaMensual(cantidad);
             }
         }
     }
 
-    public void vehiculoPagaBonoMensual(int nMeses){
+    public void vehiculoPagaBonoMensual(int nMeses) throws NameNotFoundException, IOException{
         pagoBono pBono = new pagoBono(vehiculos);
         long cantidad = pBono.comprarBonoMensual(nMeses);
-        LocalDateTime fechaInf = informeActual.fechaInforme().withHour(0).withMinute(0).withSecond(0).withNano(0);
+        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
         LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
         if(fechaInf.isEqual(hoy))
-            informeActual.ingresoDiario(cantidad);
+            informeActual.sumaDiaria(cantidad);
         else{
             if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.ingresoSemanal(cantidad);
+                informeActual.sumaSemanal(cantidad);
             else{
                 if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.ingresoMensual(cantidad);
+                    informeActual.sumaMensual(cantidad);
             }
         }
     }
 
-    public void vehiculoPagaBonoTrimestral(int nTrimestres){
+    public void vehiculoPagaBonoTrimestral(int nTrimestres) throws NameNotFoundException, IOException{
         pagoBono pBono = new pagoBono(vehiculos);
         long cantidad = pBono.comprarBonoTrimestral(nTrimestres);
-        LocalDateTime fechaInf = informeActual.fechaInforme().withHour(0).withMinute(0).withSecond(0).withNano(0);
+        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
         LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
         if(fechaInf.isEqual(hoy))
-            informeActual.ingresoDiario(cantidad);
+            informeActual.sumaDiaria(cantidad);
         else{
             if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.ingresoSemanal(cantidad);
+                informeActual.sumaSemanal(cantidad);
             else{
                 if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.ingresoMensual(cantidad);
+                    informeActual.sumaMensual(cantidad);
             }
         }
     }
     
-    public void vehiculoPagaBonoAnual(int nAnnos){
+    public void vehiculoPagaBonoAnual(int nAnnos) throws NameNotFoundException, IOException{
         pagoBono pBono = new pagoBono(vehiculos);
         long cantidad = pBono.comprarBonoAnual(nAnnos);
-        LocalDateTime fechaInf = informeActual.fechaInforme().withHour(0).withMinute(0).withSecond(0).withNano(0);
+        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
         LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
         if(fechaInf.isEqual(hoy))
-            informeActual.ingresoDiario(cantidad);
+            informeActual.sumaDiaria(cantidad);
         else{
             if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.ingresoSemanal(cantidad);
+                informeActual.sumaSemanal(cantidad);
             else{
                 if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.ingresoMensual(cantidad);
+                    informeActual.sumaMensual(cantidad);
             }
         }
     }
