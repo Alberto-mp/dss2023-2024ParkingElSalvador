@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 public class Barrera {
     private boolean estado; // Tomaremos True como abierta y false como cerrada
   

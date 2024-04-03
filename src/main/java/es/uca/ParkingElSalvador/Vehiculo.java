@@ -1,33 +1,25 @@
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.Duration;
+package es.uca.ParkingElSalvador;
 
+import java.time.LocalDateTime;
 
 public class Vehiculo {
     private final String matricula;
-    private LocalDateTime llegada;
     private LocalDateTime finBono;
-    private LocalDateTime salida;
     private boolean pagado;
+    private double dineroPagado;
     private boolean tieneBono;
+    private Estancia estancia;
 
     public Vehiculo(String m){
         matricula = m;
         pagado = false;
         tieneBono = false; //Por defecto no tendran
-    }
-
-    // Metodos de control de hora de llegada y salida
-    public void llega(){
-        llegada = LocalDateTime.now();
+        dineroPagado = 0;
+        estancia = new Estancia(this);
     }
 
     public void sale(){
-        salida = LocalDateTime.now();
-    }
-
-    public long duracion(){
-        return Duration.between(llegada,salida).toMinutes();
+        estancia.termina();
     }
 
     public void compraBono(){
@@ -42,9 +34,21 @@ public class Vehiculo {
         finBono = f;
     }
 
+    public void setDineroPagado(double d){
+        dineroPagado = d;
+    }
+
+    public LocalDateTime fechaFinBono(){
+        return finBono;
+    }
+
     // Metodos observadores
     public String matricula(){
         return matricula;
+    }
+
+    public Estancia estancia(){
+        return estancia;
     }
 
     public boolean bonoValido(){
@@ -60,20 +64,6 @@ public class Vehiculo {
 
     }
 
-    public String horaLlegada(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        // Formatea el LocalDateTime en una cadena usando el formateador
-        String fechaHoraString = llegada.format(formatter);
-        return fechaHoraString;
-    }
-
-    public String horaSalida(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        // Formatea el LocalDateTime en una cadena usando el formateador
-        String fechaHoraString = salida.format(formatter);
-        return fechaHoraString;
-    }
-
     public boolean poseeBono(){
         return tieneBono;
     }
@@ -82,9 +72,12 @@ public class Vehiculo {
         return pagado;
     }
 
+    public double dineroPagado(){
+        return dineroPagado;
+    }
+
     public String toString(){
         return "Matricula -> " + matricula;
     }
-
 
 }

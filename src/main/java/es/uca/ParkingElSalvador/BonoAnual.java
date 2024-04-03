@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 public class BonoAnual extends Bono {
     public static long pAnual = 0;
     private int nAnos;
@@ -15,7 +17,7 @@ public class BonoAnual extends Bono {
     }
 
     public double precioBono() {
-        return nAnos*pAnual;
+        return (double)nAnos*pAnual;
     }
 
     public String tipoBono(){

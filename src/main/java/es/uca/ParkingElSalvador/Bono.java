@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 import java.time.LocalDateTime;
 
 public abstract class Bono {

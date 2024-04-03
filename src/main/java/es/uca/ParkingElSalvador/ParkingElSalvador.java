@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 public class ParkingElSalvador {
     private final Parking parkES;
     

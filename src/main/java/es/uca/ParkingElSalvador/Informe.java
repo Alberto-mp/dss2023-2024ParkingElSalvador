@@ -1,18 +1,17 @@
+package es.uca.ParkingElSalvador;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import java.time.temporal.WeekFields;
 
 public class Informe {
+    private Parking parking;
     private LocalDateTime creacion;
-    private long ingresoDiario;
-    private long ingresoSemanal;
-    private long ingresoMensual; 
 
-    public Informe(){
+
+    public Informe(Parking p){
+        parking = p;
         creacion = LocalDateTime.now();
-        ingresoDiario = 0;
-        ingresoSemanal = 0;
-        ingresoMensual = 0;
     }
 
     // Metodos observadores proporcionados por el informe
@@ -26,30 +25,40 @@ public class Informe {
         return creacion;
     }
 
-    public long ingresoDiario(){
+    public double ingresoDiario(){
+        double ingresoDiario = 0;
+        CarRegister libro = parking.getLibro();
+        int hoy = LocalDateTime.now().getDayOfYear();
+        for(int i = 0; i < libro.registro().size(); i++){
+            if(libro.registro().get(i).horaLlegadaLT().getDayOfYear() == hoy)
+                ingresoDiario += parking.getLibro().registro().get(i).vehiculo().dineroPagado();
+        }
         return ingresoDiario;
     }
 
-    public void sumaDiaria(long cant){
-        ingresoDiario+=cant;
-        ingresoSemanal+=cant;
-        ingresoMensual+=cant;
-    }
-
-    public long ingresoSemanal(){
+    
+    public double ingresoSemanal(){
+        double ingresoSemanal = 0;
+        CarRegister libro = parking.getLibro();
+        int semana = LocalDateTime.now().get(WeekFields.ISO.weekOfWeekBasedYear());
+        for(int i = 0; i < libro.registro().size(); i++){
+            if(libro.registro().get(i).horaLlegadaLT().get(WeekFields.ISO.weekOfWeekBasedYear()) == semana)
+            ingresoSemanal += parking.getLibro().registro().get(i).vehiculo().dineroPagado();
+        }
         return ingresoSemanal;
     }
 
-    public void sumaSemanal(long cant){
-        ingresoSemanal+=cant;
-        ingresoMensual+=cant;
-    }
 
-    public long ingresoMensual(){
+    public double ingresoMensual(){
+        double ingresoMensual = 0;
+        CarRegister libro = parking.getLibro();
+        int mes = LocalDateTime.now().getMonthValue();
+        for(int i = 0; i < libro.registro().size(); i++){
+            if(libro.registro().get(i).horaLlegadaLT().getMonthValue() == mes)
+            ingresoMensual += parking.getLibro().registro().get(i).vehiculo().dineroPagado();
+        }
         return ingresoMensual;
     }
 
-    public void sumaMensual(long cant){
-        ingresoMensual+=cant;
-    } 
+   
 }

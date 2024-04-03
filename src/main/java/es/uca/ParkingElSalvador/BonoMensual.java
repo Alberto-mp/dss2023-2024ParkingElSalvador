@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 public class BonoMensual extends Bono {
     public static long pMes = 0;
     private int nMeses;

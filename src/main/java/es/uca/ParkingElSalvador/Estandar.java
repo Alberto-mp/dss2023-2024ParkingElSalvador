@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 public class Estandar {
     private long pMinuto;
     

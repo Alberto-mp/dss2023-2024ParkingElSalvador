@@ -1,8 +1,9 @@
+package es.uca.ParkingElSalvador;
 import java.util.HashMap;
 
-public class CarList {
+public class CarRepository implements CarRepositoryInterface{
     private final HashMap<String, Vehiculo> vehiculos;
-    public CarList(){
+    public CarRepository(){
         vehiculos = new HashMap<>();
     }
 
@@ -13,7 +14,6 @@ public class CarList {
     public void sacar(Vehiculo veh){
         vehiculos.remove(veh.matricula(), veh);
     }
-
 
     // Metodos observadores
     public Vehiculo obtener(String matricula){

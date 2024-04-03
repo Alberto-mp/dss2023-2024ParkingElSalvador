@@ -1,30 +1,25 @@
-import java.io.IOException;
-
-import javax.naming.NameNotFoundException;
+package es.uca.ParkingElSalvador;
 
 public class pagoEstandar{
-    private CarList vehiculos;
-    private QRservice qr;
-    private Estandar tarifa;
+    private Vehiculo vehiculo;
+    private double pMinuto;
 
-    public pagoEstandar(CarList vehiculos, Estandar precios){
-        this.vehiculos = vehiculos;
-        this.qr = new QRservice();
-        this.tarifa = precios;
+    public pagoEstandar(Vehiculo v, double p){
+        vehiculo = v;
+        pMinuto = p;
     }
 
-    public long cantidad(long minutos){
-        return minutos*tarifa.precioMinuto();
+    public double cantidad(int minutos){
+        return (double)minutos*pMinuto;
     }
 
-    public long pagar() throws NameNotFoundException, IOException {
-        // Persona pasa el qr por el escaner
-        String matricula = qr.leerCodigoQR();
-        Vehiculo vehiculo = vehiculos.obtener(matricula);
-        vehiculo.sale();
-        long pago = cantidad(vehiculo.duracion());
-        vehiculo.pagarEstandar();
-        return pago;
+    public void pagar() throws Exception {
+        if(!vehiculo.haPagado()){
+            // La persona paga
+            double pago = cantidad(vehiculo.estancia().duracion());
+            vehiculo.setDineroPagado(pago);
+            vehiculo.pagarEstandar();
+        }
     }
 
 }

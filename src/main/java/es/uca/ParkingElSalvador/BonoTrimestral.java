@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 public class BonoTrimestral extends Bono {
     public static long pTrimestre = 0;
     private int nTrimestres;

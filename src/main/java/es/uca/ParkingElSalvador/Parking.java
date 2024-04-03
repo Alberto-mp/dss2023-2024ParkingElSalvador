@@ -1,9 +1,4 @@
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.temporal.WeekFields;
-import java.util.HashMap;
-
-import javax.naming.NameNotFoundException;
+package es.uca.ParkingElSalvador;
 
 public class Parking {
     private final String nombre;
@@ -14,10 +9,8 @@ public class Parking {
     private Barrera barrera;
     private QRservice qr;
     private Estandar tarifa;
-    private CarList vehiculos;
-    private CarList libro;
-    private Informe informeActual;
-    private HashMap<LocalDateTime,Informe> informes;
+    private CarRepository vehiculos;
+    private CarRegister libro;
 
     public Parking(String n, String d, int capT){
         nombre = n;
@@ -28,10 +21,9 @@ public class Parking {
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        vehiculos = new CarList();
-        libro = new CarList();
-        informeActual = new Informe();
-        informes = new HashMap<LocalDateTime,Informe>();
+        vehiculos = new CarRepository();
+        libro = new CarRegister();
+
     }
 
     public void precioEstandar(long min){
@@ -75,27 +67,20 @@ public class Parking {
         return qr;
     }
 
-    public CarList getVehiculos() {
+    public CarRepository getVehiculos() {
         return vehiculos;
     }
 
-    public CarList getLibro() {
+    public CarRegister getLibro() {
         return libro;
     }
 
-    public Informe getInformeActual() {
-        return informeActual;
+    public Informe crearInforme(){
+        return new Informe(this);
     }
+    
 
-    public void guardarInforme(){
-        informes.put(LocalDateTime.now(), informeActual);
-    }
-
-    public void nuevoInforme(){
-        informeActual = new Informe();
-    }
-
-    public void entrada() throws IOException, NameNotFoundException {
+    public void entrada() throws Exception {
         // Se lee la matricula del qr generado cuando llega el ultimo coche
         String matricula = qr.leerCodigoQR();
         Vehiculo vehiculo = new Vehiculo(matricula);
@@ -107,8 +92,7 @@ public class Parking {
             // Generamos el ticket y le damos acceso
             qr.generarCodigoQR(matricula);
             vehiculos.meter(vehiculo);
-            libro.meter(vehiculo);
-            vehiculo.llega();
+            libro.almacenar(vehiculo);
             barrera.cerrarBarrera();
             plazasDisponibles--;
             plazasOcupadas++;
@@ -116,7 +100,7 @@ public class Parking {
         }
     }
 
-    public void salida() throws IOException, NameNotFoundException{
+    public void salida() throws Exception{
         String matricula = qr.leerCodigoQR();
         Vehiculo vehiculo = vehiculos.obtener(matricula);
         if(vehiculo.haPagado() || (vehiculo.poseeBono() && vehiculo.bonoValido())){
@@ -132,72 +116,24 @@ public class Parking {
     }
 
     // Operaciones de pago de tarifa estándar y bonos
-    public void vehiculoPagaEstandar() throws NameNotFoundException, IOException{
-        pagoEstandar pEstandar = new pagoEstandar(vehiculos,tarifa);
-        long cantidad = pEstandar.pagar();
-        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        if(fechaInf.isEqual(hoy))
-            informeActual.sumaDiaria(cantidad);
-        else{
-            if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.sumaSemanal(cantidad);
-            else{
-                if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.sumaMensual(cantidad);
-            }
-        }
+    public void vehiculoPagaEstandar(String mat) throws Exception{
+        pagoEstandar pEstandar = new pagoEstandar(vehiculos.obtener(mat),tarifa.precioMinuto());
+        pEstandar.pagar();
     }
 
-    public void vehiculoPagaBonoMensual(int nMeses) throws NameNotFoundException, IOException{
-        pagoBono pBono = new pagoBono(vehiculos);
-        long cantidad = pBono.comprarBonoMensual(nMeses);
-        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        if(fechaInf.isEqual(hoy))
-            informeActual.sumaDiaria(cantidad);
-        else{
-            if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.sumaSemanal(cantidad);
-            else{
-                if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.sumaMensual(cantidad);
-            }
-        }
+    public void vehiculoPagaBonoMensual(int nMeses, String mat) throws Exception{
+        pagoBono pBono = new pagoBono(vehiculos.obtener(mat));
+        pBono.comprarBonoMensual(nMeses);
     }
 
-    public void vehiculoPagaBonoTrimestral(int nTrimestres) throws NameNotFoundException, IOException{
-        pagoBono pBono = new pagoBono(vehiculos);
-        long cantidad = pBono.comprarBonoTrimestral(nTrimestres);
-        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        if(fechaInf.isEqual(hoy))
-            informeActual.sumaDiaria(cantidad);
-        else{
-            if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.sumaSemanal(cantidad);
-            else{
-                if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.sumaMensual(cantidad);
-            }
-        }
+    public void vehiculoPagaBonoTrimestral(int nTrimestres, String mat) throws Exception{
+        pagoBono pBono = new pagoBono(vehiculos.obtener(mat));
+        pBono.comprarBonoTrimestral(nTrimestres);
     }
     
-    public void vehiculoPagaBonoAnual(int nAnnos) throws NameNotFoundException, IOException{
-        pagoBono pBono = new pagoBono(vehiculos);
-        long cantidad = pBono.comprarBonoAnual(nAnnos);
-        LocalDateTime fechaInf = informeActual.fechaInformeLT().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        LocalDateTime hoy = LocalDateTime.now().withHour(0).withMinute(0).withSecond(0).withNano(0);
-        if(fechaInf.isEqual(hoy))
-            informeActual.sumaDiaria(cantidad);
-        else{
-            if(fechaInf.get(WeekFields.ISO.weekOfWeekBasedYear()) == hoy.get(WeekFields.ISO.weekOfWeekBasedYear()))
-                informeActual.sumaSemanal(cantidad);
-            else{
-                if(fechaInf.getMonthValue() == hoy.getMonthValue())
-                    informeActual.sumaMensual(cantidad);
-            }
-        }
+    public void vehiculoPagaBonoAnual(int nAnnos, String mat) throws Exception{
+        pagoBono pBono = new pagoBono(vehiculos.obtener(mat));
+        pBono.comprarBonoAnual(nAnnos);
     }
 
 }
