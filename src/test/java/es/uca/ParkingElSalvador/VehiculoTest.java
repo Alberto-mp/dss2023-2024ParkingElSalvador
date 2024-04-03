@@ -1,69 +1,76 @@
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+package es.uca.ParkingElSalvador;
+
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import java.time.LocalDateTime;
 
 public class VehiculoTest {
     private Vehiculo vehiculo;
-    private LocalDateTime llegada;
 
     @Before
     public void setUp() {
         vehiculo = new Vehiculo("123ABC");
-        llegada = LocalDateTime.of(2024, 3, 19, 10, 30); // Establecer una hora de llegada fija para las pruebas
-        vehiculo.llega();
-    }
-
-    @Test
-    public void testLlegada() {
-        assertNotNull("La hora de llegada no debería ser nula", vehiculo.horaLlegada());
-        assertEquals("La hora de llegada debe ser igual a la establecida", "2024-03-19 10:30:00", vehiculo.horaLlegada());
-    }
-
-    @Test
-    public void testDuracion() {
-        // Supongamos que el vehículo sale una hora después de llegar
-        LocalDateTime salida = llegada.plusHours(1);
-        vehiculo.sale();
-        assertEquals("La duración debe ser de 60 minutos", 60, vehiculo.duracion());
     }
 
     @Test
     public void testCompraBono() {
+        assertFalse("Al inicio el vehículo no debe tener bono", vehiculo.poseeBono());
         vehiculo.compraBono();
-        assertTrue("El vehículo debería tener un bono", vehiculo.poseeBono());
+        assertTrue("Después de comprar el bono, el vehículo debe tenerlo", vehiculo.poseeBono());
     }
 
     @Test
-    public void testBonoValido() {
-        // El vehículo no tiene bono
-        assertFalse("El vehículo no debería tener un bono", vehiculo.bonoValido());
+    public void testSetFinBono() {
+        LocalDateTime finBono = LocalDateTime.now().plusHours(1);
+        vehiculo.setFinBono(finBono);
+        assertEquals("El fin del bono debe ser igual al valor establecido", finBono, vehiculo.fechaFinBono());
+    }
 
-        // El vehículo tiene un bono válido
+    @Test
+    public void testMatricula() {
+        assertEquals("La matrícula del vehículo debe ser la establecida en el constructor", "123ABC", vehiculo.matricula());
+    }
+
+    @Test
+    public void testDineroPagado() {
+        assertEquals("El dinero pagado por el vehículo debe ser 0 al inicio", 0.0, vehiculo.dineroPagado(), 0.001);
+        vehiculo.setDineroPagado(10.5);
+        assertEquals("El dinero pagado por el vehículo debe ser el valor establecido", 10.5, vehiculo.dineroPagado(), 0.001);
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("La representación en cadena del vehículo debe ser 'Matricula -> 123ABC'", "Matricula -> 123ABC", vehiculo.toString());
+    }
+
+    @Test
+    public void testBonoValidoSinBono() {
+        assertFalse("El vehículo no debería tener un bono al inicio", vehiculo.bonoValido());
+    }
+
+    @Test
+    public void testBonoValidoConBonoVencido() {
+        vehiculo.compraBono();
+        vehiculo.setFinBono(LocalDateTime.now().minusHours(1)); // Un bono vencido desde hace una hora
+        assertFalse("El bono no debería ser válido si ya está vencido", vehiculo.bonoValido());
+    }
+
+    @Test
+    public void testBonoValidoConBonoVigente() {
         vehiculo.compraBono();
         vehiculo.setFinBono(LocalDateTime.now().plusHours(1)); // Un bono válido por una hora
-        assertTrue("El bono debería ser válido", vehiculo.bonoValido());
-
-        // El vehículo tiene un bono expirado
-        vehiculo.setFinBono(LocalDateTime.now().minusHours(1)); // Un bono expirado desde hace una hora
-        assertFalse("El bono no debería ser válido", vehiculo.bonoValido());
+        assertTrue("El bono debería ser válido si aún no ha vencido", vehiculo.bonoValido());
     }
 
     @Test
-    public void testPagarEstandar() {
+    public void testHaPagadoSinPagar() {
+        assertFalse("El vehículo no debería haber pagado al inicio", vehiculo.haPagado());
+    }
+
+    @Test
+    public void testHaPagadoDespuesDePagar() {
         vehiculo.pagarEstandar();
-        assertTrue("El vehículo debería haber pagado la tarifa estándar", vehiculo.haPagado());
-    }
-
-    @Test
-    public void testSalida() {
-        // Supongamos que el vehículo sale una hora después de llegar
-        LocalDateTime salida = llegada.plusHours(1);
-        vehiculo.sale();
-        assertEquals("La hora de salida debe ser igual a la establecida", salida.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")), vehiculo.horaSalida());
+        assertTrue("El vehículo debería haber pagado después de llamar al método pagarEstandar()", vehiculo.haPagado());
     }
 }

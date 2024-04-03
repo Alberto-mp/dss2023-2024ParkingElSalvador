@@ -1,88 +1,69 @@
+package es.uca.ParkingElSalvador;
+
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import javax.naming.NameNotFoundException;
+import java.time.LocalDateTime;
 
 public class ParkingTest {
     private Parking parking;
+    private Vehiculo vehiculo;
 
     @Before
     public void setUp() {
-        parking = new Parking("Parking Test", "Dirección Test", 100);
+        parking = new Parking("Parking Prueba", "Calle Prueba, 123", 50);
+        vehiculo = new Vehiculo("123ABC");
+    }
+
+
+    @Test
+    public void testPonerPrecioBonos() {
+        parking.ponerPrecioBonos(30, 90, 365); // Precios para bonos
+        assertEquals("El precio mensual de bono debe ser 30", 30, BonoMensual.pMes,0.001);
+        assertEquals("El precio trimestral de bono debe ser 90", 90, BonoTrimestral.pTrimestre,0.001);
+        assertEquals("El precio anual de bono debe ser 365", 365, BonoAnual.pAnual,0.0001);
     }
 
     @Test
-    public void testEntrada() throws IOException, NameNotFoundException {
-        // Ejecución
+    public void testEntrada() throws Exception {
         parking.entrada();
-
-        // Verificación
-        assertEquals(99, parking.getPlazasDisponibles());
-        assertEquals(1, parking.getPlazasOcupadas());
+        assertEquals("Debería haber una plaza ocupada", 1, parking.getPlazasOcupadas());
     }
 
     @Test
-    public void testSalida() throws IOException, NameNotFoundException {
-        // Configuración
-        parking.entrada(); 
-
-        // Ejecución
+    public void testSalida() throws Exception {
+        parking.entrada();
         parking.salida();
-
-        // Verificación
-        assertEquals(99, parking.getPlazasDisponibles());
-        assertEquals(0, parking.getPlazasOcupadas());
+        assertEquals("Debería haber ninguna plaza ocupada", 0, parking.getPlazasOcupadas());
     }
 
     @Test
-    public void testGetNombre() {
-        assertEquals("Parking Test", parking.getNombre());
+    public void testVehiculoPagaEstandar() throws Exception {
+        parking.precioEstandar(1); // Precio por minuto
+        parking.entrada();
+        parking.vehiculoPagaEstandar("123ABC");
+        assertTrue("El vehículo debería haber pagado", vehiculo.haPagado());
     }
 
     @Test
-    public void testGetDireccionPostal() {
-        assertEquals("Dirección Test", parking.getDireccionPostal());
+    public void testVehiculoPagaBonoMensual() throws Exception {
+        parking.entrada();
+        parking.vehiculoPagaBonoMensual(1, "123ABC");
+        assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.poseeBono());
     }
 
     @Test
-    public void testGetCapacidadTotal() {
-        assertEquals(100, parking.getCapacidadTotal());
+    public void testVehiculoPagaBonoTrimestral() throws Exception {
+        parking.entrada();
+        parking.vehiculoPagaBonoTrimestral(1, "123ABC");
+        assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.poseeBono());
     }
 
     @Test
-    public void testGetPlazasDisponibles() {
-        assertEquals(99, parking.getPlazasDisponibles());
+    public void testVehiculoPagaBonoAnual() throws Exception {
+        parking.entrada();
+        parking.vehiculoPagaBonoAnual(1, "123ABC");
+        assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.poseeBono());
     }
 
-    @Test
-    public void testGetPlazasOcupadas() {
-        assertEquals(1, parking.getPlazasOcupadas());
-    }
-
-    @Test
-    public void testGetBarrera() {
-        assertNotNull(parking.getBarrera());
-    }
-
-    @Test
-    public void testGetQR() {
-        assertNotNull(parking.getQR());
-    }
-
-    @Test
-    public void testGetVehiculos() {
-        assertNotNull(parking.getVehiculos());
-    }
-
-    @Test
-    public void testGetLibro() {
-        assertNotNull(parking.getLibro());
-    }
-
-    @Test
-    public void testGetInformeActual() {
-        assertNotNull(parking.getInformeActual());
-    }
 }

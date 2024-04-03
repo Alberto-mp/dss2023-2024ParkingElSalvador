@@ -8,7 +8,7 @@ public class BonoTrimestral extends Bono {
         this.nTrimestres = nTrimestres;
     }
 
-    public static long precioTrimestral() {
+    public static double precioTrimestral() {
         return pTrimestre;
     }
 

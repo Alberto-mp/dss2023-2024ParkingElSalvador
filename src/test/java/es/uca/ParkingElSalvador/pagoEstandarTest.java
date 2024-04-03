@@ -1,44 +1,32 @@
+package es.uca.ParkingElSalvador;
+
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-public class PagoEstandarTest {
-    private CarList vehiculos;
-    private QRservice qr;
-    private Estandar tarifa;
-    private PagoEstandar pagoEstandar;
+public class pagoEstandarTest {
+    private Vehiculo vehiculo;
+    private pagoEstandar pago;
 
     @Before
     public void setUp() {
-        vehiculos = new CarList();
-        qr = new QRservice();
-        tarifa = new Estandar();
-        tarifa.ponerPrecioAlMinuto(10); // Establecemos un precio de 10 por minuto
-        pagoEstandar = new PagoEstandar(vehiculos, tarifa);
+        vehiculo = new Vehiculo("123ABC");
+        pago = new pagoEstandar(vehiculo, 0.5); // Precio por minuto
     }
 
     @Test
     public void testCantidad() {
-        // Ejecución
-        long cantidad = pagoEstandar.cantidad(30); // 30 minutos
-
-        // Verificación
-        assertEquals(300, cantidad); // 10 * 30 = 300
+        assertEquals("La cantidad debe ser 30 si se han usado 60 minutos y el precio por minuto es 0.5", 30, pago.cantidad(60), 0);
     }
 
     @Test
     public void testPagar() {
-        // Configuración
-        String matricula = "ABC123";
-        Vehiculo vehiculo = new Vehiculo(matricula);
-        vehiculo.llega();
-        vehiculos.meter(vehiculo);
-
-        // Ejecución
-        long pago = pagoEstandar.pagar();
-
-        // Verificación
-        assertTrue(vehiculo.haPagado());
-        assertEquals(cantidad(vehiculo.duracion()), pago); // 10 * 30 = 300
+        try {
+            pago.pagar(); // Pago de tarifa estándar válido
+            assertTrue("El vehículo debería haber pagado la tarifa estándar", vehiculo.haPagado());
+            assertNotNull("El vehículo debería tener una cantidad pagada", vehiculo.dineroPagado());
+        } catch (Exception e) {
+            fail("Se lanzó una excepción inesperada: " + e.getMessage());
+        }
     }
 }

@@ -1,86 +1,49 @@
-import org.junit.Test;
+package es.uca.ParkingElSalvador;
+
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class InformeTest {
+    private Informe informe;
+    private Parking parking;
+    private Vehiculo vehiculo;
+
+    @Before
+    public void setUp() {
+        parking = new Parking("nombre","1231",122);
+        vehiculo = new Vehiculo("123ABC");
+        vehiculo.setDineroPagado(10.0); // Simulamos que el vehículo ha pagado $10
+        CarRegister libro = parking.getLibro();
+        libro.almacenar(vehiculo); // Almacenamos el vehículo en el registro del parking
+        informe = new Informe(parking);
+    }
 
     @Test
     public void testFechaInforme() {
-        // Configuración
-        Informe informe = new Informe();
+        String fechaHoraActual = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        assertEquals("La fecha y hora del informe debería ser la fecha y hora actual formateada correctamente", fechaHoraActual, informe.fechaInforme());
+    }
 
-        // Ejecución
-        String fechaInforme = informe.fechaInforme();
-
-        // Verificación
-        assertNotNull(fechaInforme);
+    @Test
+    public void testFechaInformeLT() {
+        assertNotNull("La fecha y hora del informe LocalDateTime no debería ser nula", informe.fechaInformeLT());
     }
 
     @Test
     public void testIngresoDiario() {
-        // Configuración
-        Informe informe = new Informe();
-
-        // Verificación
-        assertEquals(0, informe.ingresoDiario());
-    }
-
-    @Test
-    public void testSumaDiaria() {
-        // Configuración
-        Informe informe = new Informe();
-        long cantidad = 100;
-
-        // Ejecución
-        informe.sumaDiaria(cantidad);
-
-        // Verificación
-        assertEquals(cantidad, informe.ingresoDiario());
-        assertEquals(cantidad, informe.ingresoSemanal());
-        assertEquals(cantidad, informe.ingresoMensual());
+        assertEquals("El ingreso diario debería ser igual al dinero pagado por el vehículo", 10.0, informe.ingresoDiario(), 0.0);
     }
 
     @Test
     public void testIngresoSemanal() {
-        // Configuración
-        Informe informe = new Informe();
-
-        // Verificación
-        assertEquals(0, informe.ingresoSemanal());
-    }
-
-    @Test
-    public void testSumaSemanal() {
-        // Configuración
-        Informe informe = new Informe();
-        long cantidad = 200;
-
-        // Ejecución
-        informe.sumaSemanal(cantidad);
-
-        // Verificación
-        assertEquals(cantidad, informe.ingresoSemanal());
-        assertEquals(cantidad, informe.ingresoMensual());
+        assertEquals("El ingreso semanal debería ser igual al dinero pagado por el vehículo", 10.0, informe.ingresoSemanal(), 0.0);
     }
 
     @Test
     public void testIngresoMensual() {
-        // Configuración
-        Informe informe = new Informe();
-
-        // Verificación
-        assertEquals(0, informe.ingresoMensual());
-    }
-
-    @Test
-    public void testSumaMensual() {
-        // Configuración
-        Informe informe = new Informe();
-        long cantidad = 300;
-
-        // Ejecución
-        informe.sumaMensual(cantidad);
-
-        // Verificación
-        assertEquals(cantidad, informe.ingresoMensual());
+        assertEquals("El ingreso mensual debería ser igual al dinero pagado por el vehículo", 10.0, informe.ingresoMensual(), 0.0);
     }
 }

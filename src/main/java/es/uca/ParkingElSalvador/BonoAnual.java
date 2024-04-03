@@ -1,18 +1,18 @@
 package es.uca.ParkingElSalvador;
 
 public class BonoAnual extends Bono {
-    public static long pAnual = 0;
+    public static double pAnual = 0;
     private int nAnos;
 
     public BonoAnual(int nAnos){
         this.nAnos = nAnos;
     }
 
-    public static long precioAnual() {
+    public static double precioAnual() {
         return pAnual;
     }
 
-    public void ponerPrecioBono(long precioA){
+    public void ponerPrecioBono(double precioA){
         pAnual = precioA;
     }
 

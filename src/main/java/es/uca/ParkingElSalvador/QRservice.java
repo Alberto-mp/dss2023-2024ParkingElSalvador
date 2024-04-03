@@ -50,7 +50,7 @@ public class QRservice {
     // Método para generar un código QR a partir de una matrícula
     public void generarCodigoQR(String contenido) {
         try {
-            ByteArrayOutputStream out = QRCode.from(contenido).withSize(360, 360).to(ImageType.PNG).stream();
+            ByteArrayOutputStream out = QRCode.from(contenido).withSize(dimensiones, dimensiones).to(ImageType.PNG).stream();
             Path path = FileSystems.getDefault().getPath(this.directorio);
             File file = new File(path.toString() + "/codigo_qr.png");
             out.writeTo(new FileOutputStream(file));

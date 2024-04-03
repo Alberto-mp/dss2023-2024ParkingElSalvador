@@ -67,6 +67,10 @@ public class Parking {
         return qr;
     }
 
+    public void setDirectorioQR(String d){
+        qr.setDirectorio(d);
+    }
+
     public CarRepository getVehiculos() {
         return vehiculos;
     }

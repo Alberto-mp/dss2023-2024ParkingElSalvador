@@ -1,10 +1,16 @@
+package es.uca.ParkingElSalvador;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.zxing.NotFoundException;
 
 public class QRserviceTest {
     private QRservice qrService;
@@ -23,7 +29,7 @@ public class QRserviceTest {
     }
 
     @Test
-    public void testLeerCodigoQR() {
+    public void testLeerCodigoQR() throws Exception {
         try {
             // Generar un código QR de prueba
             qrService.generarCodigoQR("contenido_de_prueba");

@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,7 +17,7 @@ public class BonoTrimestralTest {
         double resultado = bonoTrimestral.precioBono();
 
         // Verificación
-        assertEquals(nTrimestres * precio, resultado); 
+        assertEquals(nTrimestres * precio, resultado,0.0001); 
     }
 
     @Test
@@ -38,7 +40,7 @@ public class BonoTrimestralTest {
         bonoTrimestral.ponerPrecioBono(precio);
 
         // Ejecución
-        long resultado = BonoTrimestral.precioTrimestral();
+        double resultado = BonoTrimestral.precioTrimestral();
 
         // Verificación
         assertEquals(precio, resultado);

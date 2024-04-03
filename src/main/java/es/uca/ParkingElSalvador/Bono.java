@@ -19,7 +19,7 @@ public abstract class Bono {
     // Definimos metodos a sobreescribir en las subclases
     // segun  el tipo
     abstract double precioBono();
-    abstract void ponerPrecioBono(long x);
+    abstract void ponerPrecioBono(double x);
     abstract String tipoBono();
 }
 

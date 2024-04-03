@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,7 +17,7 @@ public class BonoMensualTest {
         double resultado = bonoMensual.precioBono();
 
         // Verificación
-        assertEquals(nMeses * precio, resultado); 
+        assertEquals(nMeses * precio, resultado,0.0001); 
     }
 
     @Test

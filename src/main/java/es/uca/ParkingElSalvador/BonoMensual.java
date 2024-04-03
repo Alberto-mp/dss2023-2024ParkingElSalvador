@@ -8,7 +8,7 @@ public class BonoMensual extends Bono {
         this.nMeses = nMeses;
     }
 
-    public static long precioMensual() {
+    public static double precioMensual() {
         return pMes;
     }
 
