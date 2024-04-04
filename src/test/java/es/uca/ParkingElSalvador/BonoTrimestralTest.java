@@ -43,6 +43,6 @@ public class BonoTrimestralTest {
         double resultado = BonoTrimestral.precioTrimestral();
 
         // Verificación
-        assertEquals(precio, resultado);
+        assertEquals(precio, resultado,0.001);
     }
 }

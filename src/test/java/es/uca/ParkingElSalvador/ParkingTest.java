@@ -3,7 +3,6 @@ package es.uca.ParkingElSalvador;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import java.time.LocalDateTime;
 
 public class ParkingTest {
     private Parking parking;
@@ -15,7 +14,6 @@ public class ParkingTest {
         vehiculo = new Vehiculo("123ABC");
     }
 
-
     @Test
     public void testPonerPrecioBonos() {
         parking.ponerPrecioBonos(30, 90, 365); // Precios para bonos
@@ -24,46 +22,50 @@ public class ParkingTest {
         assertEquals("El precio anual de bono debe ser 365", 365, BonoAnual.pAnual,0.0001);
     }
 
-    @Test
+   @Test
     public void testEntrada() throws Exception {
-        parking.entrada();
+        parking.entrada(vehiculo.matricula());
         assertEquals("Debería haber una plaza ocupada", 1, parking.getPlazasOcupadas());
     }
+    
 
     @Test
     public void testSalida() throws Exception {
-        parking.entrada();
-        parking.salida();
+        parking.entrada(vehiculo.matricula());
+        // Simulamos que el coche paga
+        parking.vehiculoPagaBonoAnual(2,vehiculo.matricula());
+        parking.salida(vehiculo.matricula());
         assertEquals("Debería haber ninguna plaza ocupada", 0, parking.getPlazasOcupadas());
     }
-
+    
     @Test
     public void testVehiculoPagaEstandar() throws Exception {
         parking.precioEstandar(1); // Precio por minuto
-        parking.entrada();
-        parking.vehiculoPagaEstandar("123ABC");
+        parking.entrada(vehiculo.matricula());
+        parking.vehiculoPagaEstandar(vehiculo.matricula());
         assertTrue("El vehículo debería haber pagado", vehiculo.haPagado());
     }
 
     @Test
     public void testVehiculoPagaBonoMensual() throws Exception {
-        parking.entrada();
+        parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoMensual(1, "123ABC");
         assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoTrimestral() throws Exception {
-        parking.entrada();
+        parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoTrimestral(1, "123ABC");
         assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoAnual() throws Exception {
-        parking.entrada();
+        parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoAnual(1, "123ABC");
         assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.poseeBono());
     }
+     
 
 }

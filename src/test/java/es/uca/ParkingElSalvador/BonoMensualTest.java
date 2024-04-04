@@ -40,9 +40,9 @@ public class BonoMensualTest {
         bonoMensual.ponerPrecioBono(precio);
 
         // Ejecución
-        long resultado = BonoMensual.precioMensual();
+        double resultado = BonoMensual.precioMensual();
 
         // Verificación
-        assertEquals(precio, resultado);
+        assertEquals(precio, resultado,0.0001);
     }
 }

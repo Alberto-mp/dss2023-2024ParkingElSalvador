@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNull;
 
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +41,7 @@ public class QRserviceTest {
     }
 
     @Test(expected = IOException.class)
-    public void testLeerCodigoQRConArchivoInexistente() throws IOException, NotFoundException {
+    public void testLeerCodigoQRConArchivoInexistente() throws Exception {
         // Intentar leer un código QR de un archivo que no existe
         String contenido = qrService.leerCodigoQR();
         assertNull("No se esperaba un contenido al intentar leer un código QR inexistente", contenido);

@@ -1,7 +1,7 @@
 package es.uca.ParkingElSalvador;
 
 public class BonoMensual extends Bono {
-    public static long pMes = 0;
+    public static double pMes = 0;
     private int nMeses;
 
     public BonoMensual(int nMeses){
@@ -12,7 +12,7 @@ public class BonoMensual extends Bono {
         return pMes;
     }
 
-    public void ponerPrecioBono(long precioM){
+    public void ponerPrecioBono(double precioM){
         pMes = precioM;
     }
 

@@ -1,7 +1,7 @@
 package es.uca.ParkingElSalvador;
 
 public class BonoTrimestral extends Bono {
-    public static long pTrimestre = 0;
+    public static double pTrimestre = 0;
     private int nTrimestres;
 
     public BonoTrimestral(int nTrimestres){
@@ -12,7 +12,7 @@ public class BonoTrimestral extends Bono {
         return pTrimestre;
     }
 
-    public void ponerPrecioBono(long precioT){
+    public void ponerPrecioBono(double precioT){
         pTrimestre = precioT;
     }
 

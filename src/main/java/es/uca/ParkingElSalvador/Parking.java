@@ -119,10 +119,45 @@ public class Parking {
         }
     }
 
+    // En caso de no funcionar el lector de qr
+
+    public void entrada(String matricula) throws Exception {
+        Vehiculo vehiculo = new Vehiculo(matricula);
+        // Comprobamos que haya espacio
+        if(plazasDisponibles > 0){
+            // Abrimos la barrera en caso de estar cerrada
+            if(!barrera.estaAbierta())
+                barrera.abrirBarrera();
+            // Generamos el ticket y le damos acceso
+            qr.generarCodigoQR(matricula);
+            vehiculos.meter(vehiculo);
+            libro.almacenar(vehiculo);
+            barrera.cerrarBarrera();
+            plazasDisponibles--;
+            plazasOcupadas++;
+
+        }
+    }
+
+    public void salida(String matricula) throws Exception{
+        Vehiculo vehiculo = vehiculos.obtener(matricula);
+        if(vehiculo.haPagado() || (vehiculo.poseeBono() && vehiculo.bonoValido())){
+            vehiculo.sale();
+            barrera.abrirBarrera();
+            // Sale del parking
+            barrera.cerrarBarrera();
+            vehiculos.sacar(vehiculo);
+            plazasDisponibles++;
+            plazasOcupadas--;
+
+        }
+    }
+
     // Operaciones de pago de tarifa estándar y bonos
     public void vehiculoPagaEstandar(String mat) throws Exception{
         pagoEstandar pEstandar = new pagoEstandar(vehiculos.obtener(mat),tarifa.precioMinuto());
         pEstandar.pagar();
+
     }
 
     public void vehiculoPagaBonoMensual(int nMeses, String mat) throws Exception{
