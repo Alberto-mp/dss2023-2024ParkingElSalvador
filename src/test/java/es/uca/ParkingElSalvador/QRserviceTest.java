@@ -40,8 +40,9 @@ public class QRserviceTest {
         }
     }
 
-    @Test(expected = IOException.class)
+    @Test
     public void testLeerCodigoQRConArchivoInexistente() throws Exception {
+        qrService.limpiarDirectorio();
         // Intentar leer un código QR de un archivo que no existe
         String contenido = qrService.leerCodigoQR();
         assertNull("No se esperaba un contenido al intentar leer un código QR inexistente", contenido);

@@ -165,7 +165,7 @@ public class Parking {
     public void vehiculoPagaBonoMensual(int nMeses, String mat) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
-        PagoBono pBono = new PagoBono(vehiculos.obtener(mat));
+        PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoMensual(nMeses);
         vehiculos.meter(v);
     }
@@ -173,7 +173,7 @@ public class Parking {
     public void vehiculoPagaBonoTrimestral(int nTrimestres, String mat) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
-        PagoBono pBono = new PagoBono(vehiculos.obtener(mat));
+        PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoTrimestral(nTrimestres);
         vehiculos.meter(v);
     }
@@ -181,7 +181,7 @@ public class Parking {
     public void vehiculoPagaBonoAnual(int nAnnos, String mat) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
-        PagoBono pBono = new PagoBono(vehiculos.obtener(mat));
+        PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoAnual(nAnnos);
         vehiculos.meter(v);
     }

@@ -80,4 +80,30 @@ public class QRservice {
             throw e; // Relanzar la excepción para que el método invocador pueda manejarla
         }
     }
+
+    public void limpiarDirectorio() {
+        // Crear un objeto File que represente el directorio
+        File dir = new File(directorio);
+
+        // Verificar si el directorio existe y es un directorio
+        if (dir.exists() && dir.isDirectory()) {
+            // Obtener una lista de archivos en el directorio
+            File[] archivos = dir.listFiles();
+
+            // Iterar sobre los archivos en el directorio
+            if (archivos != null) {
+                for (File archivo : archivos) {
+                    // Verificar si el archivo es un archivo .png y eliminarlo
+                    if (archivo.isFile() && archivo.getName().toLowerCase().endsWith(".png")) {
+                        archivo.delete();
+                        System.out.println("Se eliminó el archivo: " + archivo.getName());
+                    }
+                }
+            } else {
+                System.out.println("El directorio está vacío.");
+            }
+        } else {
+            System.out.println("La ruta especificada no es un directorio válido o no existe.");
+        }
+    }
 }
