@@ -43,28 +43,28 @@ public class ParkingTest {
         parking.precioEstandar(1); // Precio por minuto
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaEstandar(vehiculo.matricula());
-        assertTrue("El vehículo debería haber pagado", vehiculo.haPagado());
+        assertTrue("El vehículo debería haber pagado", vehiculo.estancia().haPagado());
     }
 
     @Test
     public void testVehiculoPagaBonoMensual() throws Exception {
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoMensual(1, "123ABC");
-        assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.poseeBono());
+        assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.estancia().poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoTrimestral() throws Exception {
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoTrimestral(1, "123ABC");
-        assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.poseeBono());
+        assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.estancia().poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoAnual() throws Exception {
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoAnual(1, "123ABC");
-        assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.poseeBono());
+        assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.estancia().poseeBono());
     }
      
 

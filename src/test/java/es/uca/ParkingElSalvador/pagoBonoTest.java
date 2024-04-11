@@ -18,8 +18,8 @@ public class pagoBonoTest {
     public void testComprarBonoMensual() {
         try {
             pago.comprarBonoMensual(1); // Compra de bono mensual válido
-            assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.poseeBono());
-            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.fechaFinBono());
+            assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.estancia().poseeBono());
+            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.estancia().fechaFinBono());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }
@@ -29,8 +29,8 @@ public class pagoBonoTest {
     public void testComprarBonoTrimestral() {
         try {
             pago.comprarBonoTrimestral(1); // Compra de bono trimestral válido
-            assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.poseeBono());
-            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.fechaFinBono());
+            assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.estancia().poseeBono());
+            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.estancia().fechaFinBono());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }
@@ -40,8 +40,8 @@ public class pagoBonoTest {
     public void testComprarBonoAnual() {
         try {
             pago.comprarBonoAnual(1); // Compra de bono anual válido
-            assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.poseeBono());
-            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.fechaFinBono());
+            assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.estancia().poseeBono());
+            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.estancia().fechaFinBono());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }

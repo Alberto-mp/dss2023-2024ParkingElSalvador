@@ -96,7 +96,6 @@ public class Parking {
             // Generamos el ticket y le damos acceso
             qr.generarCodigoQR(matricula);
             vehiculos.meter(vehiculo);
-            libro.almacenar(vehiculo);
             barrera.cerrarBarrera();
             plazasDisponibles--;
             plazasOcupadas++;
@@ -113,6 +112,7 @@ public class Parking {
             // Sale del parking
             barrera.cerrarBarrera();
             vehiculos.sacar(vehiculo);
+            libro.almacenar(vehiculo);
             plazasDisponibles++;
             plazasOcupadas--;
 
@@ -155,24 +155,35 @@ public class Parking {
 
     // Operaciones de pago de tarifa estándar y bonos
     public void vehiculoPagaEstandar(String mat) throws Exception{
-        PagoEstandar pEstandar = new PagoEstandar(vehiculos.obtener(mat),tarifa.precioMinuto());
+        Vehiculo v = vehiculos.obtener(mat);
+        vehiculos.sacar(v);
+        PagoEstandar pEstandar = new PagoEstandar(v,tarifa.precioMinuto());
         pEstandar.pagar();
-
+        vehiculos.meter(v);
     }
 
     public void vehiculoPagaBonoMensual(int nMeses, String mat) throws Exception{
+        Vehiculo v = vehiculos.obtener(mat);
+        vehiculos.sacar(v);
         PagoBono pBono = new PagoBono(vehiculos.obtener(mat));
         pBono.comprarBonoMensual(nMeses);
+        vehiculos.meter(v);
     }
 
     public void vehiculoPagaBonoTrimestral(int nTrimestres, String mat) throws Exception{
+        Vehiculo v = vehiculos.obtener(mat);
+        vehiculos.sacar(v);
         PagoBono pBono = new PagoBono(vehiculos.obtener(mat));
         pBono.comprarBonoTrimestral(nTrimestres);
+        vehiculos.meter(v);
     }
     
     public void vehiculoPagaBonoAnual(int nAnnos, String mat) throws Exception{
+        Vehiculo v = vehiculos.obtener(mat);
+        vehiculos.sacar(v);
         PagoBono pBono = new PagoBono(vehiculos.obtener(mat));
         pBono.comprarBonoAnual(nAnnos);
+        vehiculos.meter(v);
     }
 
 }

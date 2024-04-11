@@ -23,8 +23,8 @@ public class pagoEstandarTest {
     public void testPagar() {
         try {
             pago.pagar(); // Pago de tarifa estándar válido
-            assertTrue("El vehículo debería haber pagado la tarifa estándar", vehiculo.haPagado());
-            assertNotNull("El vehículo debería tener una cantidad pagada", vehiculo.dineroPagado());
+            assertTrue("El vehículo debería haber pagado la tarifa estándar", vehiculo.estancia().haPagado());
+            assertNotNull("El vehículo debería tener una cantidad pagada", vehiculo.estancia().dineroPagado());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }
