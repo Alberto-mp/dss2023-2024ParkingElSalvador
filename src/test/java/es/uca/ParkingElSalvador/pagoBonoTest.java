@@ -3,16 +3,15 @@ package es.uca.ParkingElSalvador;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import java.time.LocalDateTime;
 
 public class pagoBonoTest {
     private Vehiculo vehiculo;
-    private pagoBono pago;
+    private PagoBono pago;
 
     @Before
     public void setUp() {
         vehiculo = new Vehiculo("123ABC");
-        pago = new pagoBono(vehiculo);
+        pago = new PagoBono(vehiculo);
     }
 
     @Test

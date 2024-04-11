@@ -6,12 +6,12 @@ import org.junit.Test;
 
 public class pagoEstandarTest {
     private Vehiculo vehiculo;
-    private pagoEstandar pago;
+    private PagoEstandar pago;
 
     @Before
     public void setUp() {
         vehiculo = new Vehiculo("123ABC");
-        pago = new pagoEstandar(vehiculo, 0.5); // Precio por minuto
+        pago = new PagoEstandar(vehiculo, 0.5); // Precio por minuto
     }
 
     @Test

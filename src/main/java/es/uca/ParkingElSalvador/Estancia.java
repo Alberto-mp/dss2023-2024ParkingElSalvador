@@ -7,17 +7,46 @@ import java.time.format.DateTimeFormatter;
 public class Estancia {
     private LocalDateTime llegada;
     private LocalDateTime salida;
+    private LocalDateTime finBono;
+    private boolean pagado;
+    private double dineroPagado;
+    private boolean tieneBono;
     private Vehiculo vehiculo;
+
     public Estancia(Vehiculo veh) {
         llegada = LocalDateTime.now();
         vehiculo = veh;
+        pagado = false;
+        tieneBono = false; //Por defecto no tendran
+        dineroPagado = 0;
     }
+
     public void termina(){
         salida = LocalDateTime.now();
     }
 
     public int duracion(){
         return (int)Duration.between(llegada,LocalDateTime.now()).toMinutes();
+    }
+
+    public void compraBono(){
+        tieneBono = true;
+    }
+
+    public void pagarEstandar(){
+        pagado = true;
+    }
+
+    public void setFinBono(LocalDateTime f){
+        finBono = f;
+    }
+
+    public void setDineroPagado(double d){
+        dineroPagado = d;
+    }
+
+    public LocalDateTime fechaFinBono(){
+        return finBono;
     }
 
     public String horaLlegada(){
@@ -44,5 +73,30 @@ public class Estancia {
 
     public Vehiculo vehiculo(){
         return vehiculo;
+    }
+
+    public boolean bonoValido(){
+        if(tieneBono){
+            if(LocalDateTime.now().isBefore(finBono))
+                return true;
+            else
+                return false;
+        }
+
+        else
+            return false;
+
+    }
+
+    public boolean poseeBono(){
+        return tieneBono;
+    }
+
+    public boolean haPagado(){
+        return pagado;
+    }
+
+    public double dineroPagado(){
+        return dineroPagado;
     }
 }

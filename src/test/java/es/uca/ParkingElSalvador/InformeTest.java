@@ -16,7 +16,7 @@ public class InformeTest {
         parking = new Parking("nombre","1231",122);
         vehiculo = new Vehiculo("123ABC");
         vehiculo.setDineroPagado(10.0); // Simulamos que el vehículo ha pagado $10
-        CarRegister libro = parking.getLibro();
+        RepositorioEstancias libro = parking.getLibro();
         libro.almacenar(vehiculo); // Almacenamos el vehículo en el registro del parking
         informe = new Informe(parking);
     }
