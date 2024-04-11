@@ -18,6 +18,7 @@ public class QRserviceTest {
     public void setUp() {
         qrService = new QRservice();
         qrService.setDirectorio("test_directory"); // Directorio de prueba
+        qrService.limpiarDirectorio();
     }
 
     @Test
@@ -25,6 +26,7 @@ public class QRserviceTest {
         qrService.generarCodigoQR("contenido_de_prueba");
         // Verificar que el archivo se ha creado
         assertNotNull("El archivo QR generado no debería ser nulo", new File("test_directory/codigo_qr.png"));
+        qrService.limpiarDirectorio();
     }
 
     @Test
@@ -38,13 +40,15 @@ public class QRserviceTest {
         } catch (IOException | NotFoundException e) {
             assertNull("No se esperaba una excepción al leer el código QR", e);
         }
+        qrService.limpiarDirectorio();
     }
 
-    @Test
+    @Test(expected = IOException.class)
     public void testLeerCodigoQRConArchivoInexistente() throws Exception {
         qrService.limpiarDirectorio();
         // Intentar leer un código QR de un archivo que no existe
         String contenido = qrService.leerCodigoQR();
         assertNull("No se esperaba un contenido al intentar leer un código QR inexistente", contenido);
+        qrService.limpiarDirectorio();
     }
 }
