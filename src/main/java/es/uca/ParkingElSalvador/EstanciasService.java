@@ -2,9 +2,9 @@ package es.uca.ParkingElSalvador;
 
 import java.util.Vector;
 
-public class RepositorioEstancias implements RepositorioEstanciaInterface {
+public class EstanciasService implements EstanciasRepository {
     private final Vector<Estancia> registro;
-    public RepositorioEstancias(){
+    public EstanciasService(){
         registro = new Vector<Estancia>();
     }
     public Vector<Estancia> registro(){

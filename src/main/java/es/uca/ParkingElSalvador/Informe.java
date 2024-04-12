@@ -27,7 +27,7 @@ public class Informe {
 
     public double ingresoDiario(){
         double ingresoDiario = 0;
-        RepositorioEstancias libro = parking.getLibro();
+        EstanciasService libro = parking.getLibro();
         int hoy = LocalDateTime.now().getDayOfYear();
         for(int i = 0; i < libro.registro().size(); i++){
             if(libro.registro().get(i).horaLlegadaLT().getDayOfYear() == hoy)
@@ -39,7 +39,7 @@ public class Informe {
     
     public double ingresoSemanal(){
         double ingresoSemanal = 0;
-        RepositorioEstancias libro = parking.getLibro();
+        EstanciasService libro = parking.getLibro();
         int semana = LocalDateTime.now().get(WeekFields.ISO.weekOfWeekBasedYear());
         for(int i = 0; i < libro.registro().size(); i++){
             if(libro.registro().get(i).horaLlegadaLT().get(WeekFields.ISO.weekOfWeekBasedYear()) == semana)
@@ -51,7 +51,7 @@ public class Informe {
 
     public double ingresoMensual(){
         double ingresoMensual = 0;
-        RepositorioEstancias libro = parking.getLibro();
+        EstanciasService libro = parking.getLibro();
         int mes = LocalDateTime.now().getMonthValue();
         for(int i = 0; i < libro.registro().size(); i++){
             if(libro.registro().get(i).horaLlegadaLT().getMonthValue() == mes)

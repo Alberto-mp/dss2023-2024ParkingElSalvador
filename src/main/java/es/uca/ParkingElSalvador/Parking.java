@@ -10,7 +10,7 @@ public class Parking {
     private QRservice qr;
     private Estandar tarifa;
     private CarRepository vehiculos;
-    private RepositorioEstancias libro;
+    private EstanciasService libro;
 
     public Parking(String n, String d, int capT){
         nombre = n;
@@ -22,7 +22,7 @@ public class Parking {
         qr = new QRservice();
         tarifa = new Estandar(); 
         vehiculos = new CarRepository();
-        libro = new RepositorioEstancias();
+        libro = new EstanciasService();
 
     }
 
@@ -75,7 +75,7 @@ public class Parking {
         return vehiculos;
     }
 
-    public RepositorioEstancias getLibro() {
+    public EstanciasService getLibro() {
         return libro;
     }
 

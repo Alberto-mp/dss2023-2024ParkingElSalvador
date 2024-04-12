@@ -5,12 +5,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CarRegisterTest {
-    private RepositorioEstancias carRegister;
+    private EstanciasService carRegister;
     private Vehiculo vehiculo;
 
     @Before
     public void setUp() {
-        carRegister = new RepositorioEstancias();
+        carRegister = new EstanciasService();
         vehiculo = new Vehiculo("123ABC");
     }
 
