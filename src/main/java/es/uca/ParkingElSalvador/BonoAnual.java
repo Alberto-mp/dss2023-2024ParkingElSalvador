@@ -1,6 +1,6 @@
 package es.uca.ParkingElSalvador;
 
-public class BonoAnual implements Bono {
+public class BonoAnual extends Bono {
     public static double pAnual = 0;
     private int nAnos;
 

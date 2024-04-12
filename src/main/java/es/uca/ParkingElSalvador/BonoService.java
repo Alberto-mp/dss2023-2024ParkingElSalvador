@@ -22,17 +22,17 @@ public class BonoService implements BonoRepository{
     }
 
     @Override
-    public Bono obtener(Estancia e){
-        
-    }
-
-    @Override
     public List<Bono> bonos(String matricula){
-        
+        List<Bono> lista = new List<Bono>();
+        for(Bono b : bonos){
+            if(b.getVehiculo().matricula() == matricula)
+               lista.add(b);
+        }
+        return lista;
     }
 
     @Override
     public List<Bono> getAllBonos() {
-
+        return bonos;
     }
 }

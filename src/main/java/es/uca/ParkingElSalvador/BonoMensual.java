@@ -1,6 +1,6 @@
 package es.uca.ParkingElSalvador;
 
-public class BonoMensual implements Bono {
+public class BonoMensual extends Bono {
     public static double pMes = 0;
     private int nMeses;
 
