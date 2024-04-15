@@ -1,48 +1,39 @@
 package es.uca.ParkingElSalvador;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.math.BigDecimal;
+
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class BonoMensualTest {
+    private Vehiculo vehiculo;
+    private BonoMensual bono;
+
+    @Before
+    public void setUp() {
+        vehiculo = new Vehiculo("ABC123");
+        bono = new BonoMensual(vehiculo);
+    }
 
     @Test
-    public void testPrecioBono() {
-        // Configuración
-        long precio = 50;
-        int nMeses = 2;
-        BonoMensual bonoMensual = new BonoMensual(nMeses);
-        bonoMensual.ponerPrecioBono(precio);
+    public void testConstructor() {
+        assertNotNull(bono);
+        assertEquals(vehiculo, bono.getVehiculo());
+        assertEquals(BigDecimal.ZERO, bono.getPrecio());
+    }
 
-        // Ejecución
-        double resultado = bonoMensual.precioBono();
-
-        // Verificación
-        assertEquals(nMeses * precio, resultado,0.0001); 
+    @Test
+    public void testSetPrecio() {
+        BigDecimal precio = new BigDecimal("50.00");
+        BonoMensual.setPrecio(precio);
+        assertEquals(precio, bono.getPrecio());
     }
 
     @Test
     public void testTipoBono() {
-        // Configuración
-        BonoMensual bonoMensual = new BonoMensual(1);
-
-        // Ejecución
-        String resultado = bonoMensual.tipoBono();
-
-        // Verificación
-        assertEquals("El bono es mensual", resultado);
-    }
-
-    @Test
-    public void testPrecioMensual() {
-        // Configuración
-        long precio = 100;
-        BonoMensual bonoMensual = new BonoMensual(1);
-        bonoMensual.ponerPrecioBono(precio);
-
-        // Ejecución
-        double resultado = BonoMensual.precioMensual();
-
-        // Verificación
-        assertEquals(precio, resultado,0.0001);
+        assertEquals("Mensual", bono.tipoBono());
     }
 }

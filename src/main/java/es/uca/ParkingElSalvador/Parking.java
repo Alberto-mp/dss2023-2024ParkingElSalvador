@@ -35,8 +35,8 @@ public class Parking {
 
     public void ponerPrecioBonos(double mes, double tri, double anno){
         BonoMensual.setPrecio(new BigDecimal(mes));
-        BonoMensual.setPrecio(new BigDecimal(tri));
-        BonoMensual.setPrecio(new BigDecimal(anno));
+        BonoTrimestral.setPrecio(new BigDecimal(tri));
+        BonoAnual.setPrecio(new BigDecimal(anno));
     }
 
 

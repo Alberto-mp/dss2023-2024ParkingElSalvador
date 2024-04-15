@@ -17,9 +17,12 @@ public class ParkingTest {
     @Test
     public void testPonerPrecioBonos() {
         parking.ponerPrecioBonos(30, 90, 365); // Precios para bonos
-        assertEquals("El precio mensual de bono debe ser 30", 30, BonoMensual.pMes,0.001);
-        assertEquals("El precio trimestral de bono debe ser 90", 90, BonoTrimestral.pTrimestre,0.001);
-        assertEquals("El precio anual de bono debe ser 365", 365, BonoAnual.pAnual,0.0001);
+        BonoMensual bm = new BonoMensual(vehiculo);
+        BonoTrimestral bt = new BonoTrimestral(vehiculo);
+        BonoAnual ba = new BonoAnual(vehiculo);
+        assertEquals("El precio mensual de bono debe ser 30", 30, bm.getPrecio().doubleValue(),0.001);
+        assertEquals("El precio trimestral de bono debe ser 90", 90, bt.getPrecio().doubleValue(),0.001);
+        assertEquals("El precio anual de bono debe ser 365", 365, ba.getPrecio().doubleValue(),0.0001);
     }
 
    @Test

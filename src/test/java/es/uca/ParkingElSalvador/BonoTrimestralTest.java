@@ -1,48 +1,39 @@
 package es.uca.ParkingElSalvador;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.math.BigDecimal;
+
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class BonoTrimestralTest {
+    private Vehiculo vehiculo;
+    private BonoTrimestral bono;
+
+    @Before
+    public void setUp() {
+        vehiculo = new Vehiculo("ABC123");
+        bono = new BonoTrimestral(vehiculo);
+    }
 
     @Test
-    public void testPrecioBono() {
-        // Configuración
-        long precio = 150;
-        int nTrimestres = 2;
-        BonoTrimestral bonoTrimestral = new BonoTrimestral(nTrimestres);
-        bonoTrimestral.ponerPrecioBono(precio);
+    public void testConstructor() {
+        assertNotNull(bono);
+        assertEquals(vehiculo, bono.getVehiculo());
+        assertEquals(BigDecimal.ZERO, bono.getPrecio());
+    }
 
-        // Ejecución
-        double resultado = bonoTrimestral.precioBono();
-
-        // Verificación
-        assertEquals(nTrimestres * precio, resultado,0.0001); 
+    @Test
+    public void testSetPrecio() {
+        BigDecimal precio = new BigDecimal("150.00");
+        BonoTrimestral.setPrecio(precio);
+        assertEquals(precio, bono.getPrecio());
     }
 
     @Test
     public void testTipoBono() {
-        // Configuración
-        BonoTrimestral bonoTrimestral = new BonoTrimestral(1);
-
-        // Ejecución
-        String resultado = bonoTrimestral.tipoBono();
-
-        // Verificación
-        assertEquals("El bono es trimestral", resultado);
-    }
-
-    @Test
-    public void testPrecioTrimestral() {
-        // Configuración
-        long precio = 200;
-        BonoTrimestral bonoTrimestral = new BonoTrimestral(1);
-        bonoTrimestral.ponerPrecioBono(precio);
-
-        // Ejecución
-        double resultado = BonoTrimestral.precioTrimestral();
-
-        // Verificación
-        assertEquals(precio, resultado,0.001);
+        assertEquals("Trimestral", bono.tipoBono());
     }
 }

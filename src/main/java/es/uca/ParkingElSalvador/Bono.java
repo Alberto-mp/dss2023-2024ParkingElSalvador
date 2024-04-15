@@ -8,8 +8,8 @@ public abstract class Bono {
     public Bono(Vehiculo vehiculo){
         v = vehiculo;
     }
-    public Vehiculo getVehiculo() {return v;}
     public abstract BigDecimal getPrecio();
+    public Vehiculo getVehiculo() {return v;}
     public abstract String tipoBono();
 }
 
