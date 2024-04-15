@@ -7,7 +7,6 @@ public class BonoAnual extends Bono {
 
     public BonoAnual(Vehiculo vehiculo) {
         super(vehiculo);
-        precio = BigDecimal.ZERO;
     }
 
     @Override

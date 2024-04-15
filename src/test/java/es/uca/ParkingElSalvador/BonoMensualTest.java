@@ -22,7 +22,6 @@ public class BonoMensualTest {
     public void testConstructor() {
         assertNotNull(bono);
         assertEquals(vehiculo, bono.getVehiculo());
-        assertEquals(BigDecimal.ZERO, bono.getPrecio());
     }
 
     @Test
