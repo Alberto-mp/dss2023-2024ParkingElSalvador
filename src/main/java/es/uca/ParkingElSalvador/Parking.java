@@ -1,5 +1,7 @@
 package es.uca.ParkingElSalvador;
 
+import java.math.BigDecimal;
+
 public class Parking {
     private final String nombre;
     private final String direccion_postal;
@@ -11,6 +13,7 @@ public class Parking {
     private Estandar tarifa;
     private CarRepository vehiculos;
     private EstanciasService libro;
+    private BonoRepository bonos;
 
     public Parking(String n, String d, int capT){
         nombre = n;
@@ -23,17 +26,17 @@ public class Parking {
         tarifa = new Estandar(); 
         vehiculos = new CarRepository();
         libro = new EstanciasService();
-
+        bonos = new BonoService();
     }
 
     public void precioEstandar(long min){
         tarifa.ponerPrecioAlMinuto(min);;
     }
 
-    public void ponerPrecioBonos(long mes, long tri, long anno){
-        BonoMensual.pMes = mes;
-        BonoTrimestral.pTrimestre = tri; 
-        BonoAnual.pAnual = anno;
+    public void ponerPrecioBonos(double mes, double tri, double anno){
+        BonoMensual.setPrecio(new BigDecimal(mes));
+        BonoMensual.setPrecio(new BigDecimal(tri));
+        BonoMensual.setPrecio(new BigDecimal(anno));
     }
 
 
@@ -81,6 +84,10 @@ public class Parking {
 
     public Informe crearInforme(){
         return new Informe(this);
+    }
+
+    public BonoRepository getBonos() {
+        return bonos;
     }
     
 

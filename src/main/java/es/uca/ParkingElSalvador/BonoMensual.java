@@ -1,29 +1,32 @@
 package es.uca.ParkingElSalvador;
 
+import java.math.BigDecimal;
+
 public class BonoMensual extends Bono {
-    public static double pMes = 0;
-    private int nMeses;
+    private static BigDecimal precio;
 
-    public BonoMensual(int nMeses){
-        this.nMeses = nMeses;
-    }
-
-
-    public static double precioMensual() {
-        return pMes;
+    public BonoMensual(Vehiculo vehiculo) {
+        super(vehiculo);
+        precio = BigDecimal.ZERO;
     }
 
     @Override
-    public void ponerPrecioBono(double precioM){
-        pMes = precioM;
-    }
-    @Override
-    public double precioBono() {
-        return nMeses*pMes;
-    }
-    @Override
-    public String tipoBono(){
-        return "El bono es mensual";
+    public Vehiculo getVehiculo() {
+        return super.getVehiculo();
     }
 
+    @Override
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+
+    public static void setPrecio(BigDecimal p) {
+        precio = p;
+    }
+
+    @Override
+    public String tipoBono() {
+        return "Mensual";
+    }
 }

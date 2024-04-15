@@ -1,27 +1,31 @@
 package es.uca.ParkingElSalvador;
 
+import java.math.BigDecimal;
+
 public class BonoAnual extends Bono {
-    public static double pAnual = 0;
-    private int nAnos;
+    private static BigDecimal precio;
 
-    public BonoAnual(int nAnos){
-        this.nAnos = nAnos;
-    }
-    
-    public static double precioAnual() {
-        return pAnual;
-    }
-    @Override
-    public void ponerPrecioBono(double precioA){
-        pAnual = precioA;
-    }
-    @Override
-    public double precioBono() {
-        return (double)nAnos*pAnual;
-    }
-    @Override
-    public String tipoBono(){
-        return "El bono es anual";
+    public BonoAnual(Vehiculo vehiculo) {
+        super(vehiculo);
+        precio = BigDecimal.ZERO;
     }
 
+    @Override
+    public Vehiculo getVehiculo() {
+        return super.getVehiculo();
+    }
+
+    @Override
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public static void setPrecio(BigDecimal p) {
+        precio = p;
+    }
+
+    @Override
+    public String tipoBono() {
+        return "Anual";
+    }
 }

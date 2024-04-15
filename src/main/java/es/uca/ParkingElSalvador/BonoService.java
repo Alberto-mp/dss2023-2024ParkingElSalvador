@@ -1,38 +1,45 @@
 package es.uca.ParkingElSalvador;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Vector;
+import java.util.Map;
 
-public class BonoService implements BonoRepository{
-    private Vector<Bono> bonos;
+public class BonoService implements BonoRepository {
+    private Map<String, List<Bono>> bonosPorMatricula;
 
-    
     public BonoService() {
-        bonos = new Vector<Bono>();
-    }
-    
-    @Override
-    public void meter(Bono b){
-        bonos.add(b);
+        bonosPorMatricula = new HashMap<>();
     }
 
     @Override
-    public void sacar(Bono b){
-        bonos.remove(b);
-    }
-
-    @Override
-    public List<Bono> bonos(String matricula){
-        List<Bono> lista = new List<Bono>();
-        for(Bono b : bonos){
-            if(b.getVehiculo().matricula() == matricula)
-               lista.add(b);
+    public void meter(Bono b) {
+        String matricula = b.getVehiculo().matricula();
+        if (!bonosPorMatricula.containsKey(matricula)) {
+            bonosPorMatricula.put(matricula, new ArrayList<>());
         }
-        return lista;
+        bonosPorMatricula.get(matricula).add(b);
+    }
+
+    @Override
+    public void sacar(Bono b) {
+        String matricula = b.getVehiculo().matricula();
+        if (bonosPorMatricula.containsKey(matricula)) {
+            bonosPorMatricula.get(matricula).remove(b);
+        }
+    }
+
+    @Override
+    public List<Bono> bonos(String matricula) {
+        return bonosPorMatricula.getOrDefault(matricula, new ArrayList<>());
     }
 
     @Override
     public List<Bono> getAllBonos() {
-        return bonos;
+        List<Bono> todosBonos = new ArrayList<>();
+        for (List<Bono> bonos : bonosPorMatricula.values()) {
+            todosBonos.addAll(bonos);
+        }
+        return todosBonos;
     }
 }

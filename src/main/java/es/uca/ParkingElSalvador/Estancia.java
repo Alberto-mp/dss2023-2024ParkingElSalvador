@@ -12,6 +12,7 @@ public class Estancia {
     private double dineroPagado;
     private boolean tieneBono;
     private Vehiculo vehiculo;
+    private Bono bono;
 
     public Estancia(Vehiculo veh) {
         llegada = LocalDateTime.now();
@@ -19,6 +20,7 @@ public class Estancia {
         pagado = false;
         tieneBono = false; //Por defecto no tendran
         dineroPagado = 0;
+        bono = null;
     }
 
     public void termina(){
@@ -73,6 +75,17 @@ public class Estancia {
 
     public Vehiculo vehiculo(){
         return vehiculo;
+    }
+
+    public Bono getBono(){
+        return bono;
+    }
+
+    public String bonoTipo() {
+        if(bono!=null)
+            return bono.tipoBono();
+        else
+            return "No posee";
     }
 
     public boolean bonoValido(){

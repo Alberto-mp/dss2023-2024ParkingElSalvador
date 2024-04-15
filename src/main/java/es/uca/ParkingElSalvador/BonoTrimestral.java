@@ -1,27 +1,32 @@
 package es.uca.ParkingElSalvador;
 
+import java.math.BigDecimal;
+
 public class BonoTrimestral extends Bono {
-    public static double pTrimestre = 0;
-    private int nTrimestres;
+    private static BigDecimal precio;
 
-    public BonoTrimestral(int nTrimestres){
-        this.nTrimestres = nTrimestres;
+    public BonoTrimestral(Vehiculo vehiculo) {
+        super(vehiculo);
+        precio = BigDecimal.ZERO;
     }
 
-    public static double precioTrimestral() {
-        return pTrimestre;
+    @Override
+    public Vehiculo getVehiculo() {
+        return super.getVehiculo();
     }
 
-    public void ponerPrecioBono(double precioT){
-        pTrimestre = precioT;
+    @Override
+    public BigDecimal getPrecio() {
+        return precio;
     }
 
-    public double precioBono() {
-        return nTrimestres*pTrimestre;
+
+    public static void setPrecio(BigDecimal p) {
+        precio = p;
     }
 
-    public String tipoBono(){
-        return "El bono es trimestral";
+    @Override
+    public String tipoBono() {
+        return "Trimestral";
     }
-
 }
