@@ -1,5 +1,6 @@
 package es.uca.ParkingElSalvador;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class PagoBono {
@@ -9,9 +10,17 @@ public class PagoBono {
         vehiculo = v;
     }
 
-    public void comprarBono(Bono bono, int duracion) {
+    public void comprarBono(Bono bono, int duracion, char F) {
         if (!vehiculo.estancia().poseeBono()) {
+            TipoPago p = null;
+            if(F == 'E')
+                p = new PagoEfectivo();
+            else 
+                p = new PagoTarjeta();
+           
             double pago = bono.getPrecio().doubleValue() * duracion;
+            p.procesarPago(new BigDecimal(pago));
+            
             vehiculo.estancia().setDineroPagado(pago);
             vehiculo.estancia().compraBono();
             LocalDateTime finBono = LocalDateTime.now();
@@ -26,18 +35,18 @@ public class PagoBono {
         }
     }
 
-    public void comprarBonoMensual(int meses) {
+    public void comprarBonoMensual(int meses, char F) {
         BonoMensual bono = new BonoMensual(vehiculo);
-        comprarBono(bono, meses);
+        comprarBono(bono, meses,F);
     }
 
-    public void comprarBonoTrimestral(int trimestres) {
+    public void comprarBonoTrimestral(int trimestres, char F) {
         BonoTrimestral bono = new BonoTrimestral(vehiculo);
-        comprarBono(bono, trimestres);
+        comprarBono(bono, trimestres,F);
     }
 
-    public void comprarBonoAnual(int annos) {
+    public void comprarBonoAnual(int annos, char F) {
         BonoAnual bono = new BonoAnual(vehiculo);
-        comprarBono(bono, annos);
+        comprarBono(bono, annos,F);
     }
 }

@@ -161,35 +161,35 @@ public class Parking {
     }
 
     // Operaciones de pago de tarifa estándar y bonos
-    public void vehiculoPagaEstandar(String mat) throws Exception{
+    public void vehiculoPagaEstandar(String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
         PagoEstandar pEstandar = new PagoEstandar(v,tarifa.precioMinuto());
-        pEstandar.pagar();
+        pEstandar.pagar(F);
         vehiculos.meter(v);
     }
 
-    public void vehiculoPagaBonoMensual(int nMeses, String mat) throws Exception{
+    public void vehiculoPagaBonoMensual(int nMeses, String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
         PagoBono pBono = new PagoBono(v);
-        pBono.comprarBonoMensual(nMeses);
+        pBono.comprarBonoMensual(nMeses,F);
         vehiculos.meter(v);
     }
 
-    public void vehiculoPagaBonoTrimestral(int nTrimestres, String mat) throws Exception{
+    public void vehiculoPagaBonoTrimestral(int nTrimestres, String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
         PagoBono pBono = new PagoBono(v);
-        pBono.comprarBonoTrimestral(nTrimestres);
+        pBono.comprarBonoTrimestral(nTrimestres,F);
         vehiculos.meter(v);
     }
     
-    public void vehiculoPagaBonoAnual(int nAnnos, String mat) throws Exception{
+    public void vehiculoPagaBonoAnual(int nAnnos, String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
         PagoBono pBono = new PagoBono(v);
-        pBono.comprarBonoAnual(nAnnos);
+        pBono.comprarBonoAnual(nAnnos,F);
         vehiculos.meter(v);
     }
 

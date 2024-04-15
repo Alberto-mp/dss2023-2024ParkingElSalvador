@@ -1,5 +1,7 @@
 package es.uca.ParkingElSalvador;
 
+import java.math.BigDecimal;
+
 public class PagoEstandar{
     private Vehiculo vehiculo;
     private double pMinuto;
@@ -13,13 +15,17 @@ public class PagoEstandar{
         return (double)minutos*pMinuto;
     }
 
-    public void pagar() throws Exception {
+    public void pagar(char F) throws Exception {
         if(!vehiculo.estancia().haPagado()){
-            // La persona paga
+            TipoPago p = null;
+            if(F == 'E')
+                p = new PagoEfectivo();
+            else 
+                p = new PagoTarjeta();
             double pago = cantidad(vehiculo.estancia().duracion());
+            p.procesarPago(new BigDecimal(pago));
             vehiculo.estancia().setDineroPagado(pago);
             vehiculo.estancia().pagarEstandar();
         }
     }
-
 }
