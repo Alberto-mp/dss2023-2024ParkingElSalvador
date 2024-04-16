@@ -23,5 +23,8 @@ public class CarRepository implements CarRepositoryInterface{
         return vehiculos.size();
     }
 
+    public String toString() {
+        return "Se encuentran actualmente "+numCoches()+" vehiculos";
+    }
 
 }

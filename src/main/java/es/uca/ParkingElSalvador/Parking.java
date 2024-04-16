@@ -89,6 +89,10 @@ public class Parking {
     public BonoRepository getBonos() {
         return bonos;
     }
+
+    public String toString(){
+        return nombre+" con direccion postal "+direccion_postal+" tiene una capacidad de "+capacidadTotal;
+    }
     
 
     public void entrada() throws Exception {

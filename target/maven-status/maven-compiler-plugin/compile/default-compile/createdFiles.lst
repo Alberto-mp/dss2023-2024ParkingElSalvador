@@ -1,3 +1,4 @@
+es\uca\ParkingElSalvador\TipoPago.class
 es\uca\ParkingElSalvador\BonoService.class
 es\uca\ParkingElSalvador\PagoBono.class
 es\uca\ParkingElSalvador\CarRepositoryInterface.class
@@ -6,6 +7,7 @@ es\uca\ParkingElSalvador\Bono.class
 es\uca\ParkingElSalvador\Estandar.class
 es\uca\ParkingElSalvador\Estancia.class
 es\uca\ParkingElSalvador\EstanciasRepository.class
+es\uca\ParkingElSalvador\PagoTarjeta.class
 es\uca\ParkingElSalvador\main.class
 es\uca\ParkingElSalvador\Vehiculo.class
 es\uca\ParkingElSalvador\BonoAnual.class
@@ -15,6 +17,7 @@ es\uca\ParkingElSalvador\BonoMensual.class
 es\uca\ParkingElSalvador\BonoRepository.class
 es\uca\ParkingElSalvador\ParkingElSalvador.class
 es\uca\ParkingElSalvador\CarRepository.class
+es\uca\ParkingElSalvador\PagoEfectivo.class
 es\uca\ParkingElSalvador\Parking.class
 es\uca\ParkingElSalvador\EstanciasService.class
 es\uca\ParkingElSalvador\QRservice.class

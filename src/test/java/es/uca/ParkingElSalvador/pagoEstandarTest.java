@@ -22,7 +22,7 @@ public class pagoEstandarTest {
     @Test
     public void testPagar() {
         try {
-            pago.pagar(); // Pago de tarifa estándar válido
+            pago.pagar('E'); // Pago de tarifa estándar válido
             assertTrue("El vehículo debería haber pagado la tarifa estándar", vehiculo.estancia().haPagado());
             assertNotNull("El vehículo debería tener una cantidad pagada", vehiculo.estancia().dineroPagado());
         } catch (Exception e) {

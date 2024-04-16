@@ -17,7 +17,7 @@ public class pagoBonoTest {
     @Test
     public void testComprarBonoMensual() {
         try {
-            pago.comprarBonoMensual(1); // Compra de bono mensual válido
+            pago.comprarBonoMensual(1,'E'); // Compra de bono mensual válido
             assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.estancia().poseeBono());
             assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.estancia().fechaFinBono());
         } catch (Exception e) {
@@ -28,7 +28,7 @@ public class pagoBonoTest {
     @Test
     public void testComprarBonoTrimestral() {
         try {
-            pago.comprarBonoTrimestral(1); // Compra de bono trimestral válido
+            pago.comprarBonoTrimestral(1,'T'); // Compra de bono trimestral válido
             assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.estancia().poseeBono());
             assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.estancia().fechaFinBono());
         } catch (Exception e) {
@@ -39,7 +39,7 @@ public class pagoBonoTest {
     @Test
     public void testComprarBonoAnual() {
         try {
-            pago.comprarBonoAnual(1); // Compra de bono anual válido
+            pago.comprarBonoAnual(1,'E'); // Compra de bono anual válido
             assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.estancia().poseeBono());
             assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.estancia().fechaFinBono());
         } catch (Exception e) {

@@ -15,4 +15,8 @@ public class Estandar {
     public long precioMinuto(){
         return pMinuto;
     }
+
+    public String toString(){
+        return "El precio del minuto de la tarifa estandar actual es "+pMinuto;
+    }
 }

@@ -38,7 +38,7 @@ public class ParkingTest {
     public void testSalida() throws Exception {
         parking.entrada(vehiculo.matricula());
         // Simulamos que el coche paga
-        parking.vehiculoPagaEstandar(vehiculo.matricula());
+        parking.vehiculoPagaEstandar(vehiculo.matricula(), 'E');
         parking.salida(vehiculo.matricula());
         assertEquals("Debería haber ninguna plaza ocupada", 0, parking.getPlazasOcupadas());
     }
@@ -47,28 +47,28 @@ public class ParkingTest {
     public void testVehiculoPagaEstandar() throws Exception {
         parking.precioEstandar(1); // Precio por minuto
         parking.entrada(vehiculo.matricula());
-        parking.vehiculoPagaEstandar(vehiculo.matricula());
+        parking.vehiculoPagaEstandar(vehiculo.matricula(),'T');
         assertTrue("El vehículo debería haber pagado", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().haPagado());
     }
 
     @Test
     public void testVehiculoPagaBonoMensual() throws Exception {
         parking.entrada(vehiculo.matricula());
-        parking.vehiculoPagaBonoMensual(1, vehiculo.matricula());
+        parking.vehiculoPagaBonoMensual(1, vehiculo.matricula(),'T');
         assertTrue("El vehículo debería haber comprado un bono mensual", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoTrimestral() throws Exception {
         parking.entrada(vehiculo.matricula());
-        parking.vehiculoPagaBonoTrimestral(1, vehiculo.matricula());
+        parking.vehiculoPagaBonoTrimestral(1, vehiculo.matricula(),'E');
         assertTrue("El vehículo debería haber comprado un bono trimestral", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoAnual() throws Exception {
         parking.entrada(vehiculo.matricula());
-        parking.vehiculoPagaBonoAnual(1, vehiculo.matricula());
+        parking.vehiculoPagaBonoAnual(1, vehiculo.matricula(),'E');
         assertTrue("El vehículo debería haber comprado un bono anual", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().poseeBono());
     }
      

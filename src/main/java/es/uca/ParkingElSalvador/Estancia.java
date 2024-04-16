@@ -16,11 +16,16 @@ public class Estancia {
 
     public Estancia(Vehiculo veh) {
         llegada = LocalDateTime.now();
+        salida = null;
         vehiculo = veh;
         pagado = false;
         tieneBono = false; //Por defecto no tendran
         dineroPagado = 0;
         bono = null;
+    }
+
+    public String toString() {
+        return "Estancia del vehiculo "+vehiculo.matricula()+" Llego "+horaLlegada()+". Salio "+horaSalida();
     }
 
     public void termina(){
@@ -59,10 +64,15 @@ public class Estancia {
     }
 
     public String horaSalida(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        // Formatea el LocalDateTime en una cadena usando el formateador
-        String fechaHoraString = salida.format(formatter);
-        return fechaHoraString;
+        if(salida!=null){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            // Formatea el LocalDateTime en una cadena usando el formateador
+            String fechaHoraString = salida.format(formatter);
+            return fechaHoraString;
+        }
+        else
+            return "--Vehiculo sigue en el parking--";
+        
     }
 
     public LocalDateTime horaLlegadaLT(){

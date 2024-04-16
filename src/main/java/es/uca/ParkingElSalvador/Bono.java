@@ -11,5 +11,8 @@ public abstract class Bono {
     public abstract BigDecimal getPrecio();
     public Vehiculo getVehiculo() {return v;}
     public abstract String tipoBono();
+    public String toString() {
+        return "Bono del vehiculo: "+v.matricula();
+    }
 }
 

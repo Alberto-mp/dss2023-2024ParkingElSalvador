@@ -25,6 +25,10 @@ public class Informe {
         return creacion;
     }
 
+    public String toString(){
+        return "Informe creado el "+fechaInforme()+" de "+parking.getNombre();
+    }
+
     public double ingresoDiario(){
         double ingresoDiario = 0;
         EstanciasService libro = parking.getLibro();

@@ -24,7 +24,7 @@ public class Vehiculo {
     }
 
     public String toString(){
-        return "Matricula -> " + matricula;
+        return "Vehiculo con matricula " + matricula;
     }
 
 }

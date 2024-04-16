@@ -23,4 +23,13 @@ public class Barrera {
         return estado;
     }
     
+    public String toString() {
+        String barrera = "";
+        if(estado)
+            barrera = "abierta";
+        else
+            barrera = "cerrado";
+        return "La barrera se encuentra "+barrera;
+    }
+
 }
