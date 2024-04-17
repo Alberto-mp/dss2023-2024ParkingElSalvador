@@ -32,7 +32,7 @@ public class PagoEfectivoTest {
         
         // Verificamos que el cambio se haya calculado correctamente y que el pago haya sido procesado exitosamente
         assertTrue(resultado);
-        assertEquals(new BigDecimal("50.00"), cajero.getDinero());
+        assertEquals(new BigDecimal("100.00"), cajero.getDinero());
     }
 
     @Test

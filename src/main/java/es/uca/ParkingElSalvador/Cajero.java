@@ -18,15 +18,15 @@ public class Cajero {
     }
 
     public void meterDinero(BigDecimal d) {
-        dinero.add(d);
+        dinero = dinero.add(d);
     }
 
     public void sacarDinero(BigDecimal d) {
-        dinero.subtract(d);
+        dinero = dinero.subtract(d);
     }
  
     
     public boolean hayCambio(BigDecimal otroDinero) {
-        return otroDinero.compareTo(dinero) <= 0;
+        return (otroDinero.compareTo(dinero) <= 0);
     }
 }

@@ -35,6 +35,7 @@ public class CajeroTest {
     @Test
     public void testHayCambio() {
         // Agregar dinero al cajero y verificar si hay suficiente para un cambio dado
+        cajero.setDinero(new BigDecimal(0));
         BigDecimal cantidad = new BigDecimal("100.00");
         cajero.meterDinero(cantidad);
         BigDecimal otroDinero = new BigDecimal("50.00");

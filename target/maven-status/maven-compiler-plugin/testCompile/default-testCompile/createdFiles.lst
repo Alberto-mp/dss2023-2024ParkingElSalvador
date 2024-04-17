@@ -1,5 +1,8 @@
 es\uca\ParkingElSalvador\BonoAnualTest.class
 es\uca\ParkingElSalvador\InformeTest.class
+es\uca\ParkingElSalvador\PagoEfectivoTest.class
+es\uca\ParkingElSalvador\CajeroTest.class
+es\uca\ParkingElSalvador\BonoServiceTest.class
 es\uca\ParkingElSalvador\BonoTrimestralTest.class
 es\uca\ParkingElSalvador\BarreraTest.class
 es\uca\ParkingElSalvador\ParkingTest.class
@@ -8,6 +11,7 @@ es\uca\ParkingElSalvador\CarRegisterTest.class
 es\uca\ParkingElSalvador\QRserviceTest.class
 es\uca\ParkingElSalvador\EstanciaTest.class
 es\uca\ParkingElSalvador\pagoEstandarTest.class
+es\uca\ParkingElSalvador\PagoTarjetaTest.class
 es\uca\ParkingElSalvador\pagoBonoTest.class
 es\uca\ParkingElSalvador\EstandarTest.class
 es\uca\ParkingElSalvador\CarRepositoryTest.class

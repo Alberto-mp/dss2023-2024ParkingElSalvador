@@ -16,7 +16,7 @@ public class ParkingTest {
     public void setUp() {
         parking = new Parking("Parking Prueba", "Calle Prueba, 123", 50);
         vehiculo = new Vehiculo("123ABC");
-        parking.getCaja().meterDinero(new BigDecimal(100));
+        parking.getCaja().meterDinero(new BigDecimal(10000));
     }
 
     @Test

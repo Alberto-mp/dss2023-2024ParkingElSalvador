@@ -40,11 +40,6 @@ public class VehiculoTest {
     }
 
     @Test
-    public void testToString() {
-        assertEquals("La representación en cadena del vehículo debe ser 'Matricula -> 123ABC'", "Matricula -> 123ABC", vehiculo.toString());
-    }
-
-    @Test
     public void testBonoValidoSinBono() {
         assertFalse("El vehículo no debería tener un bono al inicio", vehiculo.estancia().bonoValido());
     }

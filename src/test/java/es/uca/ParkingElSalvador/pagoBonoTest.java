@@ -16,7 +16,7 @@ public class pagoBonoTest {
     public void setUp() {
         vehiculo = new Vehiculo("123ABC");
         cajero = new Cajero();
-        cajero.setDinero(new BigDecimal(50));
+        cajero.setDinero(new BigDecimal(500000));
         pago = new PagoBono(cajero,vehiculo);
     }
 

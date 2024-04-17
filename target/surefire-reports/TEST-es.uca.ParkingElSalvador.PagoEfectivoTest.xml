@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="es.uca.ParkingElSalvador.BonoTrimestralTest" time="0.001" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="es.uca.ParkingElSalvador.PagoEfectivoTest" time="1.006" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -56,7 +56,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testTipoBono" classname="es.uca.ParkingElSalvador.BonoTrimestralTest" time="0.0"/>
-  <testcase name="testSetPrecio" classname="es.uca.ParkingElSalvador.BonoTrimestralTest" time="0.0"/>
-  <testcase name="testConstructor" classname="es.uca.ParkingElSalvador.BonoTrimestralTest" time="0.0"/>
+  <testcase name="testProcesarPagoConCambioSuficiente" classname="es.uca.ParkingElSalvador.PagoEfectivoTest" time="1.002">
+    <system-out><![CDATA[Pagando 50.0 en efectivo...
+]]></system-out>
+  </testcase>
+  <testcase name="testProcesarPagoSinCambioSuficiente" classname="es.uca.ParkingElSalvador.PagoEfectivoTest" time="0.002">
+    <system-out><![CDATA[No hay cambio disponible para pagar 50.0 en efectivo...
+]]></system-out>
+  </testcase>
 </testsuite>

@@ -9,7 +9,7 @@ public class PagoEfectivo implements TipoPago{
         c = ca;
     }
     @Override
-    public boolean procesarPago(BigDecimal entregado,BigDecimal d){
+    public boolean procesarPago(BigDecimal entregado, BigDecimal d){
         if(c.hayCambio(d)){
             System.out.println("Pagando " + d.doubleValue() + " en efectivo..." );
             try {
@@ -18,7 +18,7 @@ public class PagoEfectivo implements TipoPago{
                 // Manejo de la excepción si es interrumpido mientras está dormido
             }
             BigDecimal cambio = entregado.subtract(d);
-            c.sacarDinero(cambio);
+            c.sacarDinero(cambio); // Restar la cantidad pagada del cajero
             c.meterDinero(d);
             return true;
         }
@@ -27,5 +27,6 @@ public class PagoEfectivo implements TipoPago{
             return false;
         }
     }
+    
 
 }
