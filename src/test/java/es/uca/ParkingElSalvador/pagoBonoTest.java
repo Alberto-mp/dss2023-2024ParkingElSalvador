@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-public class pagoBonoTest {
+public class PagoBonoTest {
     private Vehiculo vehiculo;
     private PagoBono pago;
     private Cajero cajero;

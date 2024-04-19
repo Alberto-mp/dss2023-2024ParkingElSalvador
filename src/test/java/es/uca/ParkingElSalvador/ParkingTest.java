@@ -17,6 +17,8 @@ public class ParkingTest {
         parking = new Parking("Parking Prueba", "Calle Prueba, 123", 50);
         vehiculo = new Vehiculo("123ABC");
         parking.getCaja().meterDinero(new BigDecimal(10000));
+        parking.setDirectorioQR("test_directory");
+        parking.getQR().limpiarDirectorio();
     }
 
     @Test
