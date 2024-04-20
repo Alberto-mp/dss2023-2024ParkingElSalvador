@@ -55,28 +55,28 @@ public class ParkingTest {
         parking.precioEstandar(1); // Precio por minuto
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaEstandar(new BigDecimal(10),vehiculo.matricula(),'T');
-        assertTrue("El vehículo debería haber pagado", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().haPagado());
+        assertTrue("El vehículo debería haber pagado", parking.getVehiculos().getVehiculo(vehiculo.matricula()).estancia().haPagado());
     }
 
     @Test
     public void testVehiculoPagaBonoMensual() throws Exception {
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoMensual(new BigDecimal(10),1, vehiculo.matricula(),'T');
-        assertTrue("El vehículo debería haber comprado un bono mensual", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().poseeBono());
+        assertTrue("El vehículo debería haber comprado un bono mensual", parking.getVehiculos().getVehiculo(vehiculo.matricula()).estancia().poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoTrimestral() throws Exception {
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoTrimestral(new BigDecimal(10),1, vehiculo.matricula(),'E');
-        assertTrue("El vehículo debería haber comprado un bono trimestral", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().poseeBono());
+        assertTrue("El vehículo debería haber comprado un bono trimestral", parking.getVehiculos().getVehiculo(vehiculo.matricula()).estancia().poseeBono());
     }
 
     @Test
     public void testVehiculoPagaBonoAnual() throws Exception {
         parking.entrada(vehiculo.matricula());
         parking.vehiculoPagaBonoAnual(new BigDecimal(10),1, vehiculo.matricula(),'E');
-        assertTrue("El vehículo debería haber comprado un bono anual", parking.getVehiculos().obtener(vehiculo.matricula()).estancia().poseeBono());
+        assertTrue("El vehículo debería haber comprado un bono anual", parking.getVehiculos().getVehiculo(vehiculo.matricula()).estancia().poseeBono());
     }
      
 

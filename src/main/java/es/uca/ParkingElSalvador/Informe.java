@@ -31,11 +31,11 @@ public class Informe {
 
     public double ingresoDiario(){
         double ingresoDiario = 0;
-        EstanciasInMemoryRepo libro = parking.getLibro();
+        EstanciasService libro = parking.getLibro();
         int hoy = LocalDateTime.now().getDayOfYear();
-        for(int i = 0; i < libro.registro().size(); i++){
-            if(libro.registro().get(i).horaLlegadaLT().getDayOfYear() == hoy)
-                ingresoDiario += parking.getLibro().registro().get(i).vehiculo().estancia().dineroPagado();
+        for(int i = 0; i < libro.numEstancias(); i++){
+            if(libro.getAllEstancias().get(i).horaLlegadaLT().getDayOfYear() == hoy)
+                ingresoDiario += parking.getLibro().getAllEstancias().get(i).vehiculo().estancia().dineroPagado();
         }
         return ingresoDiario;
     }
@@ -43,11 +43,11 @@ public class Informe {
     
     public double ingresoSemanal(){
         double ingresoSemanal = 0;
-        EstanciasInMemoryRepo libro = parking.getLibro();
+        EstanciasService libro = parking.getLibro();
         int semana = LocalDateTime.now().get(WeekFields.ISO.weekOfWeekBasedYear());
-        for(int i = 0; i < libro.registro().size(); i++){
-            if(libro.registro().get(i).horaLlegadaLT().get(WeekFields.ISO.weekOfWeekBasedYear()) == semana)
-            ingresoSemanal += parking.getLibro().registro().get(i).vehiculo().estancia().dineroPagado();
+        for(int i = 0; i < libro.numEstancias(); i++){
+            if(libro.getAllEstancias().get(i).horaLlegadaLT().get(WeekFields.ISO.weekOfWeekBasedYear()) == semana)
+            ingresoSemanal += parking.getLibro().getAllEstancias().get(i).vehiculo().estancia().dineroPagado();
         }
         return ingresoSemanal;
     }
@@ -55,11 +55,11 @@ public class Informe {
 
     public double ingresoMensual(){
         double ingresoMensual = 0;
-        EstanciasInMemoryRepo libro = parking.getLibro();
+        EstanciasService libro = parking.getLibro();
         int mes = LocalDateTime.now().getMonthValue();
-        for(int i = 0; i < libro.registro().size(); i++){
-            if(libro.registro().get(i).horaLlegadaLT().getMonthValue() == mes)
-            ingresoMensual += parking.getLibro().registro().get(i).vehiculo().estancia().dineroPagado();
+        for(int i = 0; i < libro.numEstancias(); i++){
+            if(libro.getAllEstancias().get(i).horaLlegadaLT().getMonthValue() == mes)
+            ingresoMensual += parking.getLibro().getAllEstancias().get(i).vehiculo().estancia().dineroPagado();
         }
         return ingresoMensual;
     }

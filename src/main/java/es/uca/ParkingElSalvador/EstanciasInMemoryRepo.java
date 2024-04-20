@@ -29,4 +29,12 @@ public class EstanciasInMemoryRepo implements EstanciasRepository {
         }
         return apariciones;
     }
+
+    public Vector<Estancia> estancias(){
+        return registro;
+    }
+
+    public int numEstancias(){
+        return registro.size();
+    }
 }

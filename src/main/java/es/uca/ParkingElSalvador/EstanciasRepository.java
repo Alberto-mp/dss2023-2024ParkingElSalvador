@@ -6,4 +6,6 @@ public interface EstanciasRepository {
     public void almacenar(Vehiculo vehiculo);
     public boolean haestadoCoche(String matricula);
     public Vector<Estancia> estancias(String matricula);
+    public Vector<Estancia> estancias();
+    public int numEstancias();
 }

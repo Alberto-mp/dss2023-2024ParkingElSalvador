@@ -11,9 +11,9 @@ public class Parking {
     private Barrera barrera;
     private QRservice qr;
     private Estandar tarifa;
-    private CarRepositoryInMemoryRepo vehiculos;
-    private EstanciasInMemoryRepo libro;
-    private BonoRepository bonos;
+    private CarRepositoryService vehiculos;
+    private EstanciasService libro;
+    private BonoService bonos;
     private Cajero caja;
 
     public Parking(String n, String d, int capT){
@@ -25,9 +25,9 @@ public class Parking {
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        vehiculos = new CarRepositoryInMemoryRepo();
-        libro = new EstanciasInMemoryRepo();
-        bonos = new BonoInMemoryRepo();
+        vehiculos = new CarRepositoryService();
+        libro = new EstanciasService();
+        bonos = new BonoService();
         caja = new Cajero();
     }
 
@@ -76,11 +76,11 @@ public class Parking {
         qr.setDirectorio(d);
     }
 
-    public CarRepositoryInMemoryRepo getVehiculos() {
+    public CarRepositoryService getVehiculos() {
         return vehiculos;
     }
 
-    public EstanciasInMemoryRepo getLibro() {
+    public EstanciasService getLibro() {
         return libro;
     }
 
@@ -88,7 +88,7 @@ public class Parking {
         return new Informe(this);
     }
 
-    public BonoRepository getBonos() {
+    public BonoService getBonos() {
         return bonos;
     }
 
@@ -117,7 +117,7 @@ public class Parking {
                 barrera.abrirBarrera();
             // Generamos el ticket y le damos acceso
             qr.generarCodigoQR(matricula);
-            vehiculos.meter(vehiculo);
+            vehiculos.save(vehiculo);
             barrera.cerrarBarrera();
             plazasDisponibles--;
             plazasOcupadas++;
@@ -127,14 +127,14 @@ public class Parking {
 
     public void salida() throws Exception{
         String matricula = qr.leerCodigoQR();
-        Vehiculo vehiculo = vehiculos.obtener(matricula);
+        Vehiculo vehiculo = vehiculos.getVehiculo(matricula);
         if(vehiculo.estancia().haPagado() || (vehiculo.estancia().poseeBono() && vehiculo.estancia().bonoValido())){
             vehiculo.sale();
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
-            vehiculos.sacar(vehiculo);
-            libro.almacenar(vehiculo);
+            vehiculos.delete(vehiculo);
+            libro.save(vehiculo);
             plazasDisponibles++;
             plazasOcupadas--;
 
@@ -152,8 +152,8 @@ public class Parking {
                 barrera.abrirBarrera();
             // Generamos el ticket y le damos acceso
             qr.generarCodigoQR(matricula);
-            vehiculos.meter(vehiculo);
-            libro.almacenar(vehiculo);
+            vehiculos.save(vehiculo);
+            libro.save(vehiculo);
             barrera.cerrarBarrera();
             plazasDisponibles--;
             plazasOcupadas++;
@@ -162,13 +162,13 @@ public class Parking {
     }
 
     public void salida(String matricula) throws Exception{
-        Vehiculo vehiculo = vehiculos.obtener(matricula);
+        Vehiculo vehiculo = vehiculos.getVehiculo(matricula);
         if(vehiculo.estancia().haPagado() || (vehiculo.estancia().poseeBono() && vehiculo.estancia().bonoValido())){
             vehiculo.sale();
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
-            vehiculos.sacar(vehiculo);
+            vehiculos.delete(vehiculo);
             plazasDisponibles++;
             plazasOcupadas--;
 
@@ -177,35 +177,35 @@ public class Parking {
 
     // Operaciones de pago de tarifa estándar y bonos
     public void vehiculoPagaEstandar(BigDecimal entregado, String mat, char F) throws Exception{
-        Vehiculo v = vehiculos.obtener(mat);
-        vehiculos.sacar(v);
+        Vehiculo v = vehiculos.getVehiculo(mat);
+        vehiculos.delete(v);
         PagoEstandar pEstandar = new PagoEstandar(caja,v,tarifa.precioMinuto());
         pEstandar.pagar(entregado, F);
-        vehiculos.meter(v);
+        vehiculos.save(v);
     }
 
     public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F) throws Exception{
-        Vehiculo v = vehiculos.obtener(mat);
-        vehiculos.sacar(v);
+        Vehiculo v = vehiculos.getVehiculo(mat);
+        vehiculos.delete(v);
         PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoMensual(entregado,nMeses,F);
-        vehiculos.meter(v);
+        vehiculos.save(v);
     }
 
     public void vehiculoPagaBonoTrimestral(BigDecimal entregado, int nTrimestres, String mat, char F) throws Exception{
-        Vehiculo v = vehiculos.obtener(mat);
-        vehiculos.sacar(v);
+        Vehiculo v = vehiculos.getVehiculo(mat);
+        vehiculos.delete(v);
         PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoTrimestral(entregado,nTrimestres,F);
-        vehiculos.meter(v);
+        vehiculos.save(v);
     }
     
     public void vehiculoPagaBonoAnual(BigDecimal entregado,int nAnnos, String mat, char F) throws Exception{
-        Vehiculo v = vehiculos.obtener(mat);
-        vehiculos.sacar(v);
+        Vehiculo v = vehiculos.getVehiculo(mat);
+        vehiculos.delete(v);
         PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoAnual(entregado,nAnnos,F);
-        vehiculos.meter(v);
+        vehiculos.save(v);
     }
 
 }
