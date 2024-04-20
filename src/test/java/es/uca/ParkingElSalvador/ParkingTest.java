@@ -22,6 +22,12 @@ public class ParkingTest {
     }
 
     @Test
+    public void testCambiarNombre() {
+        parking.setNombre("ParkingNuevo"); 
+        assertEquals("El nuevo nombre del parking debe ser ParkingNuevo", parking.getNombre(), "ParkingNuevo");
+    }
+
+    @Test
     public void testPonerPrecioBonos() {
         parking.ponerPrecioBonos(30, 90, 365); // Precios para bonos
         BonoMensual bm = new BonoMensual(vehiculo);

@@ -3,7 +3,6 @@ es\uca\ParkingElSalvador\BonoService.class
 es\uca\ParkingElSalvador\PagoBono.class
 es\uca\ParkingElSalvador\BonoTrimestral.class
 es\uca\ParkingElSalvador\Bono.class
-es\uca\ParkingElSalvador\CarRepositoryService.class
 es\uca\ParkingElSalvador\EstanciasInMemoryRepo.class
 es\uca\ParkingElSalvador\Estancia.class
 es\uca\ParkingElSalvador\PagoTarjeta.class
@@ -17,6 +16,7 @@ es\uca\ParkingElSalvador\Parking.class
 es\uca\ParkingElSalvador\Informe.class
 es\uca\ParkingElSalvador\Estandar.class
 es\uca\ParkingElSalvador\EstanciasRepository.class
+es\uca\ParkingElSalvador\CarService.class
 es\uca\ParkingElSalvador\PagoEstandar.class
 es\uca\ParkingElSalvador\Barrera.class
 es\uca\ParkingElSalvador\BonoRepository.class

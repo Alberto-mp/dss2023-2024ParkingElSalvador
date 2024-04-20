@@ -3,7 +3,7 @@ package es.uca.ParkingElSalvador;
 import java.math.BigDecimal;
 
 public class Parking {
-    private final String nombre;
+    private String nombre;
     private final String direccion_postal;
     private final int capacidadTotal;
     private int plazasDisponibles;
@@ -42,9 +42,13 @@ public class Parking {
     }
 
 
-    // Observadores
+    // Getters y setters 
     public String getNombre() {
         return nombre;
+    }
+
+    public void setNombre(String nuevo_nombre){
+        nombre = nuevo_nombre;
     }
 
     public String getDireccionPostal() {
@@ -54,7 +58,6 @@ public class Parking {
     public int getCapacidadTotal() {
         return capacidadTotal;
     }
-
 
     public int getPlazasDisponibles() {
         return plazasDisponibles;
@@ -94,11 +97,6 @@ public class Parking {
 
     public Cajero getCaja() {
         return caja;
-    }
-    
-    // Setter para establecer el valor de caja
-    public void setCaja(Cajero c) {
-        caja = c;
     }
 
     public String toString(){
