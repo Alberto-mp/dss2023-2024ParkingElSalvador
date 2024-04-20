@@ -5,11 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CarRepositoryTest {
-    private CarRepository carRepository;
+    private CarRepositoryInMemoryRepo carRepository;
 
     @Before
     public void setUp() {
-        carRepository = new CarRepository();
+        carRepository = new CarRepositoryInMemoryRepo();
     }
 
     @Test

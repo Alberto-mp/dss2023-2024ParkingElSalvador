@@ -11,8 +11,8 @@ public class Parking {
     private Barrera barrera;
     private QRservice qr;
     private Estandar tarifa;
-    private CarRepository vehiculos;
-    private EstanciasService libro;
+    private CarRepositoryInMemoryRepo vehiculos;
+    private EstanciasInMemoryRepo libro;
     private BonoRepository bonos;
     private Cajero caja;
 
@@ -25,9 +25,9 @@ public class Parking {
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        vehiculos = new CarRepository();
-        libro = new EstanciasService();
-        bonos = new BonoService();
+        vehiculos = new CarRepositoryInMemoryRepo();
+        libro = new EstanciasInMemoryRepo();
+        bonos = new BonoInMemoryRepo();
         caja = new Cajero();
     }
 
@@ -76,11 +76,11 @@ public class Parking {
         qr.setDirectorio(d);
     }
 
-    public CarRepository getVehiculos() {
+    public CarRepositoryInMemoryRepo getVehiculos() {
         return vehiculos;
     }
 
-    public EstanciasService getLibro() {
+    public EstanciasInMemoryRepo getLibro() {
         return libro;
     }
 
@@ -187,7 +187,7 @@ public class Parking {
     public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
-        PagoBono pBono = new PagoBono(caja,v);
+        PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoMensual(entregado,nMeses,F);
         vehiculos.meter(v);
     }
@@ -195,7 +195,7 @@ public class Parking {
     public void vehiculoPagaBonoTrimestral(BigDecimal entregado, int nTrimestres, String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
-        PagoBono pBono = new PagoBono(caja,v);
+        PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoTrimestral(entregado,nTrimestres,F);
         vehiculos.meter(v);
     }
@@ -203,7 +203,7 @@ public class Parking {
     public void vehiculoPagaBonoAnual(BigDecimal entregado,int nAnnos, String mat, char F) throws Exception{
         Vehiculo v = vehiculos.obtener(mat);
         vehiculos.sacar(v);
-        PagoBono pBono = new PagoBono(caja,v);
+        PagoBono pBono = new PagoBono(v);
         pBono.comprarBonoAnual(entregado,nAnnos,F);
         vehiculos.meter(v);
     }

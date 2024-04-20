@@ -8,11 +8,11 @@ import java.util.List;
 
 public class BonoServiceTest {
 
-    private BonoService bonoService;
+    private BonoInMemoryRepo bonoService;
     
     @Before
     public void setUp() {
-        bonoService = new BonoService();
+        bonoService = new BonoInMemoryRepo();
     }
 
     @Test

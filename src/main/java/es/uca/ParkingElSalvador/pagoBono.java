@@ -5,38 +5,33 @@ import java.time.LocalDateTime;
 
 public class PagoBono {
     private Vehiculo vehiculo;
-    private Cajero cajero;
 
-    public PagoBono(Cajero c, Vehiculo v) {
+    public PagoBono(Vehiculo v) {
         vehiculo = v;
-        cajero = c;
+
     }
 
     public void comprarBono(BigDecimal entregado, Bono bono, int duracion, char F) {
         if (!vehiculo.estancia().poseeBono()) {
             TipoPago p = null;
             if(F == 'E')
-                p = new PagoEfectivo(cajero);
+                p = new PagoEfectivo();
             else 
                 p = new PagoTarjeta();
            
             double pago = bono.getPrecio().doubleValue() * duracion;
-            if(p.procesarPago(entregado,new BigDecimal(pago))){
-                vehiculo.estancia().setDineroPagado(pago);
-                vehiculo.estancia().compraBono();
-                LocalDateTime finBono = LocalDateTime.now();
-                if (bono instanceof BonoMensual) {
-                    finBono = finBono.plusMonths(duracion);
-                } else if (bono instanceof BonoTrimestral) {
-                    finBono = finBono.plusMonths(3 * duracion);
-                } else if (bono instanceof BonoAnual) {
-                    finBono = finBono.plusYears(duracion);
-                }
-                vehiculo.estancia().setFinBono(finBono);
-
+            p.procesarPago(entregado);
+            vehiculo.estancia().setDineroPagado(pago);
+            vehiculo.estancia().compraBono();
+            LocalDateTime finBono = LocalDateTime.now();
+            if (bono instanceof BonoMensual) {
+                finBono = finBono.plusMonths(duracion);
+            } else if (bono instanceof BonoTrimestral) {
+                finBono = finBono.plusMonths(3 * duracion);
+            } else if (bono instanceof BonoAnual) {
+                finBono = finBono.plusYears(duracion);
             }
-            
-
+            vehiculo.estancia().setFinBono(finBono);
         }
     }
 

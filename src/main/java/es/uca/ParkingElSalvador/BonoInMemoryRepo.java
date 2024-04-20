@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BonoService implements BonoRepository {
+public class BonoInMemoryRepo implements BonoRepository {
     private Map<String, List<Bono>> bonosPorMatricula;
 
-    public BonoService() {
+    public BonoInMemoryRepo() {
         bonosPorMatricula = new HashMap<>();
     }
 
