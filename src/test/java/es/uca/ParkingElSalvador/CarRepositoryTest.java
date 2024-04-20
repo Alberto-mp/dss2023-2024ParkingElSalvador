@@ -5,11 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CarRepositoryTest {
-    private CarRepositoryService carRepository;
+    private CarService carRepository;
 
     @Before
     public void setUp() {
-        carRepository = new CarRepositoryService();
+        carRepository = new CarService();
     }
 
     @Test

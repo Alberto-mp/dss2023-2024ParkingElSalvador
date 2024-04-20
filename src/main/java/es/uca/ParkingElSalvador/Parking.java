@@ -11,7 +11,7 @@ public class Parking {
     private Barrera barrera;
     private QRservice qr;
     private Estandar tarifa;
-    private CarRepositoryService vehiculos;
+    private CarService vehiculos;
     private EstanciasService libro;
     private BonoService bonos;
     private Cajero caja;
@@ -25,7 +25,7 @@ public class Parking {
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        vehiculos = new CarRepositoryService();
+        vehiculos = new CarService();
         libro = new EstanciasService();
         bonos = new BonoService();
         caja = new Cajero();
@@ -76,7 +76,7 @@ public class Parking {
         qr.setDirectorio(d);
     }
 
-    public CarRepositoryService getVehiculos() {
+    public CarService getVehiculos() {
         return vehiculos;
     }
 

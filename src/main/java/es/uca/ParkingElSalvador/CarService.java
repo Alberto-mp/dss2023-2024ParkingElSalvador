@@ -1,9 +1,9 @@
 package es.uca.ParkingElSalvador;
 
 
-public class CarRepositoryService {
+public class CarService {
     private CarRepository vehiculos;
-    public CarRepositoryService(){
+    public CarService(){
         vehiculos = new CarRepositoryInMemoryRepo();
     }
 
