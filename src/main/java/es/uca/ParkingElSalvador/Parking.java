@@ -141,7 +141,7 @@ public class Parking {
 
     // En caso de no funcionar el lector de qr
 
-    public void entrada(String matricula) throws Exception {
+    public void entrada(String matricula) {
         Vehiculo vehiculo = new Vehiculo(matricula);
         // Comprobamos que haya espacio
         if(plazasDisponibles > 0){
@@ -159,7 +159,7 @@ public class Parking {
         }
     }
 
-    public void salida(String matricula) throws Exception{
+    public void salida(String matricula){
         Vehiculo vehiculo = vehiculos.getVehiculo(matricula);
         if(vehiculo.estancia().haPagado() || (vehiculo.estancia().poseeBono() && vehiculo.estancia().bonoValido())){
             vehiculo.sale();
@@ -174,7 +174,7 @@ public class Parking {
     }
 
     // Operaciones de pago de tarifa estándar y bonos
-    public void vehiculoPagaEstandar(BigDecimal entregado, String mat, char F) throws Exception{
+    public void vehiculoPagaEstandar(BigDecimal entregado, String mat, char F) {
         Vehiculo v = vehiculos.getVehiculo(mat);
         vehiculos.delete(v);
         PagoEstandar pEstandar = new PagoEstandar(caja,v,tarifa.precioMinuto());
@@ -182,7 +182,7 @@ public class Parking {
         vehiculos.save(v);
     }
 
-    public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F) throws Exception{
+    public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F){
         Vehiculo v = vehiculos.getVehiculo(mat);
         vehiculos.delete(v);
         PagoBono pBono = new PagoBono(v);
@@ -190,7 +190,7 @@ public class Parking {
         vehiculos.save(v);
     }
 
-    public void vehiculoPagaBonoTrimestral(BigDecimal entregado, int nTrimestres, String mat, char F) throws Exception{
+    public void vehiculoPagaBonoTrimestral(BigDecimal entregado, int nTrimestres, String mat, char F){
         Vehiculo v = vehiculos.getVehiculo(mat);
         vehiculos.delete(v);
         PagoBono pBono = new PagoBono(v);
@@ -198,7 +198,7 @@ public class Parking {
         vehiculos.save(v);
     }
     
-    public void vehiculoPagaBonoAnual(BigDecimal entregado,int nAnnos, String mat, char F) throws Exception{
+    public void vehiculoPagaBonoAnual(BigDecimal entregado,int nAnnos, String mat, char F){
         Vehiculo v = vehiculos.getVehiculo(mat);
         vehiculos.delete(v);
         PagoBono pBono = new PagoBono(v);

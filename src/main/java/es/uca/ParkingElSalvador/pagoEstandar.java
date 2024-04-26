@@ -15,7 +15,7 @@ public class PagoEstandar{
         return (double)minutos*pMinuto;
     }
 
-    public void pagar(BigDecimal entregado, char F) throws Exception {
+    public void pagar(BigDecimal entregado, char F) {
         if(!vehiculo.estancia().haPagado()){
             TipoPago p = null;
             double pago = cantidad(vehiculo.estancia().duracion());
