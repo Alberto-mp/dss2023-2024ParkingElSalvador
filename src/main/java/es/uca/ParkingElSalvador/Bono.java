@@ -2,6 +2,7 @@ package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
 
+@Entity
 public abstract class Bono {
     private Vehiculo v;
 
