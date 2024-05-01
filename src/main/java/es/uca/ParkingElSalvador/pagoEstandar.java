@@ -2,6 +2,9 @@ package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PagoEstandar{
     private Vehiculo vehiculo;
     private double pMinuto;

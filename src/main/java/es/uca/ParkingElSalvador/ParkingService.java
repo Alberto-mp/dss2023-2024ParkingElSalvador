@@ -1,9 +1,8 @@
 package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
-import javax.persistence.Service;
 
-@Service
+@org.springframework.stereotype.Service
 public class ParkingService {
     private Parking p;
     private Barrera barrera;
@@ -40,7 +39,7 @@ public class ParkingService {
     }
 
     // Getters
-    public Parking getP() {
+    public Parking getParking() {
         return p;
     }
     
@@ -111,7 +110,7 @@ public class ParkingService {
         String matricula = qr.leerCodigoQR();
         Vehiculo vehiculo = new Vehiculo(matricula);
         // Comprobamos que haya espacio
-        if(p.plazasDisponibles > 0){
+        if(p.getPlazasDisponibles() > 0){
             // Abrimos la barrera en caso de estar cerrada
             if(!barrera.estaAbierta())
                 barrera.abrirBarrera();
@@ -119,9 +118,8 @@ public class ParkingService {
             qr.generarCodigoQR(matricula);
             vehiculos.save(vehiculo);
             barrera.cerrarBarrera();
-            p.plazasDisponibles--;
-            p.plazasOcupadas++;
-
+            p.decPlazasDisponibles();
+            p.incPlazasOcupadas();
         }
     }
 
@@ -135,8 +133,8 @@ public class ParkingService {
             barrera.cerrarBarrera();
             vehiculos.delete(vehiculo);
             libro.save(vehiculo);
-            p.plazasDisponibles++;
-            p.plazasOcupadas--;
+            p.incPlazasDisponibles();
+            p.decPlazasOcupadas();
 
         }
     }
@@ -146,7 +144,7 @@ public class ParkingService {
     public void entrada(String matricula) {
         Vehiculo vehiculo = new Vehiculo(matricula);
         // Comprobamos que haya espacio
-        if(p.plazasDisponibles > 0){
+        if(p.getPlazasDisponibles() > 0){
             // Abrimos la barrera en caso de estar cerrada
             if(!barrera.estaAbierta())
                 barrera.abrirBarrera();
@@ -155,8 +153,8 @@ public class ParkingService {
             vehiculos.save(vehiculo);
             libro.save(vehiculo);
             barrera.cerrarBarrera();
-            p.plazasDisponibles--;
-            p.plazasOcupadas++;
+            p.decPlazasDisponibles();
+            p.incPlazasOcupadas();
 
         }
     }
@@ -169,8 +167,8 @@ public class ParkingService {
             // Sale del parking
             barrera.cerrarBarrera();
             vehiculos.delete(vehiculo);
-            p.plazasDisponibles++;
-            p.plazasOcupadas--;
+            p.incPlazasDisponibles();
+            p.decPlazasOcupadas();
 
         }
     }

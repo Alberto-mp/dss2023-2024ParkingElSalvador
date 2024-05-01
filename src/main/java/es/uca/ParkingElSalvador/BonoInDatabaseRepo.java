@@ -2,6 +2,8 @@ package es.uca.ParkingElSalvador;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 @Repository
 public class BonoInDatabaseRepo implements BonoRepository {
     private final BonoRepositoryJPA bonoRepositoryJPA;

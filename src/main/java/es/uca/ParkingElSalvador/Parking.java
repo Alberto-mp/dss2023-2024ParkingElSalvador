@@ -1,6 +1,5 @@
 package es.uca.ParkingElSalvador;
 
-import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 
@@ -8,9 +7,9 @@ import javax.persistence.Entity;
 public class Parking {
     private String nombre;
     private final String direccion_postal;
-    public final int capacidadTotal;
-    public int plazasDisponibles;
-    public int plazasOcupadas;
+    private final int capacidadTotal;
+    private int plazasDisponibles;
+    private int plazasOcupadas;
 
     public Parking(String n, String d, int capT){
         nombre = n;
@@ -44,6 +43,32 @@ public class Parking {
     public int getPlazasOcupadas() {
         return plazasOcupadas;
     }
+
+    public void decPlazasDisponibles() {
+        plazasDisponibles--;
+    }
+    
+    public void decPlazasOcupadas() {
+        plazasOcupadas--;
+    }
+
+    public void incPlazasDisponibles() {
+        plazasDisponibles++;
+    }
+    
+    public void incPlazasOcupadas() {
+        plazasOcupadas++;
+    }
+
+
+    public void setPlazasDisponibles(int nuevasPlazasDisponibles) {
+        this.plazasDisponibles = nuevasPlazasDisponibles;
+    }
+    
+    public void setPlazasOcupadas(int nuevasPlazasOcupadas) {
+        this.plazasOcupadas = nuevasPlazasOcupadas;
+    }
+    
 
     public String toString(){
         return nombre+" con direccion postal "+direccion_postal+" tiene una capacidad de "+capacidadTotal;

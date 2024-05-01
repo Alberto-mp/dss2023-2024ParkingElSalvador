@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Informe {
-    private Parking parking;
+    private ParkingService parking;
     private LocalDateTime creacion;
 
 
-    public Informe(Parking p){
+    public Informe(ParkingService p){
         parking = p;
         creacion = LocalDateTime.now();
     }
@@ -29,7 +29,7 @@ public class Informe {
     }
 
     public String toString(){
-        return "Informe creado el "+fechaInforme()+" de "+parking.getNombre();
+        return "Informe creado el "+fechaInforme()+" de "+parking.getParking().getNombre();
     }
 
     public double ingresoDiario(){

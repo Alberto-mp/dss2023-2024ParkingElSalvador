@@ -22,7 +22,7 @@ public class BonoController {
     }
 
     @DeleteMapping("/{id}") 
-    public void deleteBono(@PathVariable String id) {
+    public void deleteBono(@PathVariable Bono bono) {
         bonoService.delete(bono);
     }
 

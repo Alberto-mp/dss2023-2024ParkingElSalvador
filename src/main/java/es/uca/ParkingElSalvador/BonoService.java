@@ -8,8 +8,12 @@ import java.util.List;
 public class BonoService {
     private BonoRepository bonos; 
 
+    
+    public BonoService() {
+        this.bonos = null;
+    }
     @Autowired 
-    public BonoService(BonoRepository bonos) {
+     public void setBonos(BonoRepository bonos) {
         this.bonos = bonos;
     }
 

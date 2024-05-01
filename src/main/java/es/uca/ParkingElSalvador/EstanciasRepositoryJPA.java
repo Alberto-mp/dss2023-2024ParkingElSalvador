@@ -1,3 +1,7 @@
+package es.uca.ParkingElSalvador;
+
+import java.util.Vector;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EstanciasRepositoryJPA extends JpaRepository<Vehiculo, String>{

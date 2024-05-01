@@ -45,6 +45,10 @@ public class QRservice {
         }
     }
 
+    public String getDirectorio() {
+        return directorio;
+    }
+    
     // Método para generar un código QR a partir de una matrícula
     public void generarCodigoQR(String contenido) {
         try {
