@@ -1,44 +1,40 @@
 package es.uca.ParkingElSalvador;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 import java.util.Vector;
 
-@Repository
-public class EstanciasInDatabaseRepo implements EstanciasRepository {
-    private final EstanciasRepositoryJPA estanciasRepositoryJPA;
-
-    @Autowired
-    public EstanciasInDatabaseRepo(EstanciasRepositoryJPA estanciasRepositoryJPA) {
-        this.estanciasRepositoryJPA = estanciasRepositoryJPA;
+public class EstanciasInMemoryRepo implements EstanciasRepository {
+    private final Vector<Estancia> registro;
+    public EstanciasInMemoryRepo(){
+        registro = new Vector<Estancia>();
+    }
+    public Vector<Estancia> registro(){
+        return registro;
+    }
+    public void almacenar(Vehiculo vehiculo){
+        registro.add(vehiculo.estancia());
+    }
+    public boolean haestadoCoche(String matricula){
+        boolean haEstado = false;
+        for(int i = 0; i < registro.size() && !haEstado; i++){
+            if(registro.get(i).vehiculo().matricula() == matricula)
+                haEstado = true;
+        }
+        return haEstado;
+    }
+    public Vector<Estancia> estancias(String matricula){
+        Vector<Estancia> apariciones = new Vector<>();
+        for(int i = 0; i < registro.size(); i++){
+            if(registro.get(i).vehiculo().matricula() == matricula)
+                apariciones.add(registro.get(i));
+        }
+        return apariciones;
     }
 
-    @Override
-    public void almacenar(Vehiculo vehiculo) {
-        estanciasRepositoryJPA.save(new Estancia(vehiculo));
+    public Vector<Estancia> estancias(){
+        return registro;
     }
 
-    @Override
-    public boolean haestadoCoche(String matricula) {
-        return estanciasRepositoryJPA.beenCar(matricula);
-    }
-
-    @Override
-    public Vector<Estancia> estancias(String matricula) {
-        List<Estancia> estanciasList = estanciasRepositoryJPA.getEstanciasByMatricula(matricula);
-        return new Vector<>(estanciasList);
-    }
-
-    @Override
-    public Vector<Estancia> estancias() {
-        List<Estancia> estanciasList = estanciasRepositoryJPA.findAll();
-        return new Vector<>(estanciasList);
-    }
-
-    @Override
-    public int numEstancias() {
-        return (int) estanciasRepositoryJPA.count();
+    public int numEstancias(){
+        return registro.size();
     }
 }
