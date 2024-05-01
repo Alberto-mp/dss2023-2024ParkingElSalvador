@@ -1,7 +1,9 @@
 package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
+import javax.persistence.Entity;
 
+@Entity
 public class BonoMensual extends Bono {
     private static BigDecimal precio;
 

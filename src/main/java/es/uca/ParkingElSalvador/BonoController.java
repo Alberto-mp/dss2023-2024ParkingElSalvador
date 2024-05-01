@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController 
-@RequestMapping("/api/bonos") 
+@RequestMapping("/api/v1/bonos") 
 public class BonoController {
 
     private final BonoService bonoService; 
@@ -31,7 +31,7 @@ public class BonoController {
         return bonoService.getBonos(matricula);
     }
 
-    @GetMapping // Mapea las solicitudes GET a este método
+    @GetMapping 
     public List<Bono> getAllBonos() {
         return bonoService.getBonos();
     }

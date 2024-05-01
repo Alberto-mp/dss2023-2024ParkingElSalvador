@@ -6,7 +6,7 @@ import java.util.List;
 
 @Service 
 public class BonoService {
-    private final BonoRepository bonos; 
+    private BonoRepository bonos; 
 
     @Autowired 
     public BonoService(BonoRepository bonos) {
