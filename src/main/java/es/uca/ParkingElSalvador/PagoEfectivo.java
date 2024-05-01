@@ -3,6 +3,9 @@ package es.uca.ParkingElSalvador;
 import java.math.BigDecimal;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PagoEfectivo implements TipoPago{
     public PagoEfectivo(){
     }

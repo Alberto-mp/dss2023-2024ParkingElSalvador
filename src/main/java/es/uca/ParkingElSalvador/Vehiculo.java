@@ -1,6 +1,8 @@
 package es.uca.ParkingElSalvador;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Vehiculo {
     private final String matricula;
     private Estancia estancia;

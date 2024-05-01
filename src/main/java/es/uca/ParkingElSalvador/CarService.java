@@ -1,6 +1,8 @@
 package es.uca.ParkingElSalvador;
 
+import org.springframework.stereotype.Service;
 
+@Service
 public class CarService {
     private CarRepository vehiculos;
     public CarService(){

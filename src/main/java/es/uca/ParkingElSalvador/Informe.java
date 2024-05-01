@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Informe {
     private Parking parking;
     private LocalDateTime creacion;

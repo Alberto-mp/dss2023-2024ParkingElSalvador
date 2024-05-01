@@ -1,3 +1,5 @@
+package es.uca.ParkingElSalvador;
+
 @SpringBootApplication
 @EnableJpaRepositories
 public class JpaApplitacion {

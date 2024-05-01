@@ -15,10 +15,13 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import javax.imageio.ImageIO;
+
+import org.springframework.stereotype.Component;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 
-
+@Component
 public class QRservice {
     private final int dimensiones;
     private String directorio;

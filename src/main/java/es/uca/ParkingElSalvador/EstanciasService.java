@@ -2,6 +2,9 @@ package es.uca.ParkingElSalvador;
 
 import java.util.Vector;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class EstanciasService {
     private EstanciasRepository estancias;
     public EstanciasService(){

@@ -4,6 +4,9 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Estancia {
     private LocalDateTime llegada;
     private LocalDateTime salida;
