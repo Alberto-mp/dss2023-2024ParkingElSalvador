@@ -9,7 +9,7 @@ public class CarRepositoryTest {
 
     @Before
     public void setUp() {
-        carRepository = new CarService();
+        carRepository = new CarService(new CarRepositoryInMemoryRepo());
     }
 
     @Test
