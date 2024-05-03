@@ -6,7 +6,7 @@ public class ParkingElSalvador {
     
     public ParkingElSalvador(Parking park){
         parkES = park;
-        p = new ParkingService(park);
+        p = new ParkingService(park,new CarRepositoryInMemoryRepo(),new EstanciasInMemoryRepo(), new BonoInMemoryRepo());
     }
 
     public ParkingService getParkingService(){

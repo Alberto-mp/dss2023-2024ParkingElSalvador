@@ -13,7 +13,8 @@ public class InformeTest {
 
     @Before
     public void setUp() {
-        parking = new ParkingService(new Parking("nombre","1231",122));
+        ParkingElSalvador p = new ParkingElSalvador(new Parking("nombre","1231",122));
+        ParkingService parking = p.getParkingService();
         vehiculo = new Vehiculo("123ABC");
         vehiculo.estancia().setDineroPagado(10.0); // Simulamos que el vehículo ha pagado $10
         EstanciasService libro = parking.getLibro();

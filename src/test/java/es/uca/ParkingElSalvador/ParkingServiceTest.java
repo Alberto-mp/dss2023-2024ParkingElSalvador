@@ -14,7 +14,7 @@ public class ParkingServiceTest {
     @Before
     public void setUp() {
         Parking parking = new Parking("Parking Test", "Dirección Test", 100);
-        parkingService = new ParkingService(parking);
+        parkingService = new ParkingElSalvador(parking).getParkingService();
     }
 
     @Test

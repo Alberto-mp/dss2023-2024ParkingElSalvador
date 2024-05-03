@@ -13,14 +13,14 @@ public class ParkingService {
     private BonoService bonos;
     private Cajero caja;
     
-    public ParkingService(Parking p){
+    public ParkingService(Parking p, CarRepository c, EstanciasRepository e, BonoRepository b){
         this.p = p;
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        vehiculos = new CarService(new CarRepositoryInMemoryRepo());
-        libro = new EstanciasService(new EstanciasInMemoryRepo());
-        bonos = new BonoService(new BonoInMemoryRepo());
+        vehiculos = new CarService(c);
+        libro = new EstanciasService(e);
+        bonos = new BonoService(b);
         caja = new Cajero();
     }
 
