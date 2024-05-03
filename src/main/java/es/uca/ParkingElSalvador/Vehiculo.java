@@ -1,10 +1,21 @@
 package es.uca.ParkingElSalvador;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Vehiculo {
-    private final String matricula;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String matricula;
+
+    @OneToOne
     private Estancia estancia;
 
     public Vehiculo(String m){

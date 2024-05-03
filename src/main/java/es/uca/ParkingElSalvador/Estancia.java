@@ -5,16 +5,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Estancia {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private LocalDateTime llegada;
     private LocalDateTime salida;
     private LocalDateTime finBono;
     private boolean pagado;
     private double dineroPagado;
     private boolean tieneBono;
+
+    @OneToOne
     private Vehiculo vehiculo;
+
+    @OneToOne
     private Bono bono;
 
     public Estancia(Vehiculo veh) {
@@ -22,11 +34,10 @@ public class Estancia {
         salida = null;
         vehiculo = veh;
         pagado = false;
-        tieneBono = false; //Por defecto no tendran
+        tieneBono = false; //Por defecto no tendrán
         dineroPagado = 0;
         bono = null;
     }
-
     public String toString() {
         return "Estancia del vehiculo "+vehiculo.matricula()+" Llego "+horaLlegada()+". Salio "+horaSalida();
     }

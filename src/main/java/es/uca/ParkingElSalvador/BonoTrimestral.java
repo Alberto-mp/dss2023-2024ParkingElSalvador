@@ -13,11 +13,6 @@ public class BonoTrimestral extends Bono {
     }
 
     @Override
-    public Vehiculo getVehiculo() {
-        return super.getVehiculo();
-    }
-
-    @Override
     public BigDecimal getPrecio() {
         return precio;
     }
