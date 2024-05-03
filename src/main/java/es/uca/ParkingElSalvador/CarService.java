@@ -1,12 +1,14 @@
 package es.uca.ParkingElSalvador;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CarService {
     private CarRepository vehiculos;
-    public CarService(){
-        vehiculos = new CarRepositoryInMemoryRepo();
+    @Autowired
+    public CarService(CarRepository v){
+        vehiculos = v;
     }
 
     public void save(Vehiculo v){

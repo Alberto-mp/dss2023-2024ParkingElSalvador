@@ -8,15 +8,11 @@ import java.util.List;
 public class BonoService {
     private BonoRepository bonos; 
 
-    
-    public BonoService() {
-        this.bonos = null;
-    }
-    @Autowired 
-     public void setBonos(BonoRepository bonos) {
+    @Autowired
+    public BonoService(BonoRepository bonos) {
         this.bonos = bonos;
     }
-
+     
     public void save(Bono b) {
         bonos.meter(b);
     }

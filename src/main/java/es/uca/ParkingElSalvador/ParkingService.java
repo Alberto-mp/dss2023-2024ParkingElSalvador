@@ -18,9 +18,9 @@ public class ParkingService {
         barrera = new Barrera();
         qr = new QRservice();
         tarifa = new Estandar(); 
-        vehiculos = new CarService();
-        libro = new EstanciasService();
-        bonos = new BonoService();
+        vehiculos = new CarService(new CarRepositoryInMemoryRepo());
+        libro = new EstanciasService(new EstanciasInMemoryRepo());
+        bonos = new BonoService(new BonoInMemoryRepo());
         caja = new Cajero();
     }
 

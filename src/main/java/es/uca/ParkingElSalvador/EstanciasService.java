@@ -2,13 +2,15 @@ package es.uca.ParkingElSalvador;
 
 import java.util.Vector;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EstanciasService {
     private EstanciasRepository estancias;
-    public EstanciasService(){
-        estancias = new EstanciasInMemoryRepo();
+    @Autowired
+    public EstanciasService(EstanciasRepository e){
+        estancias = e;
     }
     public void save(Vehiculo v){
         estancias.almacenar(v);
