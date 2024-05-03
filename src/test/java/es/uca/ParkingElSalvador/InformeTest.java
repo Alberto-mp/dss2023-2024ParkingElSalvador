@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class InformeTest {
     private Informe informe;
-    private ParkingService parking;
+
     private Vehiculo vehiculo;
 
     @Before
