@@ -13,17 +13,23 @@ public abstract class Bono {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String matricula;
     @OneToOne
     private Vehiculo v;
 
     public Bono(Vehiculo vehiculo){
         v = vehiculo;
+        matricula = v.matricula();
     }
 
     public abstract BigDecimal getPrecio();
 
     public Vehiculo getVehiculo() {
         return v;
+    }
+
+    public String getMatriculaCoche(){
+        return matricula;
     }
 
     public abstract String tipoBono();

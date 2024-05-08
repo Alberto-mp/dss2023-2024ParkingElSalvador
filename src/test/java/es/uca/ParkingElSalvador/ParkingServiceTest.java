@@ -13,7 +13,10 @@ public class ParkingServiceTest {
 
     @Before
     public void setUp() {
-        Parking parking = new Parking("Parking Test", "Dirección Test", 100);
+        Parking parking = new Parking();
+        parking.setNombre("Parking Test");
+        parking.setDireccionPostal("Direccion Test");
+        parking.setCapacidadTotal(100);
         parkingService = new ParkingElSalvador(parking).getParkingService();
     }
 

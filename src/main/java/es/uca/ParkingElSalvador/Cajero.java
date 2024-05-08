@@ -2,6 +2,9 @@ package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Cajero {
     private BigDecimal dinero;
     

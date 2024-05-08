@@ -1,11 +1,11 @@
 package es.uca.ParkingElSalvador;
 
-import java.util.Vector;
+import java.util.List;
 
 public interface EstanciasRepository {
     public void almacenar(Vehiculo vehiculo);
     public boolean haestadoCoche(String matricula);
-    public Vector<Estancia> estancias(String matricula);
-    public Vector<Estancia> estancias();
-    public int numEstancias();
+    public List<Estancia> estancias(String matricula);
+    public List<Estancia> estancias();
+    public long numEstancias();
 }

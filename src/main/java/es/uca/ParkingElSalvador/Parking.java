@@ -1,27 +1,28 @@
 package es.uca.ParkingElSalvador;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+import org.springframework.stereotype.Component;
+
+@Component
 public class Parking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
-    private final String direccion_postal;
-    private final int capacidadTotal;
+    private String direccion_postal;
+    private int capacidadTotal;
     private int plazasDisponibles;
     private int plazasOcupadas;
 
-    public Parking(String n, String d, int capT){
-        nombre = n;
-        direccion_postal = d;
-        capacidadTotal = capT;
-        plazasDisponibles = capT; 
+    public Parking(){
+        nombre = "";
+        direccion_postal = "";
+        capacidadTotal = 0;
+        plazasDisponibles = 0; 
         plazasOcupadas = 0;
     }
 
@@ -38,8 +39,17 @@ public class Parking {
         return direccion_postal;
     }
 
+    public void setDireccionPostal(String d){
+        direccion_postal = d;
+    }
+
     public int getCapacidadTotal() {
         return capacidadTotal;
+    }
+
+    public void setCapacidadTotal(int c){
+        capacidadTotal = c;
+        plazasDisponibles = c;
     }
 
     public int getPlazasDisponibles() {

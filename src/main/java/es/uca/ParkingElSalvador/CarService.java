@@ -7,7 +7,15 @@ import org.springframework.stereotype.Service;
 public class CarService {
     private CarRepository vehiculos;
     @Autowired
-    public CarService(CarRepository v){
+    public CarService(CarRepository v ){
+        vehiculos = v;
+    }
+
+    public CarService(){
+        vehiculos = null;
+    }
+
+    public void setCarRepository(CarRepository v){
         vehiculos = v;
     }
 

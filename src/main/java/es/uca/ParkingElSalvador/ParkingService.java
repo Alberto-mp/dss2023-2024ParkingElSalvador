@@ -2,7 +2,10 @@ package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
 
-@org.springframework.stereotype.Service
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ParkingService {
     private Parking p;
     private Barrera barrera;
@@ -12,7 +15,7 @@ public class ParkingService {
     private EstanciasService libro;
     private BonoService bonos;
     private Cajero caja;
-    
+    @Autowired
     public ParkingService(Parking p, CarRepository c, EstanciasRepository e, BonoRepository b){
         this.p = p;
         barrera = new Barrera();
@@ -177,32 +180,23 @@ public class ParkingService {
     public void vehiculoPagaEstandar(BigDecimal entregado, String mat, char F) {
         Vehiculo v = vehiculos.getVehiculo(mat);
         vehiculos.delete(v);
-        PagoEstandar pEstandar = new PagoEstandar(caja,v,tarifa.precioMinuto());
-        pEstandar.pagar(entregado, F);
+        PagoEstandar pEstandar = new PagoEstandar(vehiculos);
+        pEstandar.pagar(entregado,mat, F,tarifa.precioMinuto());
         vehiculos.save(v);
     }
 
     public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F){
-        Vehiculo v = vehiculos.getVehiculo(mat);
-        vehiculos.delete(v);
-        PagoBono pBono = new PagoBono(v);
-        pBono.comprarBonoMensual(entregado,nMeses,F);
-        vehiculos.save(v);
+        PagoBono pBono = new PagoBono(vehiculos);
+        pBono.comprarBonoMensual(entregado,mat,nMeses,F);
     }
 
     public void vehiculoPagaBonoTrimestral(BigDecimal entregado, int nTrimestres, String mat, char F){
-        Vehiculo v = vehiculos.getVehiculo(mat);
-        vehiculos.delete(v);
-        PagoBono pBono = new PagoBono(v);
-        pBono.comprarBonoTrimestral(entregado,nTrimestres,F);
-        vehiculos.save(v);
+        PagoBono pBono = new PagoBono(vehiculos);
+        pBono.comprarBonoTrimestral(entregado,mat,nTrimestres,F);
     }
     
     public void vehiculoPagaBonoAnual(BigDecimal entregado,int nAnnos, String mat, char F){
-        Vehiculo v = vehiculos.getVehiculo(mat);
-        vehiculos.delete(v);
-        PagoBono pBono = new PagoBono(v);
-        pBono.comprarBonoAnual(entregado,nAnnos,F);
-        vehiculos.save(v);
+        PagoBono pBono = new PagoBono(vehiculos);
+        pBono.comprarBonoAnual(entregado,mat,nAnnos,F);
     }
 }

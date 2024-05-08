@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,6 +20,15 @@ public class Vehiculo {
     public Vehiculo(String m){
         matricula = m;
         estancia = new Estancia(this);
+    }
+
+    public Vehiculo(){
+        matricula = "";
+        estancia = new Estancia(this);
+    }
+
+    public void setMatricula(String m){
+        matricula = m;
     }
 
     public void sale(){

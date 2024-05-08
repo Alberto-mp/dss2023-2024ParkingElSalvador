@@ -17,6 +17,15 @@ public class Informe {
         creacion = LocalDateTime.now();
     }
 
+    public Informe(){
+        parking = null;
+        creacion = LocalDateTime.now();
+    }
+
+    public void setParkingService(ParkingService p){
+        parking = p;
+    }
+
     // Metodos observadores proporcionados por el informe
     public String fechaInforme(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

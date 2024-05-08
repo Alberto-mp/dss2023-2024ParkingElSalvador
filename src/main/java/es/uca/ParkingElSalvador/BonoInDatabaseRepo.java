@@ -2,12 +2,14 @@ package es.uca.ParkingElSalvador;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class BonoInDatabaseRepo implements BonoRepository {
     private final BonoRepositoryJPA bonoRepositoryJPA;
 
+    @Autowired
     public BonoInDatabaseRepo(BonoRepositoryJPA bonoRepositoryJPA) {
         this.bonoRepositoryJPA = bonoRepositoryJPA;
     }

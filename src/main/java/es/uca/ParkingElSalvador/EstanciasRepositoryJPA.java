@@ -1,10 +1,10 @@
 package es.uca.ParkingElSalvador;
 
-import java.util.Vector;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EstanciasRepositoryJPA extends JpaRepository<Vehiculo, String>{
-    public boolean beenCar(String matricula);
-    public Vector<Estancia> getEstanciasByMatricula(String matricula);
+public interface EstanciasRepositoryJPA extends JpaRepository<Estancia, String>{
+    boolean existsByVehiculoMatricula(String matricula);
+    public List<Estancia> findByVehiculoMatricula(String matricula);
 }

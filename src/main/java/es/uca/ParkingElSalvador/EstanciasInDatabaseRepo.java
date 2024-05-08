@@ -1,5 +1,6 @@
 package es.uca.ParkingElSalvador;
 
+import java.util.List;
 import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,31 +17,28 @@ public class EstanciasInDatabaseRepo implements EstanciasRepository {
 
     @Override
     public void almacenar(Vehiculo vehiculo) {
-        // No se proporciona un método específico para almacenar una instancia de vehículo en EstanciasRepositoryJPA.
-        // Se puede implementar según sea necesario, dependiendo de cómo se maneje la lógica en tu aplicación.
+        estanciasRepositoryJPA.save(vehiculo.estancia());
     }
 
     @Override
     public boolean haestadoCoche(String matricula) {
-        return estanciasRepositoryJPA.beenCar(matricula);
+        return estanciasRepositoryJPA.existsByVehiculoMatricula(matricula);
     }
 
     @Override
-    public Vector<Estancia> estancias(String matricula) {
-        return estanciasRepositoryJPA.getEstanciasByMatricula(matricula);
+    public List<Estancia> estancias(String matricula) {
+        return estanciasRepositoryJPA.findByVehiculoMatricula(matricula); // Suponiendo que esto devuelve una List<Estancia>
     }
+    
 
     @Override
-    public Vector<Estancia> estancias() {
-        // No se proporciona un método específico para obtener todas las estancias en EstanciasRepositoryJPA.
-        // Se puede implementar según sea necesario, dependiendo de cómo se maneje la lógica en tu aplicación.
-        return null;
+    public List<Estancia> estancias() {
+        return estanciasRepositoryJPA.findAll(); // Esto devuelve una List<Estancia>
     }
+    
 
     @Override
-    public int numEstancias() {
-        // No se proporciona un método específico para contar el número de estancias en EstanciasRepositoryJPA.
-        // Se puede implementar según sea necesario, dependiendo de cómo se maneje la lógica en tu aplicación.
-        return 0;
+    public long numEstancias() {
+        return estanciasRepositoryJPA.count();
     }
 }

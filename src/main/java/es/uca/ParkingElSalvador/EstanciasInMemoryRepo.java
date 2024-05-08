@@ -1,40 +1,47 @@
 package es.uca.ParkingElSalvador;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EstanciasInMemoryRepo implements EstanciasRepository {
-    private final Vector<Estancia> registro;
-    public EstanciasInMemoryRepo(){
-        registro = new Vector<Estancia>();
+    private final List<Estancia> registro;
+
+    public EstanciasInMemoryRepo() {
+        registro = new ArrayList<>();
     }
-    public Vector<Estancia> registro(){
+
+    public List<Estancia> registro() {
         return registro;
     }
-    public void almacenar(Vehiculo vehiculo){
+
+    public void almacenar(Vehiculo vehiculo) {
         registro.add(vehiculo.estancia());
     }
-    public boolean haestadoCoche(String matricula){
-        boolean haEstado = false;
-        for(int i = 0; i < registro.size() && !haEstado; i++){
-            if(registro.get(i).vehiculo().matricula() == matricula)
-                haEstado = true;
+
+    public boolean haestadoCoche(String matricula) {
+        for (Estancia estancia : registro) {
+            if (estancia.vehiculo().matricula().equals(matricula)) {
+                return true;
+            }
         }
-        return haEstado;
+        return false;
     }
-    public Vector<Estancia> estancias(String matricula){
-        Vector<Estancia> apariciones = new Vector<>();
-        for(int i = 0; i < registro.size(); i++){
-            if(registro.get(i).vehiculo().matricula() == matricula)
-                apariciones.add(registro.get(i));
+
+    public List<Estancia> estancias(String matricula) {
+        List<Estancia> apariciones = new ArrayList<>();
+        for (Estancia estancia : registro) {
+            if (estancia.vehiculo().matricula().equals(matricula)) {
+                apariciones.add(estancia);
+            }
         }
         return apariciones;
     }
 
-    public Vector<Estancia> estancias(){
-        return registro;
+    public List<Estancia> estancias() {
+        return new ArrayList<>(registro);
     }
 
-    public int numEstancias(){
+    public long numEstancias() {
         return registro.size();
     }
 }

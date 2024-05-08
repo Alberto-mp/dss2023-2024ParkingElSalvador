@@ -22,7 +22,7 @@ public class Estancia {
     private boolean pagado;
     private double dineroPagado;
     private boolean tieneBono;
-
+    
     @OneToOne
     private Vehiculo vehiculo;
 
@@ -38,6 +38,21 @@ public class Estancia {
         dineroPagado = 0;
         bono = null;
     }
+
+    public Estancia() {
+        llegada = LocalDateTime.now();
+        salida = null;
+        vehiculo = null;
+        pagado = false;
+        tieneBono = false; //Por defecto no tendrán
+        dineroPagado = 0;
+        bono = null;
+    }
+
+    public void setVehiculo(Vehiculo v){
+        vehiculo = v;
+    }
+
     public String toString() {
         return "Estancia del vehiculo "+vehiculo.matricula()+" Llego "+horaLlegada()+". Salio "+horaSalida();
     }

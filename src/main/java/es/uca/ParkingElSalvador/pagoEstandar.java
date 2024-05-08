@@ -6,30 +6,30 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PagoEstandar{
-    private Vehiculo vehiculo;
-    private double pMinuto;
+    private CarService coches;
 
-    public PagoEstandar(Cajero cajero, Vehiculo v, double p){
-        vehiculo = v;
-        pMinuto = p;
+    public PagoEstandar(CarService c){
+        coches = c;
     }
 
-    public double cantidad(int minutos){
+    public double cantidad(int minutos, double pMinuto){
         return (double)minutos*pMinuto;
     }
 
-    public void pagar(BigDecimal entregado, char F) {
+    public void pagar(BigDecimal entregado, String mat, char F, double pMinuto) {
+        Vehiculo vehiculo = coches.getVehiculo(mat);
+        coches.delete(vehiculo);
         if(!vehiculo.estancia().haPagado()){
             TipoPago p = null;
-            double pago = cantidad(vehiculo.estancia().duracion());
+            double pago = cantidad(vehiculo.estancia().duracion(),pMinuto);
             if(F == 'E')
                 p = new PagoEfectivo();
             else 
                 p = new PagoTarjeta();
             p.procesarPago(entregado);
             vehiculo.estancia().setDineroPagado(pago);
-            vehiculo.estancia().pagarEstandar();
-            
+            vehiculo.estancia().pagarEstandar();   
         }
+        coches.save(vehiculo);
     }
 }
