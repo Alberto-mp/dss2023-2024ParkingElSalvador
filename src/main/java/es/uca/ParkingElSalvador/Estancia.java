@@ -5,10 +5,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Estancia {
@@ -23,7 +26,8 @@ public class Estancia {
     private double dineroPagado;
     private boolean tieneBono;
     
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
     private Vehiculo vehiculo;
 
     @OneToOne

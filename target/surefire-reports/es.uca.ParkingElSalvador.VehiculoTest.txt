@@ -1,0 +1,36 @@
+-------------------------------------------------------------------------------
+Test set: es.uca.ParkingElSalvador.VehiculoTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in es.uca.ParkingElSalvador.VehiculoTest
+testDineroPagado(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.dineroPagado()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testDineroPagado(VehiculoTest.java:37)
+
+testBonoValidoSinBono(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.bonoValido()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testBonoValidoSinBono(VehiculoTest.java:44)
+
+testHaPagadoDespuesDePagar(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.pagarEstandar()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testHaPagadoDespuesDePagar(VehiculoTest.java:68)
+
+testCompraBono(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.poseeBono()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testCompraBono(VehiculoTest.java:18)
+
+testHaPagadoSinPagar(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.haPagado()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testHaPagadoSinPagar(VehiculoTest.java:63)
+
+testBonoValidoConBonoVencido(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.compraBono()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testBonoValidoConBonoVencido(VehiculoTest.java:49)
+
+testBonoValidoConBonoVigente(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.compraBono()" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testBonoValidoConBonoVigente(VehiculoTest.java:56)
+
+testSetFinBono(es.uca.ParkingElSalvador.VehiculoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.Estancia.setFinBono(java.time.LocalDateTime)" because the return value of "es.uca.ParkingElSalvador.Vehiculo.estancia()" is null
+	at es.uca.ParkingElSalvador.VehiculoTest.testSetFinBono(VehiculoTest.java:26)
+

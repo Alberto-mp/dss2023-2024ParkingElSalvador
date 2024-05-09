@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: es.uca.ParkingElSalvador.PagoBonoTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in es.uca.ParkingElSalvador.PagoBonoTest
+testComprarBonoTrimestral(es.uca.ParkingElSalvador.PagoBonoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.CarService.save(es.uca.ParkingElSalvador.Vehiculo)" because "this.c" is null
+	at es.uca.ParkingElSalvador.PagoBonoTest.setUp(PagoBonoTest.java:19)
+
+testComprarBonoAnual(es.uca.ParkingElSalvador.PagoBonoTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.CarService.save(es.uca.ParkingElSalvador.Vehiculo)" because "this.c" is null
+	at es.uca.ParkingElSalvador.PagoBonoTest.setUp(PagoBonoTest.java:19)
+
+testComprarBonoMensual(es.uca.ParkingElSalvador.PagoBonoTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "es.uca.ParkingElSalvador.CarService.save(es.uca.ParkingElSalvador.Vehiculo)" because "this.c" is null
+	at es.uca.ParkingElSalvador.PagoBonoTest.setUp(PagoBonoTest.java:19)
+

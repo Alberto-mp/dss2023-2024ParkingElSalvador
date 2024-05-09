@@ -2,12 +2,15 @@ package es.uca.ParkingElSalvador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/v1/vehiculos")
 public class CarController {
 
     private final CarService carService;
+    private static final Logger logger = LoggerFactory.getLogger(CarController.class);
 
     @Autowired
     public CarController(CarService carService) {
@@ -28,9 +31,18 @@ public class CarController {
 
     @GetMapping("/{matricula}")
     public Vehiculo getVehiculo(@PathVariable String matricula) {
-        Vehiculo vehiculo = carService.getVehiculo(matricula);
-        return vehiculo;
+    logger.info("Attempting to fetch vehicle with matricula: {}", matricula);
+    Vehiculo vehiculo = carService.getVehiculo(matricula);
+    if (vehiculo == null) {
+        logger.warn("No vehicle found with matricula: {}", matricula);
+    } else {
+        logger.info("Vehicle found: {}", vehiculo);
+        logger.info(vehiculo.toString());
     }
+    vehiculo.iniciarEstancia();
+    return vehiculo;
+}
+
 
     @GetMapping("/count")
     public Integer getNumCoches() {
