@@ -23,8 +23,8 @@ public class CarService {
         vehiculos.meter(v);
     }
 
-    public void delete(Vehiculo v){
-        vehiculos.sacar(v);
+    public void delete(String mat){
+        vehiculos.sacar(mat);
     }
 
     public Vehiculo getVehiculo(String matricula){

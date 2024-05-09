@@ -18,7 +18,7 @@ public class PagoEstandar{
 
     public void pagar(BigDecimal entregado, String mat, char F, double pMinuto) {
         Vehiculo vehiculo = coches.getVehiculo(mat);
-        coches.delete(vehiculo);
+        coches.delete(vehiculo.matricula());
         if(!vehiculo.estancia().haPagado()){
             TipoPago p = null;
             double pago = cantidad(vehiculo.estancia().duracion(),pMinuto);

@@ -18,8 +18,8 @@ public class CarRepositoryInDatabase implements CarRepository {
     }
 
     @Override
-    public void sacar(Vehiculo v) {
-        carRepositoryJPA.delete(v);
+    public void sacar(String mat) {
+        carRepositoryJPA.delete(carRepositoryJPA.getByMatricula(mat));
     }
 
     @Override

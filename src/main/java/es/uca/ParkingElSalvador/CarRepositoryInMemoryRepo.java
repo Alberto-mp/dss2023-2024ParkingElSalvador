@@ -11,8 +11,8 @@ public class CarRepositoryInMemoryRepo implements CarRepository{
     public void meter(Vehiculo veh){
         vehiculos.put(veh.matricula(), veh);
     }
-    public void sacar(Vehiculo veh){
-        vehiculos.remove(veh.matricula(), veh);
+    public void sacar(String mat){
+        vehiculos.remove(mat);
     }
 
     // Metodos observadores

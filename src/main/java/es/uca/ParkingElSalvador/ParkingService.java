@@ -134,7 +134,7 @@ public class ParkingService {
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
-            vehiculos.delete(vehiculo);
+            vehiculos.delete(vehiculo.matricula());
             libro.save(vehiculo);
             p.incPlazasDisponibles();
             p.decPlazasOcupadas();
@@ -169,7 +169,7 @@ public class ParkingService {
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
-            vehiculos.delete(vehiculo);
+            vehiculos.delete(vehiculo.matricula());
             p.incPlazasDisponibles();
             p.decPlazasOcupadas();
 
@@ -178,11 +178,8 @@ public class ParkingService {
 
     // Operaciones de pago de tarifa estándar y bonos
     public void vehiculoPagaEstandar(BigDecimal entregado, String mat, char F) {
-        Vehiculo v = vehiculos.getVehiculo(mat);
-        vehiculos.delete(v);
         PagoEstandar pEstandar = new PagoEstandar(vehiculos);
         pEstandar.pagar(entregado,mat, F,tarifa.precioMinuto());
-        vehiculos.save(v);
     }
 
     public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F){

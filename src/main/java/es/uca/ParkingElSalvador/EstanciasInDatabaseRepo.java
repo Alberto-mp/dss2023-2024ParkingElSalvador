@@ -1,7 +1,6 @@
 package es.uca.ParkingElSalvador;
 
 import java.util.List;
-import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
