@@ -19,12 +19,14 @@ public class Vehiculo {
 
     public Vehiculo(String m){
         matricula = m;
-        estancia = new Estancia(this);
+    }
+
+    public void iniciarEstancia(){
+        estancia  = new Estancia(this);
     }
 
     public Vehiculo(){
-        matricula = "";
-        estancia = new Estancia(this);
+        matricula = ""; 
     }
 
     public void setMatricula(String m){

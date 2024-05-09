@@ -30,7 +30,6 @@ public class CarController {
     public Vehiculo getVehiculo(@PathVariable String matricula) {
         Vehiculo vehiculo = carService.getVehiculo(matricula);
         return vehiculo;
-        
     }
 
     @GetMapping("/count")
