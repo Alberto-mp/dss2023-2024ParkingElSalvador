@@ -24,7 +24,7 @@ public class CarRepositoryTest {
     public void testSacar() {
         Vehiculo vehiculo = new Vehiculo("123ABC");
         carRepository.save(vehiculo);
-        carRepository.delete(vehiculo.matricula());
+        carRepository.delete(vehiculo.getMatricula());
         assertEquals("El número de coches en el repositorio debe ser 0 después de sacar el vehículo agregado", 0, carRepository.getNumCoches());
         assertNull("El vehículo sacado no debe estar presente en el repositorio", carRepository.getVehiculo("123ABC"));
     }

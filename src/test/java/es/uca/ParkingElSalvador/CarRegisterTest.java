@@ -18,7 +18,7 @@ public class CarRegisterTest {
     public void testAlmacenar() {
         carRegister.almacenar(vehiculo);
         assertEquals("El registro debería tener una estancia después de almacenar un vehículo", 1, carRegister.registro().size());
-        assertEquals("La estancia almacenada debería ser la misma que la del vehículo", vehiculo.estancia(), carRegister.registro().get(0));
+        assertEquals("La estancia almacenada debería ser la misma que la del vehículo", vehiculo.getEstancia(), carRegister.registro().get(0));
     }
 
     @Test

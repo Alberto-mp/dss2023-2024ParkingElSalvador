@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Estancia {
@@ -27,7 +26,6 @@ public class Estancia {
     private boolean tieneBono;
     
     @OneToOne(fetch = FetchType.EAGER)
-    @JsonManagedReference
     private Vehiculo vehiculo;
 
     @OneToOne
@@ -58,7 +56,7 @@ public class Estancia {
     }
 
     public String toString() {
-        return "Estancia del vehiculo "+vehiculo.matricula()+" Llego "+horaLlegada()+". Salio "+horaSalida();
+        return "Estancia del vehiculo "+vehiculo.getMatricula()+" Llego "+horaLlegada()+". Salio "+horaSalida();
     }
 
     public void termina(){

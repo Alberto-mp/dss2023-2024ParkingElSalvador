@@ -47,7 +47,7 @@ public class Informe {
         int hoy = LocalDateTime.now().getDayOfYear();
         for(int i = 0; i < libro.numEstancias(); i++){
             if(libro.getAllEstancias().get(i).horaLlegadaLT().getDayOfYear() == hoy)
-                ingresoDiario += parking.getLibro().getAllEstancias().get(i).vehiculo().estancia().dineroPagado();
+                ingresoDiario += parking.getLibro().getAllEstancias().get(i).vehiculo().getEstancia().dineroPagado();
         }
         return ingresoDiario;
     }
@@ -59,7 +59,7 @@ public class Informe {
         int semana = LocalDateTime.now().get(WeekFields.ISO.weekOfWeekBasedYear());
         for(int i = 0; i < libro.numEstancias(); i++){
             if(libro.getAllEstancias().get(i).horaLlegadaLT().get(WeekFields.ISO.weekOfWeekBasedYear()) == semana)
-            ingresoSemanal += parking.getLibro().getAllEstancias().get(i).vehiculo().estancia().dineroPagado();
+            ingresoSemanal += parking.getLibro().getAllEstancias().get(i).vehiculo().getEstancia().dineroPagado();
         }
         return ingresoSemanal;
     }
@@ -71,7 +71,7 @@ public class Informe {
         int mes = LocalDateTime.now().getMonthValue();
         for(int i = 0; i < libro.numEstancias(); i++){
             if(libro.getAllEstancias().get(i).horaLlegadaLT().getMonthValue() == mes)
-            ingresoMensual += parking.getLibro().getAllEstancias().get(i).vehiculo().estancia().dineroPagado();
+            ingresoMensual += parking.getLibro().getAllEstancias().get(i).vehiculo().getEstancia().dineroPagado();
         }
         return ingresoMensual;
     }

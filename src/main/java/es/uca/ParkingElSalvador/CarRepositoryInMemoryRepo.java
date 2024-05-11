@@ -9,7 +9,7 @@ public class CarRepositoryInMemoryRepo implements CarRepository{
 
     // Tratamiento de vehiculos
     public void meter(Vehiculo veh){
-        vehiculos.put(veh.matricula(), veh);
+        vehiculos.put(veh.getMatricula(), veh);
     }
     public void sacar(String mat){
         vehiculos.remove(mat);

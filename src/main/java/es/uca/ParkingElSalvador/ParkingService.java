@@ -129,12 +129,12 @@ public class ParkingService {
     public void salida() throws Exception{
         String matricula = qr.leerCodigoQR();
         Vehiculo vehiculo = vehiculos.getVehiculo(matricula);
-        if(vehiculo.estancia().haPagado() || (vehiculo.estancia().poseeBono() && vehiculo.estancia().bonoValido())){
+        if(vehiculo.getEstancia().haPagado() || (vehiculo.getEstancia().poseeBono() && vehiculo.getEstancia().bonoValido())){
             vehiculo.sale();
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
-            vehiculos.delete(vehiculo.matricula());
+            vehiculos.delete(vehiculo.getMatricula());
             libro.save(vehiculo);
             p.incPlazasDisponibles();
             p.decPlazasOcupadas();
@@ -164,12 +164,12 @@ public class ParkingService {
 
     public void salida(String matricula){
         Vehiculo vehiculo = vehiculos.getVehiculo(matricula);
-        if(vehiculo.estancia().haPagado() || (vehiculo.estancia().poseeBono() && vehiculo.estancia().bonoValido())){
+        if(vehiculo.getEstancia().haPagado() || (vehiculo.getEstancia().poseeBono() && vehiculo.getEstancia().bonoValido())){
             vehiculo.sale();
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
-            vehiculos.delete(vehiculo.matricula());
+            vehiculos.delete(vehiculo.getMatricula());
             p.incPlazasDisponibles();
             p.decPlazasOcupadas();
 

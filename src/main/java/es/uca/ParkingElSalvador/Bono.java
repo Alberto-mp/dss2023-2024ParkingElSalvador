@@ -19,7 +19,7 @@ public abstract class Bono {
 
     public Bono(Vehiculo vehiculo){
         v = vehiculo;
-        matricula = v.matricula();
+        matricula = v.getMatricula();
     }
 
     public abstract BigDecimal getPrecio();
@@ -36,6 +36,6 @@ public abstract class Bono {
 
     @Override
     public String toString() {
-        return "Bono del vehiculo: " + v.matricula();
+        return "Bono del vehiculo: " + v.getMatricula();
     }
 }

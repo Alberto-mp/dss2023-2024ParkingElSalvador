@@ -23,23 +23,15 @@ public class CarController {
     }
 
     @DeleteMapping("/{matricula}")
-    public void deleteCar(@PathVariable String mat) {
-        Vehiculo v = carService.getVehiculo(mat);
+    public void deleteCar(@PathVariable String matricula) {
+        Vehiculo v = carService.getVehiculo(matricula);
         if (v != null) 
-            carService.delete(mat);
+            carService.delete(matricula);
     }
 
     @GetMapping("/{matricula}")
     public Vehiculo getVehiculo(@PathVariable String matricula) {
-    logger.info("Attempting to fetch vehicle with matricula: {}", matricula);
     Vehiculo vehiculo = carService.getVehiculo(matricula);
-    if (vehiculo == null) {
-        logger.warn("No vehicle found with matricula: {}", matricula);
-    } else {
-        logger.info("Vehicle found: {}", vehiculo);
-        logger.info(vehiculo.toString());
-    }
-    vehiculo.iniciarEstancia();
     return vehiculo;
 }
 

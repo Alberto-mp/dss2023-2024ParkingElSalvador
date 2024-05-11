@@ -18,17 +18,17 @@ public class PagoEstandar{
 
     public void pagar(BigDecimal entregado, String mat, char F, double pMinuto) {
         Vehiculo vehiculo = coches.getVehiculo(mat);
-        coches.delete(vehiculo.matricula());
-        if(!vehiculo.estancia().haPagado()){
+        coches.delete(vehiculo.getMatricula());
+        if(!vehiculo.getEstancia().haPagado()){
             TipoPago p = null;
-            double pago = cantidad(vehiculo.estancia().duracion(),pMinuto);
+            double pago = cantidad(vehiculo.getEstancia().duracion(),pMinuto);
             if(F == 'E')
                 p = new PagoEfectivo();
             else 
                 p = new PagoTarjeta();
             p.procesarPago(entregado);
-            vehiculo.estancia().setDineroPagado(pago);
-            vehiculo.estancia().pagarEstandar();   
+            vehiculo.getEstancia().setDineroPagado(pago);
+            vehiculo.getEstancia().pagarEstandar();   
         }
         coches.save(vehiculo);
     }

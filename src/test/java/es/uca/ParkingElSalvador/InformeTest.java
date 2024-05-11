@@ -16,7 +16,7 @@ public class InformeTest {
         ParkingElSalvador p = new ParkingElSalvador(new Parking());
         ParkingService parking = p.getParkingService();
         vehiculo = new Vehiculo("123ABC");
-        vehiculo.estancia().setDineroPagado(10.0); // Simulamos que el vehículo ha pagado $10
+        vehiculo.getEstancia().setDineroPagado(10.0); // Simulamos que el vehículo ha pagado $10
         EstanciasService libro = parking.getLibro();
         libro.save(vehiculo); // Almacenamos el vehículo en el registro del parking
         informe = new Informe(parking);

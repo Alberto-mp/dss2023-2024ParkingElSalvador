@@ -16,7 +16,7 @@ public class EstanciasInDatabaseRepo implements EstanciasRepository {
 
     @Override
     public void almacenar(Vehiculo vehiculo) {
-        estanciasRepositoryJPA.save(vehiculo.estancia());
+        estanciasRepositoryJPA.save(vehiculo.getEstancia());
     }
 
     @Override

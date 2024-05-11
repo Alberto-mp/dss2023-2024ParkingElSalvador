@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 
 @Entity
 public class Vehiculo {
@@ -19,15 +17,11 @@ public class Vehiculo {
     private String matricula;
 
     @OneToOne(mappedBy = "vehiculo", fetch = FetchType.EAGER)
-    @JsonBackReference
     private Estancia estancia;    
 
     public Vehiculo(String m){
         matricula = m;
-    }
-
-    public void iniciarEstancia(){
-        estancia  = new Estancia(this);
+        estancia = new Estancia(this);
     }
 
     public Vehiculo(){
@@ -43,11 +37,11 @@ public class Vehiculo {
     }
 
     // Metodos observadores
-    public String matricula(){
+    public String getMatricula(){
         return matricula;
     }
 
-    public Estancia estancia(){
+    public Estancia getEstancia(){
         return estancia;
     }
 

@@ -15,12 +15,12 @@ public class EstanciasInMemoryRepo implements EstanciasRepository {
     }
 
     public void almacenar(Vehiculo vehiculo) {
-        registro.add(vehiculo.estancia());
+        registro.add(vehiculo.getEstancia());
     }
 
     public boolean haestadoCoche(String matricula) {
         for (Estancia estancia : registro) {
-            if (estancia.vehiculo().matricula().equals(matricula)) {
+            if (estancia.vehiculo().getMatricula().equals(matricula)) {
                 return true;
             }
         }
@@ -30,7 +30,7 @@ public class EstanciasInMemoryRepo implements EstanciasRepository {
     public List<Estancia> estancias(String matricula) {
         List<Estancia> apariciones = new ArrayList<>();
         for (Estancia estancia : registro) {
-            if (estancia.vehiculo().matricula().equals(matricula)) {
+            if (estancia.vehiculo().getMatricula().equals(matricula)) {
                 apariciones.add(estancia);
             }
         }

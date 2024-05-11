@@ -77,7 +77,7 @@ public class ParkingServiceTest {
         Vehiculo vehiculo = parkingService.getVehiculos().getVehiculo(matricula);
         parkingService.salida(matricula);
         assertNotNull(vehiculo);
-        assertTrue(vehiculo.estancia().haPagado());
+        assertTrue(vehiculo.getEstancia().haPagado());
         assertEquals(parkingService.getParking().getPlazasDisponibles(), 100);
         assertEquals(parkingService.getParking().getPlazasOcupadas(), 0);
     }
@@ -94,7 +94,7 @@ public class ParkingServiceTest {
         Vehiculo vehiculo = parkingService.getVehiculos().getVehiculo(matricula);
         parkingService.salida(matricula);
         assertNotNull(vehiculo);
-        assertTrue(vehiculo.estancia().poseeBono());
+        assertTrue(vehiculo.getEstancia().poseeBono());
         assertEquals(parkingService.getParking().getPlazasDisponibles(), 100);
         assertEquals(parkingService.getParking().getPlazasOcupadas(), 0);
     }
@@ -111,7 +111,7 @@ public class ParkingServiceTest {
         Vehiculo vehiculo = parkingService.getVehiculos().getVehiculo(matricula);
         parkingService.salida(matricula);
         assertNotNull(vehiculo);
-        assertTrue(vehiculo.estancia().poseeBono());
+        assertTrue(vehiculo.getEstancia().poseeBono());
         assertEquals(parkingService.getParking().getPlazasDisponibles(), 100);
         assertEquals(parkingService.getParking().getPlazasOcupadas(), 0);
     }
@@ -128,7 +128,7 @@ public class ParkingServiceTest {
         Vehiculo vehiculo = parkingService.getVehiculos().getVehiculo(matricula);
         parkingService.salida(matricula);
         assertNotNull(vehiculo);
-        assertTrue(vehiculo.estancia().poseeBono());
+        assertTrue(vehiculo.getEstancia().poseeBono());
         assertEquals(parkingService.getParking().getPlazasDisponibles(), 100);
         assertEquals(parkingService.getParking().getPlazasOcupadas(), 0);
     }
