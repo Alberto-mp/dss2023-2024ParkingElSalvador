@@ -19,7 +19,7 @@ public class PagoEstandar{
     public void pagar(BigDecimal entregado, String mat, char F, double pMinuto) {
         Vehiculo vehiculo = coches.getVehiculo(mat);
         coches.delete(vehiculo.getMatricula());
-        if(!vehiculo.getEstancia().haPagado()){
+        if(!vehiculo.getEstancia().isPagado()){
             TipoPago p = null;
             double pago = cantidad(vehiculo.getEstancia().duracion(),pMinuto);
             if(F == 'E')

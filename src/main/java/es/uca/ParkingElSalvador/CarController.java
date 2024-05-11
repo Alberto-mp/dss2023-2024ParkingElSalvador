@@ -2,19 +2,21 @@ package es.uca.ParkingElSalvador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/v1/vehiculos")
 public class CarController {
 
     private final CarService carService;
-    private static final Logger logger = LoggerFactory.getLogger(CarController.class);
-
     @Autowired
     public CarController(CarService carService) {
         this.carService = carService;
+    }
+
+    @PostMapping("/{matricula}")
+    public void saveNewCar(@PathVariable String matricula) {
+        Vehiculo v = new Vehiculo(matricula);
+        carService.save(v);
     }
 
     @PostMapping

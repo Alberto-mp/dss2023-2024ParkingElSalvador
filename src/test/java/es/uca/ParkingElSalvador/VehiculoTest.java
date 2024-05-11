@@ -15,16 +15,16 @@ public class VehiculoTest {
 
     @Test
     public void testCompraBono() {
-        assertFalse("Al inicio el vehículo no debe tener bono", vehiculo.getEstancia().poseeBono());
+        assertFalse("Al inicio el vehículo no debe tener bono", vehiculo.getEstancia().isTieneBono());
         vehiculo.getEstancia().compraBono();
-        assertTrue("Después de comprar el bono, el vehículo debe tenerlo", vehiculo.getEstancia().poseeBono());
+        assertTrue("Después de comprar el bono, el vehículo debe tenerlo", vehiculo.getEstancia().isTieneBono());
     }
 
     @Test
     public void testSetFinBono() {
         LocalDateTime finBono = LocalDateTime.now().plusHours(1);
         vehiculo.getEstancia().setFinBono(finBono);
-        assertEquals("El fin del bono debe ser igual al valor establecido", finBono, vehiculo.getEstancia().fechaFinBono());
+        assertEquals("El fin del bono debe ser igual al valor establecido", finBono, vehiculo.getEstancia().getFinBono());
     }
 
     @Test
@@ -34,9 +34,9 @@ public class VehiculoTest {
 
     @Test
     public void testDineroPagado() {
-        assertEquals("El dinero pagado por el vehículo debe ser 0 al inicio", 0.0, vehiculo.getEstancia().dineroPagado(), 0.001);
+        assertEquals("El dinero pagado por el vehículo debe ser 0 al inicio", 0.0, vehiculo.getEstancia().getDineroPagado(), 0.001);
         vehiculo.getEstancia().setDineroPagado(10.5);
-        assertEquals("El dinero pagado por el vehículo debe ser el valor establecido", 10.5, vehiculo.getEstancia().dineroPagado(), 0.001);
+        assertEquals("El dinero pagado por el vehículo debe ser el valor establecido", 10.5, vehiculo.getEstancia().getDineroPagado(), 0.001);
     }
 
     @Test
@@ -60,12 +60,12 @@ public class VehiculoTest {
 
     @Test
     public void testHaPagadoSinPagar() {
-        assertFalse("El vehículo no debería haber pagado al inicio", vehiculo.getEstancia().haPagado());
+        assertFalse("El vehículo no debería haber pagado al inicio", vehiculo.getEstancia().isPagado());
     }
 
     @Test
     public void testHaPagadoDespuesDePagar() {
         vehiculo.getEstancia().pagarEstandar();
-        assertTrue("El vehículo debería haber pagado después de llamar al método pagarEstandar()", vehiculo.getEstancia().haPagado());
+        assertTrue("El vehículo debería haber pagado después de llamar al método pagarEstandar()", vehiculo.getEstancia().isPagado());
     }
 }

@@ -4,12 +4,16 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
 
 
 @Entity
@@ -25,10 +29,11 @@ public class Estancia {
     private double dineroPagado;
     private boolean tieneBono;
     
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vehiculo_id")
     private Vehiculo vehiculo;
 
-    @OneToOne
+    @OneToOne    
     private Bono bono;
 
     public Estancia(Vehiculo veh) {
@@ -83,9 +88,47 @@ public class Estancia {
         dineroPagado = d;
     }
 
-    public LocalDateTime fechaFinBono(){
+    // Getter para la fecha de llegada
+    public LocalDateTime getLlegada() {
+        return llegada;
+    }
+
+    // Getter para la fecha de salida
+    public LocalDateTime getSalida() {
+        return salida;
+    }
+
+    // Getter para la fecha de fin de bono
+    public LocalDateTime getFinBono() {
         return finBono;
     }
+
+    // Getter para el estado de pago
+    public boolean isPagado() {
+        return pagado;
+    }
+
+    // Getter para el dinero pagado
+    public double getDineroPagado() {
+        return dineroPagado;
+    }
+
+    // Getter para saber si tiene bono
+    public boolean isTieneBono() {
+        return tieneBono;
+    }
+
+    // Getter para el vehículo asociado
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    // Getter para el bono asociado
+    public Bono getBono() {
+        return bono;
+    }
+
+
 
     public String horaLlegada(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -106,28 +149,7 @@ public class Estancia {
         
     }
 
-    public LocalDateTime horaLlegadaLT(){
-        return llegada;
-    }
-
-    public LocalDateTime horaSalidaLT(){
-        return salida;
-    }
-
-    public Vehiculo vehiculo(){
-        return vehiculo;
-    }
-
-    public Bono getBono(){
-        return bono;
-    }
-
-    public String bonoTipo() {
-        if(bono!=null)
-            return bono.tipoBono();
-        else
-            return "No posee";
-    }
+  
 
     public boolean bonoValido(){
         if(tieneBono){
@@ -142,15 +164,4 @@ public class Estancia {
 
     }
 
-    public boolean poseeBono(){
-        return tieneBono;
-    }
-
-    public boolean haPagado(){
-        return pagado;
-    }
-
-    public double dineroPagado(){
-        return dineroPagado;
-    }
 }

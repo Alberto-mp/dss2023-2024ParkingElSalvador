@@ -32,18 +32,18 @@ public class EstanciaTest {
 
     @Test
     public void testHoraLlegadaLT() {
-        assertNotNull("La hora de llegada LocalDateTime no debería ser nula", estancia.horaLlegadaLT());
+        assertNotNull("La hora de llegada LocalDateTime no debería ser nula", estancia.getLlegada());
     }
 
     @Test
     public void testHoraSalidaLT() {
         // Supongamos que el vehículo sale después de 1 hora
         estancia.termina();
-        assertNotNull("La hora de salida LocalDateTime no debería ser nula", estancia.horaSalidaLT());
+        assertNotNull("La hora de salida LocalDateTime no debería ser nula", estancia.getSalida());
     }
 
     @Test
     public void testVehiculo() {
-        assertEquals("El vehículo asociado a la estancia debe ser el mismo que se proporcionó en el constructor", vehiculo, estancia.vehiculo());
+        assertEquals("El vehículo asociado a la estancia debe ser el mismo que se proporcionó en el constructor", vehiculo, estancia.getVehiculo());
     }
 }

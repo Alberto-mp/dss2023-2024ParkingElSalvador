@@ -1,5 +1,6 @@
 package es.uca.ParkingElSalvador;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,16 +17,19 @@ public class Vehiculo {
 
     private String matricula;
 
-    @OneToOne(mappedBy = "vehiculo", fetch = FetchType.EAGER)
-    private Estancia estancia;    
+    @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Estancia estancia;
 
     public Vehiculo(String m){
         matricula = m;
         estancia = new Estancia(this);
+        estancia.setVehiculo(this);
     }
 
     public Vehiculo(){
-        matricula = ""; 
+        matricula = "";
+        estancia = new Estancia(this);
+        estancia.setVehiculo(this); 
     }
 
     public void setMatricula(String m){

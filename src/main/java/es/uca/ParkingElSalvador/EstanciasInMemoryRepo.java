@@ -20,7 +20,7 @@ public class EstanciasInMemoryRepo implements EstanciasRepository {
 
     public boolean haestadoCoche(String matricula) {
         for (Estancia estancia : registro) {
-            if (estancia.vehiculo().getMatricula().equals(matricula)) {
+            if (estancia.getVehiculo().getMatricula().equals(matricula)) {
                 return true;
             }
         }
@@ -30,7 +30,7 @@ public class EstanciasInMemoryRepo implements EstanciasRepository {
     public List<Estancia> estancias(String matricula) {
         List<Estancia> apariciones = new ArrayList<>();
         for (Estancia estancia : registro) {
-            if (estancia.vehiculo().getMatricula().equals(matricula)) {
+            if (estancia.getVehiculo().getMatricula().equals(matricula)) {
                 apariciones.add(estancia);
             }
         }

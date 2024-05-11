@@ -17,7 +17,7 @@ public class PagoBono {
     public void comprarBono(BigDecimal entregado, Bono bono, String mat, int duracion, char F) {
         vehiculo = v.getVehiculo(mat);
         v.delete(vehiculo.getMatricula());
-        if (!vehiculo.getEstancia().poseeBono()) {
+        if (!vehiculo.getEstancia().isTieneBono()) {
             TipoPago p = null;
             if(F == 'E')
                 p = new PagoEfectivo();
