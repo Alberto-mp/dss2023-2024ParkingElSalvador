@@ -15,13 +15,13 @@ public class BonoMensualTest {
     @Before
     public void setUp() {
         vehiculo = new Vehiculo("ABC123");
-        bono = new BonoMensual(vehiculo);
+        bono = new BonoMensual(vehiculo.getEstancia());
     }
 
     @Test
     public void testConstructor() {
         assertNotNull(bono);
-        assertEquals(vehiculo, bono.getVehiculo());
+        assertEquals(vehiculo, bono.getEstancia().getVehiculo());
     }
 
     @Test
@@ -33,6 +33,6 @@ public class BonoMensualTest {
 
     @Test
     public void testTipoBono() {
-        assertEquals("Mensual", bono.tipoBono());
+        assertEquals("Mensual", bono.getTipoBono());
     }
 }

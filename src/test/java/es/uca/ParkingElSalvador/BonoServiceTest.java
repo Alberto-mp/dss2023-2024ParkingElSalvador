@@ -20,7 +20,7 @@ public class BonoServiceTest {
         // Creamos un BonoAnual para realizar la prueba
         Vehiculo vehiculo = new Vehiculo("ABC123");
         BonoAnual.setPrecio(new BigDecimal("100")); // Precio de ejemplo
-        Bono bono = new BonoAnual(vehiculo);
+        Bono bono = new BonoAnual(vehiculo.getEstancia());
         
         // Metemos el bono y verificamos que esté presente
         bonoService.meter(bono);
@@ -33,7 +33,7 @@ public class BonoServiceTest {
         // Creamos un BonoAnual y lo metemos
         Vehiculo vehiculo = new Vehiculo("ABC123");
         BonoAnual.setPrecio(new BigDecimal("100")); // Precio de ejemplo
-        Bono bono = new BonoAnual(vehiculo);
+        Bono bono = new BonoAnual(vehiculo.getEstancia());
         bonoService.meter(bono);
         
         // Sacamos el bono y verificamos que no esté presente
@@ -47,8 +47,8 @@ public class BonoServiceTest {
         // Creamos varios bonos para una misma matrícula
         Vehiculo vehiculo = new Vehiculo("ABC123");
         BonoAnual.setPrecio(new BigDecimal("100")); // Precio de ejemplo
-        Bono bono1 = new BonoAnual(vehiculo);
-        Bono bono2 = new BonoMensual(vehiculo);
+        Bono bono1 = new BonoAnual(vehiculo.getEstancia());
+        Bono bono2 = new BonoMensual(vehiculo.getEstancia());
         bonoService.meter(bono1);
         bonoService.meter(bono2);
         
@@ -64,8 +64,8 @@ public class BonoServiceTest {
         Vehiculo vehiculo1 = new Vehiculo("ABC123");
         Vehiculo vehiculo2 = new Vehiculo("DEF456");
         BonoAnual.setPrecio(new BigDecimal("100")); // Precio de ejemplo
-        Bono bono1 = new BonoAnual(vehiculo1);
-        Bono bono2 = new BonoMensual(vehiculo2);
+        Bono bono1 = new BonoAnual(vehiculo1.getEstancia());
+        Bono bono2 = new BonoMensual(vehiculo2.getEstancia());
         bonoService.meter(bono1);
         bonoService.meter(bono2);
         

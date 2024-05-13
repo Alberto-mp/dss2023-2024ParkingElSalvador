@@ -42,17 +42,17 @@ public class PagoBono {
     }
 
     public void comprarBonoMensual(BigDecimal entregado, String mat, int meses, char F) {
-        BonoMensual bono = new BonoMensual(vehiculo);
+        BonoMensual bono = new BonoMensual(vehiculo.getEstancia());
         comprarBono(entregado,bono, mat, meses,F);
     }
 
     public void comprarBonoTrimestral(BigDecimal entregado, String mat, int trimestres, char F) {
-        BonoTrimestral bono = new BonoTrimestral(vehiculo);
+        BonoTrimestral bono = new BonoTrimestral(vehiculo.getEstancia());
         comprarBono(entregado,bono, mat, trimestres,F);
     }
 
     public void comprarBonoAnual(BigDecimal entregado, String mat, int annos, char F) {
-        BonoAnual bono = new BonoAnual(vehiculo);
+        BonoAnual bono = new BonoAnual(vehiculo.getEstancia());
         comprarBono(entregado,bono, mat, annos,F);
     }
 }

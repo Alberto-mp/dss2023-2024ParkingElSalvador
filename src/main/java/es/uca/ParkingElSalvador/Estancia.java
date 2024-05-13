@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -34,7 +36,9 @@ public class Estancia {
     @JsonBackReference
     private Vehiculo vehiculo;
 
-    @OneToOne    
+    @OneToOne
+    @JoinColumn(name = "bono_id", referencedColumnName = "id")
+    @JsonIgnore
     private Bono bono;
 
     public Estancia(Vehiculo veh) {
@@ -127,6 +131,10 @@ public class Estancia {
     // Getter para el bono asociado
     public Bono getBono() {
         return bono;
+    }
+
+    public void setBono(Bono b) {
+        bono = b;
     }
 
 

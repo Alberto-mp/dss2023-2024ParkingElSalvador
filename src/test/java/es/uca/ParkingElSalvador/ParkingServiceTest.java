@@ -34,9 +34,9 @@ public class ParkingServiceTest {
         double precioAnual = 400;
         parkingService.ponerPrecioBonos(precioMensual, precioTrimestral, precioAnual);
         Vehiculo v = new Vehiculo("1243A");
-        BonoMensual mensual = new BonoMensual(v);
-        BonoTrimestral trimestral = new BonoTrimestral(v);
-        BonoAnual anual = new BonoAnual(v);
+        BonoMensual mensual = new BonoMensual(v.getEstancia());
+        BonoTrimestral trimestral = new BonoTrimestral(v.getEstancia());
+        BonoAnual anual = new BonoAnual(v.getEstancia());
         assertEquals(precioMensual, mensual.getPrecio().doubleValue(), 0);
         assertEquals(precioTrimestral, trimestral.getPrecio().doubleValue(), 0);
         assertEquals(precioAnual, anual.getPrecio().doubleValue(), 0);

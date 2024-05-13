@@ -1,12 +1,27 @@
 package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "tipo")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = BonoMensual.class, name = "Mensual"),
+    @JsonSubTypes.Type(value = BonoTrimestral.class, name = "Trimestral"),
+    @JsonSubTypes.Type(value = BonoAnual.class, name = "Anual")
+})
 @Entity
 public abstract class Bono {
     @Id
@@ -14,28 +29,43 @@ public abstract class Bono {
     private Long id;
 
     private String matricula;
-    @OneToOne
-    private Vehiculo v;
+    @OneToOne(mappedBy = "bono")
+    @JsonIgnore
+    private Estancia es;
 
-    public Bono(Vehiculo vehiculo){
-        v = vehiculo;
-        matricula = v.getMatricula();
+    public Bono(Estancia estancia){
+        if(estancia!=null){
+            es = estancia;
+            matricula = estancia.getVehiculo().getMatricula();    
+        }
+        else{
+            es = null;
+            matricula = "";
+        }
     }
 
     public abstract BigDecimal getPrecio();
 
-    public Vehiculo getVehiculo() {
-        return v;
+    public Estancia getEstancia() {
+        return es;
+    }
+
+    public void setEstancia(Estancia e) {
+        es = e;
     }
 
     public String getMatriculaCoche(){
         return matricula;
     }
 
-    public abstract String tipoBono();
+    public void setMatricula(String s){
+        matricula = s;
+    }
+
+    public abstract String getTipoBono();
 
     @Override
     public String toString() {
-        return "Bono del vehiculo: " + v.getMatricula();
+        return "Bono del vehiculo: " + es.getVehiculo().getMatricula();
     }
 }

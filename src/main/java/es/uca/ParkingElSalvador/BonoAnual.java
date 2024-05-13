@@ -3,13 +3,19 @@ package es.uca.ParkingElSalvador;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+@JsonTypeName("Anual")
 @Entity
 public class BonoAnual extends Bono {
-    private static BigDecimal precio;
+    private static BigDecimal precio = new BigDecimal(0);
 
-    public BonoAnual(Vehiculo vehiculo) {
-        super(vehiculo);
+    public BonoAnual(Estancia estancia) {
+        super(estancia);
+    }
+
+    public BonoAnual() {
+        super(null);
     }
 
     @Override
@@ -22,7 +28,7 @@ public class BonoAnual extends Bono {
     }
 
     @Override
-    public String tipoBono() {
+    public String getTipoBono() {
         return "Anual";
     }
 }

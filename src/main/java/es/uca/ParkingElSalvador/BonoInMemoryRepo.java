@@ -14,7 +14,7 @@ public class BonoInMemoryRepo implements BonoRepository {
 
     @Override
     public void meter(Bono b) {
-        String matricula = b.getVehiculo().getMatricula();
+        String matricula = b.getEstancia().getVehiculo().getMatricula();
         if (!bonosPorMatricula.containsKey(matricula)) {
             bonosPorMatricula.put(matricula, new ArrayList<>());
         }
@@ -23,7 +23,7 @@ public class BonoInMemoryRepo implements BonoRepository {
 
     @Override
     public void sacar(Bono b) {
-        String matricula = b.getVehiculo().getMatricula();
+        String matricula = b.getEstancia().getVehiculo().getMatricula();
         if (bonosPorMatricula.containsKey(matricula)) {
             bonosPorMatricula.get(matricula).remove(b);
         }

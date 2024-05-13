@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 public class Vehiculo {
@@ -18,7 +20,7 @@ public class Vehiculo {
     private String matricula;
 
     @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    
+    @JsonManagedReference
     private Estancia estancia;
 
     public Vehiculo(String m){
