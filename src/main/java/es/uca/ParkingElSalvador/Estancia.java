@@ -6,13 +6,13 @@ import java.time.format.DateTimeFormatter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 
@@ -29,8 +29,9 @@ public class Estancia {
     private double dineroPagado;
     private boolean tieneBono;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehiculo_id")
+    @JsonBackReference
     private Vehiculo vehiculo;
 
     @OneToOne    

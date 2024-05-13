@@ -18,6 +18,7 @@ public class Vehiculo {
     private String matricula;
 
     @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    
     private Estancia estancia;
 
     public Vehiculo(String m){
