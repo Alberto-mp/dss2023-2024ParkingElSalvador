@@ -31,6 +31,7 @@ es\uca\ParkingElSalvador\Barrera.class
 es\uca\ParkingElSalvador\BonoController.class
 es\uca\ParkingElSalvador\ParkingController.class
 es\uca\ParkingElSalvador\BonoRepository.class
+es\uca\ParkingElSalvador\ParkingRepository.class
 es\uca\ParkingElSalvador\Cajero.class
 es\uca\ParkingElSalvador\CarRepositoryInMemoryRepo.class
 es\uca\ParkingElSalvador\CarRepository.class

@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class ParkingController {
 
     private final ParkingService parkingService;
+    private Parking p = null;
 
     @Autowired
     public ParkingController(ParkingService parkingService) {
@@ -20,36 +21,41 @@ public class ParkingController {
     public void setParking(@RequestParam("nombre") String nombre, 
                        @RequestParam("direccionPostal") String direccionPostal, 
                        @RequestParam("capacidadTotal") int capacidadTotal) {
-    Parking parking = new Parking();
-    parking.setNombre(nombre);
-    parking.setDireccionPostal(direccionPostal);
-    parking.setCapacidadTotal(capacidadTotal);
-    parking.setPlazasDisponibles(capacidadTotal); // Asumiendo que todas las plazas están disponibles inicialmente
-    parking.setPlazasOcupadas(0); // Asumiendo que no hay plazas ocupadas inicialmente
+    p = new Parking();
+    p.setNombre(nombre);
+    p.setDireccionPostal(direccionPostal);
+    p.setCapacidadTotal(capacidadTotal);
+    p.setPlazasDisponibles(capacidadTotal); // Asumiendo que todas las plazas están disponibles inicialmente
+    p.setPlazasOcupadas(0); // Asumiendo que no hay plazas ocupadas inicialmente
 
     
-    parkingService.setP(parking);
+    parkingService.setP(p);
 }
 
 
     @PostMapping("/entrada")
     public void entrada() throws Exception {
         parkingService.entrada();
+        parkingService.setP(p);
     }
 
     @PostMapping("/entrada/manual")
     public void entradaManual(@RequestParam String matricula) {
         parkingService.entrada(matricula);
+        parkingService.setP(p);
     }
 
     @PostMapping("/salida")
     public void salida() throws Exception {
         parkingService.salida();
+        parkingService.setP(p);
+
     }
 
     @PostMapping("/salida/manual")
     public void salidaManual(@RequestParam String matricula) {
         parkingService.salida(matricula);
+        parkingService.setP(p);
     }
 
     @PostMapping("/configurar/tarifa")

@@ -143,7 +143,6 @@ public class ParkingService {
             libro.save(vehiculo);
             p.incPlazasDisponibles();
             p.decPlazasOcupadas();
-
         }
     }
 
