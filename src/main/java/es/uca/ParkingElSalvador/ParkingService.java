@@ -16,6 +16,8 @@ public class ParkingService {
     private BonoService bonos;
     private Cajero caja;
     @Autowired
+    private ParkingRepository park;
+    @Autowired
     public ParkingService(Parking p, CarRepository c, EstanciasRepository e, BonoRepository b){
         this.p = p;
         barrera = new Barrera();
@@ -27,6 +29,8 @@ public class ParkingService {
         caja = new Cajero();
     }
 
+    
+    
     public void precioEstandar(long min){
         tarifa.ponerPrecioAlMinuto(min);;
     }
@@ -77,6 +81,7 @@ public class ParkingService {
     // Setters
     public void setP(Parking p) {
         this.p = p;
+        park.save(p);
     }
     
     public void setBarrera(Barrera barrera) {

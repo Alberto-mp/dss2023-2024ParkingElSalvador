@@ -16,6 +16,22 @@ public class ParkingController {
         this.parkingService = parkingService;
     }
 
+    @PostMapping("/configurar/parking")
+    public void setParking(@RequestParam("nombre") String nombre, 
+                       @RequestParam("direccionPostal") String direccionPostal, 
+                       @RequestParam("capacidadTotal") int capacidadTotal) {
+    Parking parking = new Parking();
+    parking.setNombre(nombre);
+    parking.setDireccionPostal(direccionPostal);
+    parking.setCapacidadTotal(capacidadTotal);
+    parking.setPlazasDisponibles(capacidadTotal); // Asumiendo que todas las plazas están disponibles inicialmente
+    parking.setPlazasOcupadas(0); // Asumiendo que no hay plazas ocupadas inicialmente
+
+    
+    parkingService.setP(parking);
+}
+
+
     @PostMapping("/entrada")
     public void entrada() throws Exception {
         parkingService.entrada();
