@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PagoBono {
-    private Vehiculo vehiculo;
+private Vehiculo vehiculo=null;
     private CarService v;
 
     public PagoBono(CarService c) {
@@ -42,6 +42,7 @@ public class PagoBono {
     }
 
     public void comprarBonoMensual(BigDecimal entregado, String mat, int meses, char F) {
+        vehiculo = v.getVehiculo(mat);
         BonoMensual bono = new BonoMensual(vehiculo.getEstancia());
         comprarBono(entregado,bono, mat, meses,F);
     }

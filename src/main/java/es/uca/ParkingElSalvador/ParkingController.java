@@ -49,7 +49,6 @@ public class ParkingController {
     public void salida() throws Exception {
         parkingService.salida();
         parkingService.setP(p);
-
     }
 
     @PostMapping("/salida/manual")
