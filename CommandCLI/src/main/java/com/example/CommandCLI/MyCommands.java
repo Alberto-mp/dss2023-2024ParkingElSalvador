@@ -158,7 +158,7 @@ public class MyCommands {
 
     @ShellMethod("Realiza un pago estándar")
     public String pagarEstandar(@ShellOption double entregado, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format("entregado=%.2f&matricula=%s&formato=%c", entregado, matricula, formato);
+        String requestBody = String.format(Locale.US,"entregado=%.2f&matricula=%s&formato=%c", entregado, matricula, formato);
         return callApiPost("/parking/pago/estandar", requestBody);
     }
 
@@ -170,13 +170,13 @@ public class MyCommands {
 
     @ShellMethod("Compra un bono trimestral")
     public String pagarBonoTrimestral(@ShellOption double entregado, @ShellOption int nTrimestres, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format("entregado=%.2f&nTrimestres=%d&matricula=%s&formato=%c", entregado, nTrimestres, matricula, formato);
+        String requestBody = String.format(Locale.US,"entregado=%.2f&nTrimestres=%d&matricula=%s&formato=%c", entregado, nTrimestres, matricula, formato);
         return callApiPost("/parking/pago/bonoTrimestral", requestBody);
     }
 
     @ShellMethod("Compra un bono anual")
     public String pagarBonoAnual(@ShellOption double entregado, @ShellOption int nAnnos, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format("entregado=%.2f&nAnnos=%d&matricula=%s&formato=%c", entregado, nAnnos, matricula, formato);
+        String requestBody = String.format(Locale.US,"entregado=%.2f&nAnnos=%d&matricula=%s&formato=%c", entregado, nAnnos, matricula, formato);
         return callApiPost("/parking/pago/bonoAnual", requestBody);
     }
 

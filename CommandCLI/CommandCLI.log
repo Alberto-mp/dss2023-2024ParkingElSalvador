@@ -86,3 +86,17 @@
 1715893516072:entrada-manual ab2
 1715893517858:pagar-bono-mensual 120 1 ab2 E
 1715893566169:salida-manual ab2
+1715893619044:help
+1715893627655:entrada-manual ab2
+1715893643539:get-estancias-por-matricula ab2
+1715893656966:get-all-bonos
+1715893701288:pagar-bono-mensual 120 1 ab2 E
+1715893703486:salida-manual ab2
+1715893713342:entrada-manual pagoEstandar
+1715893789295:help
+1715893808108:get-num-cars
+1715893842308:get-all-estancias
+1715893951856:pagar-estandar 100 pagoEstandar E
+1715893991810:configurar-tarifa 1
+1715893999284:entrada-manual a
+1715894015553:pagar-estandar 100 a E
