@@ -9,3 +9,40 @@
 1715874473252:get-weekly-income
 1715874481212:get-monthly-income
 1715874495478:get-state-as-string
+1715876345977:help
+1715876450445:configurar-parking "ElSalvador" "11140 C/prueba" 100
+1715876491452:configurar-parking ElSalvador 11140C/prueba 100
+1715876576340:getDailyIncome
+1715876677027:get-monthly-income
+1715876690412:configurar-parking "ElSalvador" "11140 C/prueba" 100
+1715877288422:help
+1715877310862:getSystemDate
+1715877348348:get-system-date
+1715877360854:get-daily-income
+1715877370113:get-weekly-income
+1715877379634:get-monthly-income
+1715877415283:configurar-parking "ElSalvador" "11140 C/prueba" 100
+1715877444985:entrada ABC123
+1715877454402:entrada "ABC123"
+1715877501835:get-estancias-por-matricula "ABC123"
+1715877514861:get-all-bonos
+1715877541191:get-all-estancias
+1715877558094:get-numero-de-estancias
+1715877577863:entrada-manual ABC123
+1715877668595:configurar-precios-bonos 100 300 1200
+1715877703227:configurar-precios-bonos 10
+1715877707576:configurar-precios-bonos 10 12 12
+1715877769553:configurar-precios-bonos "10" "12" "12"
+1715877782828:configurar-precios-bonos "10,00" "12,00" "12,00"
+1715877795398:configurar-precios-bonos 10,00 12,00 12,00
+1715877910500:configurar-precios-bonos 10.00 12.00 12.00
+1715878171030:configurar-parking "ElSalvador" "11140 C/prueba" 100
+1715878183491:help
+1715878206358:configurar-precios-bonos 10.00 100.00 1000.00
+1715878269189:configurar-tarifa 100
+1715878302415:entrada-manual ABC123
+1715878335887:pagar-estandar 1000 ABC123 E
+1715878341359:pagar-estandar 1000 ABC123 "T"
+1715878345715:pagar-estandar 1000 "ABC123" "T"
+1715878715943:help
+1715878739282:configurar-parking "prueba" "pruebadir" 10
