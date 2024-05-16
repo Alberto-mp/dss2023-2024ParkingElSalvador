@@ -46,3 +46,43 @@
 1715878345715:pagar-estandar 1000 "ABC123" "T"
 1715878715943:help
 1715878739282:configurar-parking "prueba" "pruebadir" 10
+1715890858065:hrlp
+1715890859927:help
+1715890926452:configurar-parking "PruebaPark" "DireccionPrueba" 100
+1715890956101:configurar-precios-bonos 10 10 10
+1715891297608:help
+1715891313193:configurar-precios-bonos 10 10 10
+1715891322346:configurar-precios-bonos 10.00 10.00 10.00
+1715891333181:shell:>configurar-precios-bonos 10.00 20.00 30.00
+1715891351935:configurar-precios-bonos 10.00 20.00 30.00
+1715892757463:configurar-parking "PruebaPark" "DireccionPrueba" 100
+1715892762925:configurar-precios-bonos 10 10 10
+1715892779410:configurar-precios-bonos 10.50 100.89 210.56
+1715892819042:help
+1715892827132:entrada-manual ABC12
+1715892838243:configurar-tarifa 1
+1715892875755:pagar-estandar 120 ABC12 E
+1715892884875:pagar-estandar 120 ABC12 "E"
+1715892956230:pagar-bono-trimestral 120 ABC12 "E"
+1715892972239:pagar-bono-trimestral 120 2 ABC12 "E"
+1715893094051:help
+1715893109135:configurar-parking "prueba" "dir" 10
+1715893130520:configurar-precios-bonos 10 10 10
+1715893138632:entrada-manual ab2
+1715893200331:pagar-bono-mensual 120 1 ab2 E
+1715893248580:pagar-bono-mensual 120.00 1 ab2 E
+1715893252490:pagar-bono-mensual 120,00 1 ab2 E
+1715893348935:configurar-parking "prueba" "dir" 10
+1715893350766:configurar-precios-bonos 10 10 10
+1715893354186:entrada-manual ab2
+1715893357125:pagar-bono-mensual 120 1 ab2 E
+1715893408980:configurar-parking "PruebaPark" "DireccionPrueba" 100
+1715893410762:configurar-precios-bonos 10 10 10
+1715893413187:entrada-manual ABC12
+1715893425817:pagar-bono-mensual 120 ABC12 E
+1715893440284:pagar-bono-mensual 120 1 ABC12 E
+1715893511928:configurar-parking "prueba" "dir" 10
+1715893514395:configurar-precios-bonos 10 10 10
+1715893516072:entrada-manual ab2
+1715893517858:pagar-bono-mensual 120 1 ab2 E
+1715893566169:salida-manual ab2

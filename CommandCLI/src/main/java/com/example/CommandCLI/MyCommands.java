@@ -7,6 +7,9 @@ import org.springframework.shell.standard.ShellOption;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.math.BigDecimal;
+import java.util.Locale;  // Añadir esta línea
+
 @ShellComponent
 public class MyCommands {
 
@@ -148,9 +151,10 @@ public class MyCommands {
 
     @ShellMethod("Configura los precios de los bonos")
     public String configurarPreciosBonos(@ShellOption double mes, @ShellOption double tri, @ShellOption double anno) {
-        String requestBody = String.format("mes=%.2f&tri=%.2f&anno=%.2f", mes, tri, anno);
+        String requestBody = String.format(Locale.US, "mes=%.2f&tri=%.2f&anno=%.2f", mes, tri, anno);
         return callApiPost("/parking/configurar/preciosBonos", requestBody);
     }
+    
 
     @ShellMethod("Realiza un pago estándar")
     public String pagarEstandar(@ShellOption double entregado, @ShellOption String matricula, @ShellOption char formato) {
@@ -160,7 +164,7 @@ public class MyCommands {
 
     @ShellMethod("Compra un bono mensual")
     public String pagarBonoMensual(@ShellOption double entregado, @ShellOption int nMeses, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format("entregado=%.2f&nMeses=%d&matricula=%s&formato=%c", entregado, nMeses, matricula, formato);
+        String requestBody = String.format(Locale.US, "entregado=%.2f&nMeses=%d&matricula=%s&formato=%c", entregado, nMeses, matricula, formato);
         return callApiPost("/parking/pago/bonoMensual", requestBody);
     }
 
