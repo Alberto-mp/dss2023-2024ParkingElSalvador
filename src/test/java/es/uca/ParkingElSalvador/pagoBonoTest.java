@@ -19,7 +19,7 @@ public class PagoBonoTest {
         c.save(vehiculo);
         cajero = new Cajero();
         cajero.setDinero(new BigDecimal(500000));
-        pago = new PagoBono(c);
+        pago = new PagoBono(c,new BonoService(new BonoInMemoryRepo()));
     }
 
     @Test

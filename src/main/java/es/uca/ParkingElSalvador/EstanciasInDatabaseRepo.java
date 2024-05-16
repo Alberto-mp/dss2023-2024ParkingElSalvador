@@ -21,12 +21,12 @@ public class EstanciasInDatabaseRepo implements EstanciasRepository {
 
     @Override
     public boolean haestadoCoche(String matricula) {
-        return estanciasRepositoryJPA.existsByVehiculoMatricula(matricula);
+        return estanciasRepositoryJPA.existsByMatricula(matricula);
     }
 
     @Override
     public List<Estancia> estancias(String matricula) {
-        return estanciasRepositoryJPA.findByVehiculoMatricula(matricula); // Suponiendo que esto devuelve una List<Estancia>
+        return estanciasRepositoryJPA.findByMatricula(matricula); // Suponiendo que esto devuelve una List<Estancia>
     }
     
 

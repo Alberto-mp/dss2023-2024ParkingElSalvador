@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,9 +31,11 @@ public class Estancia {
     private boolean tieneBono;
     
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vehiculo_id")
+    @JoinColumn(name = "vehiculo_id", nullable = true)
     @JsonBackReference
     private Vehiculo vehiculo;
+
+    private String matricula;
 
     @OneToOne
     @JoinColumn(name = "bono_id", referencedColumnName = "id")
@@ -49,6 +50,7 @@ public class Estancia {
         tieneBono = false; //Por defecto no tendrán
         dineroPagado = 0;
         bono = null;
+        matricula = veh.getMatricula();
     }
 
     public Estancia() {
@@ -59,14 +61,24 @@ public class Estancia {
         tieneBono = false; //Por defecto no tendrán
         dineroPagado = 0;
         bono = null;
+        matricula = "";
     }
 
     public void setVehiculo(Vehiculo v){
         vehiculo = v;
     }
 
+    // Getters y setters
+    public String getMatriculaVehiculo() {
+        return matricula;
+    }
+
+    public void setMatriculaVehiculo(String matricula) {
+        this.matricula = matricula;
+    }
+
     public String toString() {
-        return "Estancia del vehiculo "+vehiculo.getMatricula()+" Llego "+horaLlegada()+". Salio "+horaSalida();
+        return "Estancia del vehiculo "+matricula+" Llego "+horaLlegada()+". Salio "+horaSalida();
     }
 
     public void termina(){

@@ -28,8 +28,6 @@ public class ParkingService {
         bonos = new BonoService(b);
         caja = new Cajero();
     }
-
-    
     
     public void precioEstandar(long min){
         tarifa.ponerPrecioAlMinuto(min);;
@@ -139,6 +137,12 @@ public class ParkingService {
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
+            Estancia estancia = vehiculo.getEstancia();
+            if(estancia!=null){
+                estancia.setMatriculaVehiculo(matricula);
+                estancia.setVehiculo(null);
+                libro.save(vehiculo);
+            }
             vehiculos.delete(vehiculo.getMatricula());
             libro.save(vehiculo);
             p.incPlazasDisponibles();
@@ -173,6 +177,12 @@ public class ParkingService {
             barrera.abrirBarrera();
             // Sale del parking
             barrera.cerrarBarrera();
+            Estancia estancia = vehiculo.getEstancia();
+            if(estancia!=null){
+                estancia.setMatriculaVehiculo(matricula);
+                estancia.setVehiculo(null);
+                libro.save(vehiculo);
+            }
             vehiculos.delete(vehiculo.getMatricula());
             p.incPlazasDisponibles();
             p.decPlazasOcupadas();
@@ -187,17 +197,17 @@ public class ParkingService {
     }
 
     public void vehiculoPagaBonoMensual(BigDecimal entregado, int nMeses, String mat, char F){
-        PagoBono pBono = new PagoBono(vehiculos);
+        PagoBono pBono = new PagoBono(vehiculos,bonos);
         pBono.comprarBonoMensual(entregado,mat,nMeses,F);
     }
 
     public void vehiculoPagaBonoTrimestral(BigDecimal entregado, int nTrimestres, String mat, char F){
-        PagoBono pBono = new PagoBono(vehiculos);
+        PagoBono pBono = new PagoBono(vehiculos,bonos);
         pBono.comprarBonoTrimestral(entregado,mat,nTrimestres,F);
     }
     
     public void vehiculoPagaBonoAnual(BigDecimal entregado,int nAnnos, String mat, char F){
-        PagoBono pBono = new PagoBono(vehiculos);
+        PagoBono pBono = new PagoBono(vehiculos,bonos);
         pBono.comprarBonoAnual(entregado,mat,nAnnos,F);
     }
 }

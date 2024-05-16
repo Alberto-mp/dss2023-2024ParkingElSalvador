@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.WeekFields;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +12,7 @@ public class Informe {
     private ParkingService parking;
     private LocalDateTime creacion;
 
-
+    @Autowired
     public Informe(ParkingService p){
         parking = p;
         creacion = LocalDateTime.now();
@@ -47,7 +48,7 @@ public class Informe {
         int hoy = LocalDateTime.now().getDayOfYear();
         for(int i = 0; i < libro.numEstancias(); i++){
             if(libro.getAllEstancias().get(i).getLlegada().getDayOfYear() == hoy)
-                ingresoDiario += parking.getLibro().getAllEstancias().get(i).getVehiculo().getEstancia().getDineroPagado();
+                ingresoDiario += parking.getLibro().getAllEstancias().get(i).getDineroPagado();
         }
         return ingresoDiario;
     }
@@ -59,7 +60,7 @@ public class Informe {
         int semana = LocalDateTime.now().get(WeekFields.ISO.weekOfWeekBasedYear());
         for(int i = 0; i < libro.numEstancias(); i++){
             if(libro.getAllEstancias().get(i).getLlegada().get(WeekFields.ISO.weekOfWeekBasedYear()) == semana)
-            ingresoSemanal += parking.getLibro().getAllEstancias().get(i).getVehiculo().getEstancia().getDineroPagado();
+            ingresoSemanal += parking.getLibro().getAllEstancias().get(i).getDineroPagado();
         }
         return ingresoSemanal;
     }
@@ -71,7 +72,7 @@ public class Informe {
         int mes = LocalDateTime.now().getMonthValue();
         for(int i = 0; i < libro.numEstancias(); i++){
             if(libro.getAllEstancias().get(i).getLlegada().getMonthValue() == mes)
-            ingresoMensual += parking.getLibro().getAllEstancias().get(i).getVehiculo().getEstancia().getDineroPagado();
+            ingresoMensual += parking.getLibro().getAllEstancias().get(i).getDineroPagado();
         }
         return ingresoMensual;
     }

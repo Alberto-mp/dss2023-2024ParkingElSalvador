@@ -19,7 +19,7 @@ public class Vehiculo {
 
     private String matricula;
 
-    @OneToOne(mappedBy = "vehiculo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "vehiculo", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JsonManagedReference
     private Estancia estancia;
 

@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PagoBono {
-private Vehiculo vehiculo=null;
+    private Vehiculo vehiculo=null;
     private CarService v;
+    private BonoService b;
 
-    public PagoBono(CarService c) {
+    public PagoBono(CarService c, BonoService b) {
         v = c;
+        this.b = b;
     }
 
     public void comprarBono(BigDecimal entregado, Bono bono, String mat, int duracion, char F) {
@@ -37,6 +39,8 @@ private Vehiculo vehiculo=null;
                 finBono = finBono.plusYears(duracion);
             }
             vehiculo.getEstancia().setFinBono(finBono);
+            b.save(bono);
+            vehiculo.getEstancia().setBono(bono);
             v.save(vehiculo);
         }
     }
@@ -48,11 +52,13 @@ private Vehiculo vehiculo=null;
     }
 
     public void comprarBonoTrimestral(BigDecimal entregado, String mat, int trimestres, char F) {
+        vehiculo = v.getVehiculo(mat);
         BonoTrimestral bono = new BonoTrimestral(vehiculo.getEstancia());
         comprarBono(entregado,bono, mat, trimestres,F);
     }
 
     public void comprarBonoAnual(BigDecimal entregado, String mat, int annos, char F) {
+        vehiculo = v.getVehiculo(mat);
         BonoAnual bono = new BonoAnual(vehiculo.getEstancia());
         comprarBono(entregado,bono, mat, annos,F);
     }
