@@ -7,6 +7,11 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uca.ParkingElSalvador.Informes.Cajero;
+import es.uca.ParkingElSalvador.Pagos.PagoEstandar;
+import es.uca.ParkingElSalvador.Vehiculos.CarService;
+import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
+
 public class PagoEstandarTest {
     private CarService c;
     private Vehiculo vehiculo;

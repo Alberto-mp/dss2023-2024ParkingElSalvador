@@ -7,6 +7,14 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uca.ParkingElSalvador.Bonos.BonoAnual;
+import es.uca.ParkingElSalvador.Bonos.BonoMensual;
+import es.uca.ParkingElSalvador.Bonos.BonoTrimestral;
+import es.uca.ParkingElSalvador.Parking.Parking;
+import es.uca.ParkingElSalvador.Parking.ParkingElSalvador;
+import es.uca.ParkingElSalvador.Parking.ParkingService;
+import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
+
 public class ParkingServiceTest {
 
     private ParkingService parkingService;

@@ -11,6 +11,8 @@ import org.junit.Test;
 
 import com.google.zxing.NotFoundException;
 
+import es.uca.ParkingElSalvador.Parking.QRservice;
+
 public class QRserviceTest {
     private QRservice qrService;
 

@@ -3,6 +3,13 @@ package es.uca.ParkingElSalvador;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import es.uca.ParkingElSalvador.Bonos.Bono;
+import es.uca.ParkingElSalvador.Bonos.BonoAnual;
+import es.uca.ParkingElSalvador.Bonos.BonoInMemoryRepo;
+import es.uca.ParkingElSalvador.Bonos.BonoMensual;
+import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
+
 import java.math.BigDecimal;
 import java.util.List;
 

@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uca.ParkingElSalvador.Vehiculos.CarRepositoryInMemoryRepo;
+import es.uca.ParkingElSalvador.Vehiculos.CarService;
+import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
+
 public class CarRepositoryTest {
     private CarService carRepository;
 

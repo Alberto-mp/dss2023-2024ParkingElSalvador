@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uca.ParkingElSalvador.Parking.Parking;
+
 public class ParkingTest {
 
     private Parking parking;

@@ -3,6 +3,9 @@ package es.uca.ParkingElSalvador;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import es.uca.ParkingElSalvador.Informes.Cajero;
+
 import java.math.BigDecimal;
 
 public class CajeroTest {

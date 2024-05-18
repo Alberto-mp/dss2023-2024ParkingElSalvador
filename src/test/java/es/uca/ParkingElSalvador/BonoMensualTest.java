@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uca.ParkingElSalvador.Bonos.BonoMensual;
+import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
+
 public class BonoMensualTest {
     private Vehiculo vehiculo;
     private BonoMensual bono;

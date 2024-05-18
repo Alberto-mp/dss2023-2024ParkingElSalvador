@@ -1,6 +1,9 @@
 package es.uca.ParkingElSalvador;
 
 import org.junit.Test;
+
+import es.uca.ParkingElSalvador.Pagos.Estandar;
+
 import static org.junit.Assert.*;
 
 public class EstandarTest {
