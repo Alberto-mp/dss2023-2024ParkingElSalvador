@@ -125,3 +125,34 @@
 1716058760091:salida-manual ab12
 1716058764049:entrada-manual ab12
 1716058784546:salida-manual ab12
+1716059291874:help
+1716059313198:configurar-parking "parking" "direccion" 10
+1716059327037:configurar-precio-bonos 12 120 1200
+1716059330835:configurar-precios-bonos 12 120 1200
+1716059340004:entrada-manual 12as
+1716059363661:pagar-bono-anual 120000 1 12as E
+1716059429284:salida-manual 12as
+1716059456390:entrada-manual 12as
+1716059481487:salida-manual 12as
+1716060123097:configurar-parking "Nombre" "Dir" 10
+1716060125434:configurar-precios-bonos 12 130 1333
+1716060129126:entrada-manual ab12
+1716060132123:pagar-bono-anual 1000000 1 ab12 E
+1716060136963:salida-manual ab12
+1716060140678:entrada-manual ab12
+1716060142386:salida-manual ab12
+1716060326172:configurar-parking "parking" "direccion" 10
+1716060327907:configurar-precio-bonos 12 120 1200
+1716060330908:configurar-precios-bonos 12 120 1200
+1716060332442:entrada-manual 12as
+1716060333706:pagar-bono-anual 120000 1 12as E
+1716060335893:salida-manual 12as
+1716060336954:entrada-manual 12as
+1716060338027:salida-manual 12as
+1716060903387:configurar-parking "Nombre" "Dir" 10
+1716060905722:configurar-precios-bonos 12 130 1333
+1716060908423:entrada-manual ab12
+1716060909651:pagar-bono-anual 1000000 1 ab12 E
+1716060913781:salida-manual ab12
+1716060953192:entrada-manual ab12
+1716060954978:salida-manual ab12

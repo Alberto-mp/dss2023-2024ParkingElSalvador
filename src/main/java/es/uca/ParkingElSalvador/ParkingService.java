@@ -1,6 +1,7 @@
 package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -115,6 +116,21 @@ public class ParkingService {
         // Se lee la matricula del qr generado cuando llega el ultimo coche
         String matricula = qr.leerCodigoQR();
         Vehiculo vehiculo = new Vehiculo(matricula);
+        List<Bono> b = bonos.getBonos(matricula);
+        for(Bono bono : b){
+            if(bono.getTipoBono().equals("Mensual") && bono.getFinBono().isAfter(vehiculo.getEstancia().getLlegada())){
+                vehiculo.getEstancia().compraBono();
+                vehiculo.getEstancia().setBono(bono);
+            }
+            else if(bono.getTipoBono().equals("Trimestral") && bono.getFinBono().isAfter(vehiculo.getEstancia().getLlegada())){
+                vehiculo.getEstancia().compraBono();
+                vehiculo.getEstancia().setBono(bono);
+            }
+            else if(bono.getTipoBono().equals("Anual") && bono.getFinBono().isAfter(vehiculo.getEstancia().getLlegada())){
+                vehiculo.getEstancia().compraBono();
+                vehiculo.getEstancia().setBono(bono);
+            }
+        }
         // Comprobamos que haya espacio
         if(p.getPlazasDisponibles() > 0){
             // Abrimos la barrera en caso de estar cerrada
@@ -154,6 +170,21 @@ public class ParkingService {
 
     public void entrada(String matricula) {
         Vehiculo vehiculo = new Vehiculo(matricula);
+        List<Bono> b = bonos.getBonos(matricula);
+        for(Bono bono : b){
+            if(bono.getTipoBono().equals("Mensual") && bono.getFinBono().isAfter(vehiculo.getEstancia().getLlegada())){
+                vehiculo.getEstancia().compraBono();
+                vehiculo.getEstancia().setBono(bono);
+            }
+            else if(bono.getTipoBono().equals("Trimestral") && bono.getFinBono().isAfter(vehiculo.getEstancia().getLlegada())){
+                vehiculo.getEstancia().compraBono();
+                vehiculo.getEstancia().setBono(bono);
+            }
+            else if(bono.getTipoBono().equals("Anual") && bono.getFinBono().isAfter(vehiculo.getEstancia().getLlegada())){
+                vehiculo.getEstancia().compraBono();
+                vehiculo.getEstancia().setBono(bono);
+            }
+        }
         // Comprobamos que haya espacio
         if(p.getPlazasDisponibles() > 0){
             // Abrimos la barrera en caso de estar cerrada
@@ -181,6 +212,7 @@ public class ParkingService {
             if(estancia!=null){
                 estancia.setMatriculaVehiculo(matricula);
                 estancia.setVehiculo(null);
+                estancia.setBono(null);
                 libro.save(vehiculo);
             }
             vehiculos.delete(vehiculo.getMatricula());
