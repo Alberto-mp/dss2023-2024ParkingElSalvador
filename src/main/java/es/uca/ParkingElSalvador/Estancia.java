@@ -25,8 +25,8 @@ public class Estancia {
 
     private LocalDateTime llegada;
     private LocalDateTime salida;
-    private LocalDateTime finBono;
-    private boolean pagado;
+    
+    private boolean isPagadoEstandar;
     private double dineroPagado;
     private boolean tieneBono;
     
@@ -46,7 +46,7 @@ public class Estancia {
         llegada = LocalDateTime.now();
         salida = null;
         vehiculo = veh;
-        pagado = false;
+        isPagadoEstandar = false;
         tieneBono = false; //Por defecto no tendrán
         dineroPagado = 0;
         bono = null;
@@ -57,7 +57,7 @@ public class Estancia {
         llegada = LocalDateTime.now();
         salida = null;
         vehiculo = null;
-        pagado = false;
+        isPagadoEstandar = false;
         tieneBono = false; //Por defecto no tendrán
         dineroPagado = 0;
         bono = null;
@@ -94,12 +94,10 @@ public class Estancia {
     }
 
     public void pagarEstandar(){
-        pagado = true;
+        isPagadoEstandar = true;
     }
 
-    public void setFinBono(LocalDateTime f){
-        finBono = f;
-    }
+    
 
     public void setDineroPagado(double d){
         dineroPagado = d;
@@ -115,14 +113,11 @@ public class Estancia {
         return salida;
     }
 
-    // Getter para la fecha de fin de bono
-    public LocalDateTime getFinBono() {
-        return finBono;
-    }
+    
 
     // Getter para el estado de pago
-    public boolean isPagado() {
-        return pagado;
+    public boolean isPagadoEstandar() {
+        return isPagadoEstandar;
     }
 
     // Getter para el dinero pagado
@@ -174,7 +169,7 @@ public class Estancia {
 
     public boolean bonoValido(){
         if(tieneBono){
-            if(LocalDateTime.now().isBefore(finBono))
+            if(LocalDateTime.now().isBefore(bono.getFinBono()))
                 return true;
             else
                 return false;

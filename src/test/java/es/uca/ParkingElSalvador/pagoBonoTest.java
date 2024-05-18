@@ -27,7 +27,7 @@ public class PagoBonoTest {
         try {
             pago.comprarBonoMensual(new BigDecimal(1),vehiculo.getMatricula(),1,'E'); // Compra de bono mensual válido
             assertTrue("El vehículo debería haber comprado un bono mensual", vehiculo.getEstancia().isTieneBono());
-            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.getEstancia().getFinBono());
+            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.getEstancia().getBono().getFinBono());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }
@@ -38,7 +38,7 @@ public class PagoBonoTest {
         try {
             pago.comprarBonoTrimestral(new BigDecimal(1),vehiculo.getMatricula(),1,'T'); // Compra de bono trimestral válido
             assertTrue("El vehículo debería haber comprado un bono trimestral", vehiculo.getEstancia().isTieneBono());
-            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.getEstancia().getFinBono());
+            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.getEstancia().getBono().getFinBono());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }
@@ -49,7 +49,7 @@ public class PagoBonoTest {
         try {
             pago.comprarBonoAnual(new BigDecimal(1),vehiculo.getMatricula(),1,'E'); // Compra de bono anual válido
             assertTrue("El vehículo debería haber comprado un bono anual", vehiculo.getEstancia().isTieneBono());
-            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.getEstancia().getFinBono());
+            assertNotNull("El vehículo debería tener una fecha de fin de bono", vehiculo.getEstancia().getBono().getFinBono());
         } catch (Exception e) {
             fail("Se lanzó una excepción inesperada: " + e.getMessage());
         }

@@ -38,9 +38,9 @@ public class PagoBono {
             } else if (bono instanceof BonoAnual) {
                 finBono = finBono.plusYears(duracion);
             }
-            vehiculo.getEstancia().setFinBono(finBono);
             b.save(bono);
             vehiculo.getEstancia().setBono(bono);
+            vehiculo.getEstancia().getBono().setFinBono(finBono);
             v.save(vehiculo);
         }
     }

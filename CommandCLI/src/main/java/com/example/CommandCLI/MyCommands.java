@@ -67,7 +67,7 @@ public class MyCommands {
     public String getSystemDate() {
         return callApiGet("/informes/fecha");
     }
-
+    /* Este metodo... */
     @ShellMethod("Obtiene ingresos diarios")
     public String getDailyIncome() {
         return callApiGet("/informes/ingreso/diario");

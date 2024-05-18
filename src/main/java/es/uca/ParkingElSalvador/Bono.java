@@ -1,8 +1,8 @@
 package es.uca.ParkingElSalvador;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +27,7 @@ public abstract class Bono {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private LocalDateTime finBono;
     private String matricula;
     @OneToOne(mappedBy = "bono")
     @JsonIgnore
@@ -48,6 +48,15 @@ public abstract class Bono {
 
     public Estancia getEstancia() {
         return es;
+    }
+
+    public void setFinBono(LocalDateTime f){
+        finBono = f;
+    }
+
+    // Getter para la fecha de fin de bono
+    public LocalDateTime getFinBono() {
+        return finBono;
     }
 
     public void setEstancia(Estancia e) {

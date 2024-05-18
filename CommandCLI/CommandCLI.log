@@ -100,3 +100,28 @@
 1715893991810:configurar-tarifa 1
 1715893999284:entrada-manual a
 1715894015553:pagar-estandar 100 a E
+1715938960124:help
+1715939286944:configurar-parking "ParkingPrueba" "DireccionPrueba" 10
+1715939303587:configurar-precios-bonos 20 60 240
+1715939313512:entrada-manual XYZ123
+1715939331030:pagar-bono-anual 250 1 XYZ123 E
+1715939341658:salida-manual XYZ123
+1715939348859:get-daily-income
+1715941209050:help
+1715941639977:configurar-parking "ParkingPrueba" "ParkingDireccion" 100
+1715941661313:configurar-precios-bono 20 60 240
+1715941665619:configurar-precios-bonos 20 60 240
+1715941700750:entrada-manual XYZ123
+1715941783889:pagar-bono-anual 250 1 XYZ123 E
+1716057991676:help
+1716058487365:configurar-parking "Nombre" "Dir" 10
+1716058499423:configurar-precios-bonos 12 130 1333
+1716058508373:entrada-manual ab12
+1716058531673:pagar-bono-anual 1000000 1 ab12 E
+1716058687761:configurar-parking "Nombre" "Dir" 10
+1716058690108:configurar-precios-bonos 12 130 1333
+1716058691999:entrada-manual ab12
+1716058693534:pagar-bono-anual 1000000 1 ab12 E
+1716058760091:salida-manual ab12
+1716058764049:entrada-manual ab12
+1716058784546:salida-manual ab12
