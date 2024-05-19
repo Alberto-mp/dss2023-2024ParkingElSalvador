@@ -166,3 +166,8 @@
 1716065341617:salida-manual ab12
 1716065342870:entrada-manual ab12
 1716065344130:salida-manual ab12
+1716151604000:help
+1716151622289:configurar-parking "s" "s" 10
+1716153150583:help
+1716153169587:configurar-parking "w" "s" 10
+1716153197343:get-estancias-por-matricula as

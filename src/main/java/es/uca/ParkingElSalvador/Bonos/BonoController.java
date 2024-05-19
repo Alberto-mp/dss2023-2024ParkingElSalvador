@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import es.uca.ParkingElSalvador.Estancias.Estancia;
 import es.uca.ParkingElSalvador.Estancias.EstanciasService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +31,11 @@ public class BonoController {
         this.bonoService = bonoService;
     }
 
-    @PostMapping
+     @PostMapping
+    @Operation(summary = "Guardar un nuevo bono", description = "Asocia y guarda un bono a una estancia específica basada en la matrícula")
+    @ApiResponse(responseCode = "200", description = "Bono guardado correctamente")
+    @ApiResponse(responseCode = "400", description = "Estancia no encontrada")
+    @ApiResponse(responseCode = "500", description = "Error interno al guardar el bono")
     public ResponseEntity<?> saveBono(@RequestBody Bono bono, @RequestParam String matricula) {
     try {
         // Buscar la estancia usando el ID proporcionado
@@ -53,7 +62,10 @@ public class BonoController {
         }
     }
 
-    @DeleteMapping("/{matricula}") 
+    @DeleteMapping("/{matricula}")
+    @Operation(summary = "Eliminar un bono", description = "Elimina el bono más reciente asociado a la matrícula proporcionada")
+    @ApiResponse(responseCode = "200", description = "Bono eliminado correctamente")
+    @ApiResponse(responseCode = "400", description = "No se encontró la estancia asociada al bono")
     public ResponseEntity<?> deleteBono(@PathVariable String matricula) {
         Bono b;
         int index = bonoService.getBonos(matricula).size();
@@ -70,12 +82,18 @@ public class BonoController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{matricula}") 
+    @GetMapping("/{matricula}")
+    @Operation(summary = "Obtener bonos por matrícula", description = "Devuelve todos los bonos asociados a una matrícula específica")
+    @ApiResponse(responseCode = "200", description = "Bonos devueltos correctamente",
+                 content = @Content(array = @ArraySchema(schema = @Schema(implementation = Bono.class))))
     public List<Bono> getBonosByMatricula(@PathVariable String matricula) {
         return bonoService.getBonos(matricula);
     }
 
-    @GetMapping 
+    @GetMapping
+    @Operation(summary = "Obtener todos los bonos", description = "Devuelve todos los bonos registrados en el sistema")
+    @ApiResponse(responseCode = "200", description = "Todos los bonos devueltos correctamente",
+                 content = @Content(array = @ArraySchema(schema = @Schema(implementation = Bono.class))))
     public List<Bono> getAllBonos() {
         return bonoService.getBonos();
     }

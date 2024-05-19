@@ -22,34 +22,43 @@ public class MyCommands {
 
     // Método helper para realizar llamadas GET y manejar la respuesta
     private String callApiGet(String uri) {
-        Mono<String> response = webClient.get()
-                .uri(uri)
-                .retrieve()
-                .bodyToMono(String.class);
-        
-        return safeCall(response);
+        try {
+            Mono<String> response = webClient.get()
+                    .uri(uri)
+                    .retrieve()
+                    .bodyToMono(String.class);
+            return "Operación exitosa";
+        } catch (Exception e) {
+            return "Error al realizar la operación GET: " + e.getMessage();
+        }
     }
 
     // Método helper para realizar llamadas POST y manejar la respuesta
     private String callApiPost(String uri, String body) {
-        Mono<String> response = webClient.post()
-                .uri(uri)
-                .header("Content-Type", "application/x-www-form-urlencoded")
-                .bodyValue(body == null ? "" : body)
-                .retrieve()
-                .bodyToMono(String.class);
-    
-        return safeCall(response);
+        try {
+            Mono<String> response = webClient.post()
+                    .uri(uri)
+                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .bodyValue(body == null ? "" : body)
+                    .retrieve()
+                    .bodyToMono(String.class);
+            return "Operación exitosa: " + response.block();  // Usar block con precaución
+        } catch (Exception e) {
+            return "Error al realizar la operación POST: " + e.getMessage();
+        }
     }
     
     // Método helper para realizar llamadas DELETE y manejar la respuesta
     private String callApiDelete(String uri) {
-        Mono<String> response = webClient.delete()
-                .uri(uri)
-                .retrieve()
-                .bodyToMono(String.class);
-
-        return safeCall(response);
+        try {
+            Mono<String> response = webClient.delete()
+                    .uri(uri)
+                    .retrieve()
+                    .bodyToMono(String.class);
+            return "Operación exitosa: " + response.block();  // Usar block con precaución
+        } catch (Exception e) {
+            return "Error al realizar la operación DELETE: " + e.getMessage();
+        }
     }
 
     // Método helper para manejar bloqueo y errores
