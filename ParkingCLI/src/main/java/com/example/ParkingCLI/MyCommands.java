@@ -1,4 +1,4 @@
-package com.example.CommandCLI;
+package com.example.ParkingCLI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
@@ -27,9 +27,9 @@ public class MyCommands {
                     .uri(uri)
                     .retrieve()
                     .bodyToMono(String.class);
-            return "Operación exitosa";
+            return "Operacion exitosa " + response.block();
         } catch (Exception e) {
-            return "Error al realizar la operación GET: " + e.getMessage();
+            return "Error al realizar la operacion GET: " + e.getMessage();
         }
     }
 
@@ -42,9 +42,9 @@ public class MyCommands {
                     .bodyValue(body == null ? "" : body)
                     .retrieve()
                     .bodyToMono(String.class);
-            return "Operación exitosa: " + response.block();  // Usar block con precaución
+            return "Operacion exitosa " + response.block();  // Usar block con precaución
         } catch (Exception e) {
-            return "Error al realizar la operación POST: " + e.getMessage();
+            return "Error al realizar la operacion POST: " + e.getMessage();
         }
     }
     
@@ -55,9 +55,9 @@ public class MyCommands {
                     .uri(uri)
                     .retrieve()
                     .bodyToMono(String.class);
-            return "Operación exitosa: " + response.block();  // Usar block con precaución
+            return "Operacion exitosa: " + response.block();  // Usar block con precaución
         } catch (Exception e) {
-            return "Error al realizar la operación DELETE: " + e.getMessage();
+            return "Error al realizar la operacion DELETE: " + e.getMessage();
         }
     }
 
@@ -163,32 +163,6 @@ public class MyCommands {
         String requestBody = String.format(Locale.US, "mes=%.2f&tri=%.2f&anno=%.2f", mes, tri, anno);
         return callApiPost("/parking/configurar/preciosBonos", requestBody);
     }
-    
-
-    @ShellMethod("Realiza un pago estándar")
-    public String pagarEstandar(@ShellOption double entregado, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format(Locale.US,"entregado=%.2f&matricula=%s&formato=%c", entregado, matricula, formato);
-        return callApiPost("/parking/pago/estandar", requestBody);
-    }
-
-    @ShellMethod("Compra un bono mensual")
-    public String pagarBonoMensual(@ShellOption double entregado, @ShellOption int nMeses, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format(Locale.US, "entregado=%.2f&nMeses=%d&matricula=%s&formato=%c", entregado, nMeses, matricula, formato);
-        return callApiPost("/parking/pago/bonoMensual", requestBody);
-    }
-
-    @ShellMethod("Compra un bono trimestral")
-    public String pagarBonoTrimestral(@ShellOption double entregado, @ShellOption int nTrimestres, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format(Locale.US,"entregado=%.2f&nTrimestres=%d&matricula=%s&formato=%c", entregado, nTrimestres, matricula, formato);
-        return callApiPost("/parking/pago/bonoTrimestral", requestBody);
-    }
-
-    @ShellMethod("Compra un bono anual")
-    public String pagarBonoAnual(@ShellOption double entregado, @ShellOption int nAnnos, @ShellOption String matricula, @ShellOption char formato) {
-        String requestBody = String.format(Locale.US,"entregado=%.2f&nAnnos=%d&matricula=%s&formato=%c", entregado, nAnnos, matricula, formato);
-        return callApiPost("/parking/pago/bonoAnual", requestBody);
-    }
-
     // Métodos para el CarController
 
     @ShellMethod("Guardar un nuevo coche")

@@ -171,3 +171,21 @@
 1716153150583:help
 1716153169587:configurar-parking "w" "s" 10
 1716153197343:get-estancias-por-matricula as
+1716154835151:help
+1716154852835:configurar-parking "as" "dir" 12
+1716155113910:help
+1716155132683:configurar-parking "aa" "dir" 10
+1716155148209:configurar-precios-bonos 10 30 120
+1716155168435:entrada-manual 12as
+1716155300959:entrada-manual 12aa
+1716155331757:pagar-bono-mensual 1000 1 12aa E
+1716156011635:help
+1716156156258:pagar-bono-trimestral 1000 1 12as E
+1716156166613:pagar-bono-mensual 1000 1 12as E
+1716156212117:pagar-bono-anual 1000 1 12as E
+1716156478969:help
+1716156499255:pagar-bono-trimestral 1000 1 12as E
+1716156514000:pagar-bono-anual 1000 1 12as E
+1716156519505:pagar-bono-mensual 1000 1 12as E
+1716156529124:pagar-bono-estandar 1000 12as E
+1716156535239:pagar-estandar 1000 12as E

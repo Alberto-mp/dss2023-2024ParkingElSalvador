@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import es.uca.ParkingElSalvador.Estancias.Estancia;
 import es.uca.ParkingElSalvador.Estancias.EstanciasService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import org.slf4j.Logger;
@@ -31,70 +28,68 @@ public class BonoController {
         this.bonoService = bonoService;
     }
 
-     @PostMapping
+    @PostMapping
     @Operation(summary = "Guardar un nuevo bono", description = "Asocia y guarda un bono a una estancia específica basada en la matrícula")
     @ApiResponse(responseCode = "200", description = "Bono guardado correctamente")
     @ApiResponse(responseCode = "400", description = "Estancia no encontrada")
     @ApiResponse(responseCode = "500", description = "Error interno al guardar el bono")
     public ResponseEntity<?> saveBono(@RequestBody Bono bono, @RequestParam String matricula) {
-    try {
-        // Buscar la estancia usando el ID proporcionado
-        Estancia estancia;
-        int index = estanciaService.getEstancias(matricula).size();
-        if(index==0)
-            estancia = estanciaService.getEstancias(matricula).get(0);
-        else
-            estancia = estanciaService.getEstancias(matricula).get(index-1);
-        if (estancia==null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Estancia no encontrada.");
-        }
-
-        // Asociar el bono a la estancia
-        bono.setEstancia(estancia);
-        estancia.setBono(bono);  // Asegúrate de que la relación bidireccional esté completa
-        bono.setMatricula(matricula);
-        // Guardar el bono
-        bonoService.save(bono);
-        return ResponseEntity.ok().build();
-    } catch (Exception e) {
-        log.error("Error saving bono", e);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar el bono: " + e.getMessage());
+        try {
+            int index = estanciaService.getEstancias(matricula).size();
+            if (index == 0) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Estancia no encontrada para la matrícula: " + matricula);
+            }
+            Estancia estancia = estanciaService.getEstancias(matricula).get(index - 1);
+            bono.setEstancia(estancia);
+            estancia.setBono(bono);
+            bono.setMatricula(matricula);
+            bonoService.save(bono);
+            return ResponseEntity.ok("Bono guardado con exito para la estancia con matricula: " + matricula);
+        } catch (Exception e) {
+            log.error("Error saving bono", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar el bono: " + e.getMessage());
         }
     }
-
+    
     @DeleteMapping("/{matricula}")
     @Operation(summary = "Eliminar un bono", description = "Elimina el bono más reciente asociado a la matrícula proporcionada")
     @ApiResponse(responseCode = "200", description = "Bono eliminado correctamente")
     @ApiResponse(responseCode = "400", description = "No se encontró la estancia asociada al bono")
     public ResponseEntity<?> deleteBono(@PathVariable String matricula) {
-        Bono b;
-        int index = bonoService.getBonos(matricula).size();
-        if(index==0)
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Estancia no encontrada.");
-        else
-            b = bonoService.getBonos(matricula).get(index-1);
-        List<Estancia> e = estanciaService.getEstancias(matricula);
-        for (Estancia estancia : e) {
-            estancia.setBono(null);  // Desvincula el bono
-            //estanciaService.save(estancia);  // Guarda la estancia actualizada
+        try {
+            List<Bono> bonos = bonoService.getBonos(matricula);
+            if (bonos.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No se encontró ningún bono para la matrícula: " + matricula);
+            }
+            Bono b = bonos.get(bonos.size() - 1);
+            bonoService.delete(b);
+            return ResponseEntity.ok("Bono eliminado con exito para la matricula: " + matricula);
+        } catch (Exception e) {
+            log.error("Error al eliminar el bono", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar el bono: " + e.getMessage());
         }
-        bonoService.delete(b);
-        return ResponseEntity.ok().build();
     }
-
+    
     @GetMapping("/{matricula}")
     @Operation(summary = "Obtener bonos por matrícula", description = "Devuelve todos los bonos asociados a una matrícula específica")
-    @ApiResponse(responseCode = "200", description = "Bonos devueltos correctamente",
-                 content = @Content(array = @ArraySchema(schema = @Schema(implementation = Bono.class))))
-    public List<Bono> getBonosByMatricula(@PathVariable String matricula) {
-        return bonoService.getBonos(matricula);
+    @ApiResponse(responseCode = "200", description = "Bonos devueltos correctamente")
+    public ResponseEntity<List<Bono>> getBonosByMatricula(@PathVariable String matricula) {
+        List<Bono> bonos = bonoService.getBonos(matricula);
+        if (bonos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(bonos);
     }
-
+    
     @GetMapping
     @Operation(summary = "Obtener todos los bonos", description = "Devuelve todos los bonos registrados en el sistema")
-    @ApiResponse(responseCode = "200", description = "Todos los bonos devueltos correctamente",
-                 content = @Content(array = @ArraySchema(schema = @Schema(implementation = Bono.class))))
-    public List<Bono> getAllBonos() {
-        return bonoService.getBonos();
+    @ApiResponse(responseCode = "200", description = "Todos los bonos devueltos correctamente")
+    public ResponseEntity<List<Bono>> getAllBonos() {
+        List<Bono> bonos = bonoService.getBonos();
+        if (bonos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        return ResponseEntity.ok(bonos);
     }
+    
 }

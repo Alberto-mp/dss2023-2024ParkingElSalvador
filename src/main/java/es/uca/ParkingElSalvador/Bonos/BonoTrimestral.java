@@ -16,6 +16,10 @@ public class BonoTrimestral extends Bono {
         super(estancia);
     }
 
+    public BonoTrimestral() {
+        super(null);
+    }
+
     @Override
     public BigDecimal getPrecio() {
         return precio;

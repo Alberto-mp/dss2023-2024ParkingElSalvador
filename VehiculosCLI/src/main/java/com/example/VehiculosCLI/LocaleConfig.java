@@ -1,4 +1,4 @@
-package com.example.CommandCLI;
+package com.example.VehiculosCLI;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
