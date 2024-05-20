@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uca.ParkingElSalvador.Bonos.BonoMensual;
 import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
 
 import java.time.LocalDateTime;
@@ -25,6 +26,8 @@ public class VehiculoTest {
 
     @Test
     public void testSetFinBono() {
+        BonoMensual bono = new BonoMensual(vehiculo.getEstancia());
+        vehiculo.getEstancia().setBono(bono);
         LocalDateTime finBono = LocalDateTime.now().plusHours(1);
         vehiculo.getEstancia().getBono().setFinBono(finBono);
         assertEquals("El fin del bono debe ser igual al valor establecido", finBono, vehiculo.getEstancia().getBono().getFinBono());
@@ -49,6 +52,9 @@ public class VehiculoTest {
 
     @Test
     public void testBonoValidoConBonoVencido() {
+        BonoMensual bono = new BonoMensual(vehiculo.getEstancia());
+        vehiculo.getEstancia().setBono(bono);
+
         vehiculo.getEstancia().compraBono();
         vehiculo.getEstancia().getBono().setFinBono(LocalDateTime.now().minusHours(1)); // Un bono vencido desde hace una hora
         assertFalse("El bono no debería ser válido si ya está vencido", vehiculo.getEstancia().bonoValido());
@@ -56,6 +62,8 @@ public class VehiculoTest {
 
     @Test
     public void testBonoValidoConBonoVigente() {
+        BonoMensual bono = new BonoMensual(vehiculo.getEstancia());
+        vehiculo.getEstancia().setBono(bono);
         vehiculo.getEstancia().compraBono();
         vehiculo.getEstancia().getBono().setFinBono(LocalDateTime.now().plusHours(1)); // Un bono válido por una hora
         assertTrue("El bono debería ser válido si aún no ha vencido", vehiculo.getEstancia().bonoValido());

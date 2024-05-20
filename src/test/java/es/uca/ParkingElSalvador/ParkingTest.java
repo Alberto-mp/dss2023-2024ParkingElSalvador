@@ -13,7 +13,7 @@ public class ParkingTest {
 
     @Before
     public void setUp() {
-        Parking parking = new Parking();
+        parking = new Parking();
         parking.setNombre("Nombre del Parking");
         parking.setDireccionPostal("Dirección Postal del Parking");
         parking.setCapacidadTotal(100);

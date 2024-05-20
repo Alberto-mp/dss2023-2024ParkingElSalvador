@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import es.uca.ParkingElSalvador.Informes.Cajero;
 import es.uca.ParkingElSalvador.Pagos.PagoEstandar;
+import es.uca.ParkingElSalvador.Vehiculos.CarRepositoryInMemoryRepo;
 import es.uca.ParkingElSalvador.Vehiculos.CarService;
 import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
 
@@ -20,7 +21,7 @@ public class PagoEstandarTest {
 
     @Before
     public void setUp() {
-        c = new CarService();
+        c = new CarService(new CarRepositoryInMemoryRepo());
         vehiculo = new Vehiculo("123ABC");
         c.save(vehiculo);
         cajero = new Cajero();

@@ -11,6 +11,7 @@ import es.uca.ParkingElSalvador.Bonos.BonoInMemoryRepo;
 import es.uca.ParkingElSalvador.Bonos.BonoService;
 import es.uca.ParkingElSalvador.Informes.Cajero;
 import es.uca.ParkingElSalvador.Pagos.PagoBono;
+import es.uca.ParkingElSalvador.Vehiculos.CarRepositoryInMemoryRepo;
 import es.uca.ParkingElSalvador.Vehiculos.CarService;
 import es.uca.ParkingElSalvador.Vehiculos.Vehiculo;
 
@@ -23,6 +24,7 @@ public class PagoBonoTest {
     @Before
     public void setUp() {
         vehiculo = new Vehiculo("123ABC");
+        c = new CarService(new CarRepositoryInMemoryRepo());
         c.save(vehiculo);
         cajero = new Cajero();
         cajero.setDinero(new BigDecimal(500000));
