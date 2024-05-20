@@ -10,7 +10,7 @@ public class WebClientConfig {
     @Bean
     public WebClient webClient(WebClient.Builder builder) {
         return builder
-                .baseUrl("http://localhost:8080/api/v1/parking/") // URL base de tu API local
+                .baseUrl("http://localhost:8080/api/v1/") // URL base de tu API local
                 .build();
     }
 }

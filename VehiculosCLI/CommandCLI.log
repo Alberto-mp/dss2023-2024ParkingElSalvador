@@ -179,13 +179,22 @@
 1716155168435:entrada-manual 12as
 1716155300959:entrada-manual 12aa
 1716155331757:pagar-bono-mensual 1000 1 12aa E
-1716156011635:help
-1716156156258:pagar-bono-trimestral 1000 1 12as E
-1716156166613:pagar-bono-mensual 1000 1 12as E
-1716156212117:pagar-bono-anual 1000 1 12as E
-1716156478969:help
-1716156499255:pagar-bono-trimestral 1000 1 12as E
-1716156514000:pagar-bono-anual 1000 1 12as E
-1716156519505:pagar-bono-mensual 1000 1 12as E
-1716156529124:pagar-bono-estandar 1000 12as E
-1716156535239:pagar-estandar 1000 12as E
+1716156087875:help
+1716156106127:configurar-parking "as" "dir" 12
+1716156125090:configurar-precios-bonos 10 30 120
+1716156133839:entrada-manual 12as
+1716156468812:configurar-parking "as" "dir" 12
+1716156470694:configurar-precios-bonos 10 30 120
+1716156472373:entrada-manual 12as
+1716156548474:get-income-daily
+1716156553793:help
+1716204228363:configurar-parking "d" "s" 12
+1716204470744:help
+1716205573288:save-car 12rr
+1716205593838:get-estancias-por-matricula 12as
+1716205607778:get-numero-de-estancias
+1716205628256:existe-estancia 12as
+1716205643712:get-all-estancias
+1716205690180:save-car "12abc"
+1716205912964:help
+1716205918048:save-car 12wrq

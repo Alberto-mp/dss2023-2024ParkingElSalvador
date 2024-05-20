@@ -1,14 +1,14 @@
-package com.example.PagosCLI;
+package com.example.VehiculosCLI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class VehiculosCliApplication {
+public class VehiculoCliApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VehiculosCliApplication.class, args);
+		SpringApplication.run(VehiculoCliApplication.class, args);
 	}
 
 }

@@ -38,7 +38,7 @@ public class MyCommands {
         try {
             Mono<String> response = webClient.post()
                     .uri(uri)
-                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .header("Content-Type", "application/json")
                     .bodyValue(body == null ? "" : body)
                     .retrieve()
                     .bodyToMono(String.class);
@@ -70,7 +70,7 @@ public class MyCommands {
         }
     }
 
-   @ShellMethod("Crea una nueva estancia")
+    @ShellMethod("Crea una nueva estancia")
     public String createEstancia(@ShellOption String matricula) {
         String requestBody = String.format("{\"matricula\":\"%s\"}", matricula);
         return callApiPost("/estancias", requestBody);
@@ -123,6 +123,5 @@ public class MyCommands {
     public String getNumCars() {
         return callApiGet("/vehiculos/count");
     }
-
 }
    

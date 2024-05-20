@@ -38,7 +38,7 @@ public class MyCommands {
         try {
             Mono<String> response = webClient.post()
                     .uri(uri)
-                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .header("Content-Type", "application/json")
                     .bodyValue(body == null ? "" : body)
                     .retrieve()
                     .bodyToMono(String.class);
@@ -97,31 +97,6 @@ public class MyCommands {
         return callApiGet("/informes/toString");
     }
 
-    @ShellMethod("Crea una nueva estancia")
-    public String createEstancia(@ShellOption String matricula) {
-        String requestBody = String.format("{\"matricula\":\"%s\"}", matricula);
-        return callApiPost("/estancias", requestBody);
-    }
-
-    @ShellMethod("Verifica si una estancia existe por matrícula")
-    public String existeEstancia(@ShellOption String matricula) {
-        return callApiGet("/estancias/existe/" + matricula);
-    }
-
-    @ShellMethod("Obtiene estancias por matrícula")
-    public String getEstanciasPorMatricula(@ShellOption String matricula) {
-        return callApiGet("/estancias/" + matricula);
-    }
-
-    @ShellMethod("Obtiene todas las estancias")
-    public String getAllEstancias() {
-        return callApiGet("/estancias");
-    }
-
-    @ShellMethod("Obtiene el número total de estancias")
-    public String getNumeroDeEstancias() {
-        return callApiGet("/estancias/count");
-    }
 
     @ShellMethod("Configura el parking")
     public String configurarParking(@ShellOption String nombre, @ShellOption String direccionPostal, @ShellOption int capacidadTotal) {
@@ -162,33 +137,6 @@ public class MyCommands {
     public String configurarPreciosBonos(@ShellOption double mes, @ShellOption double tri, @ShellOption double anno) {
         String requestBody = String.format(Locale.US, "mes=%.2f&tri=%.2f&anno=%.2f", mes, tri, anno);
         return callApiPost("/parking/configurar/preciosBonos", requestBody);
-    }
-    // Métodos para el CarController
-
-    @ShellMethod("Guardar un nuevo coche")
-    public String saveNewCar(@ShellOption String matricula) {
-        return callApiPost("/vehiculos/" + matricula, null);
-    }
-
-    @ShellMethod("Guardar un coche existente")
-    public String saveCar(@ShellOption String matricula) {
-        String requestBody = String.format("{\"matricula\":\"%s\"}", matricula);
-        return callApiPost("/vehiculos", requestBody);
-    }
-
-    @ShellMethod("Eliminar un coche")
-    public String deleteCar(@ShellOption String matricula) {
-        return callApiDelete("/vehiculos/" + matricula);
-    }
-
-    @ShellMethod("Obtener un coche por matrícula")
-    public String getCar(@ShellOption String matricula) {
-        return callApiGet("/vehiculos/" + matricula);
-    }
-
-    @ShellMethod("Obtener el número total de coches")
-    public String getNumCars() {
-        return callApiGet("/vehiculos/count");
     }
 
     // Métodos para el BonoController

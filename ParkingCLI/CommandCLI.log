@@ -188,3 +188,12 @@
 1716156472373:entrada-manual 12as
 1716156548474:get-income-daily
 1716156553793:help
+1716204228363:configurar-parking "d" "s" 12
+1716204470744:help
+1716205497627:gelp
+1716205499020:help
+1716205515604:configurar-parking "p"
+1716205521027:configurar-parking "p" "d" 10
+1716205538916:configurar-precios-bonos 10 30 120
+1716205547893:entrada-manual 12as
+1716205554427:entrada-manual xyz123

@@ -38,7 +38,7 @@ public class MyCommands {
         try {
             Mono<String> response = webClient.post()
                     .uri(uri)
-                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .header("Content-Type", "application/json")
                     .bodyValue(body == null ? "" : body)
                     .retrieve()
                     .bodyToMono(String.class);
