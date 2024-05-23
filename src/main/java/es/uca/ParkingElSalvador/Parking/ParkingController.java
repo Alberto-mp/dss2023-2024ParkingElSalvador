@@ -71,7 +71,7 @@ public class ParkingController {
     public ResponseEntity<?> salidaManual(@RequestParam String matricula) {
         parkingService.salida(matricula);
         parkingService.setP(p);
-        return ResponseEntity.ok("Entrada manual al parking registrada exitosamente para la matrícula: " + matricula);
+        return ResponseEntity.ok("Salida manual al parking realizada exitosamente para la matrícula: " + matricula);
     }
 
     @PostMapping("/configurar/tarifa")

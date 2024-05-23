@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uca.ParkingElSalvador.Informes.Cajero;
+import es.uca.ParkingElSalvador.Pagos.Cajero;
 
 import java.math.BigDecimal;
 

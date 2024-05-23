@@ -199,3 +199,10 @@
 1716205912964:help
 1716205918048:save-car 12wrq
 1716206408450:delete-car 12as
+1716482817406:help
+1716482847746:get-numero-de-estancias
+1716483505690:help
+1716483536801:get-numero-de-estancias
+1716483553317:get-estancias-por-matricula "ABC123"
+1716483565729:get-num-cars
+1716483580532:get-car "ABC123"

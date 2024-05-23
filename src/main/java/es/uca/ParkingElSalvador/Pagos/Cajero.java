@@ -1,4 +1,4 @@
-package es.uca.ParkingElSalvador.Informes;
+package es.uca.ParkingElSalvador.Pagos;
 
 import java.math.BigDecimal;
 

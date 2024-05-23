@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uca.ParkingElSalvador.Informes.Cajero;
+import es.uca.ParkingElSalvador.Pagos.Cajero;
 import es.uca.ParkingElSalvador.Pagos.PagoEstandar;
 import es.uca.ParkingElSalvador.Vehiculos.CarRepositoryInMemoryRepo;
 import es.uca.ParkingElSalvador.Vehiculos.CarService;

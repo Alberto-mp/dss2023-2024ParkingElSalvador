@@ -197,3 +197,26 @@
 1716205538916:configurar-precios-bonos 10 30 120
 1716205547893:entrada-manual 12as
 1716205554427:entrada-manual xyz123
+1716481947918:help
+1716481974219:configurar-parking "Prueba" "DireccionPrueba" 10
+1716482030919:configurar-parking "Prueba" "DireccionPrueba"
+1716482034129:configurar-parking "Prueba" "DireccionPrueba" 8
+1716482263294:configurar-parking "Prueba" "DireccionPrueba" 12
+1716482272148:help
+1716482286990:configurar-precios bonos 10 30 120
+1716482292688:configurar-precios-bonos 10 30 120
+1716482311613:configurar-tarifa 1
+1716482329609:entrada-manual 12as
+1716482336570:salida-manual 12as
+1716483081932:help
+1716483129577:configurar-parking "PRueba" "Direccionprueba" 11
+1716483149970:configurar-tarifa 1
+1716483161179:configurar-precios-bonos 10 30 120
+1716483187688:entrada-manual "ABC123"
+1716483333261:salida-manual "ABC123"
+1716483369500:entrada-manual "ABC123"
+1716483420029:salida-manual "ABC123"
+1716483443272:help
+1716483451810:get-daily-income
+1716483463253:get-monthly-income
+1716483470903:get-weekly-income

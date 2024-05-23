@@ -27,7 +27,7 @@ public class MyCommands {
                     .uri(uri)
                     .retrieve()
                     .bodyToMono(String.class);
-            return "Operacion exitosa";
+            return "Operacion exitosa\n";
         } catch (Exception e) {
             return "Error al realizar la operacion GET: " + e.getMessage();
         }
@@ -38,11 +38,11 @@ public class MyCommands {
         try {
             Mono<String> response = webClient.post()
                     .uri(uri)
-                    .header("Content-Type", "application/json")
+                    .header("Content-Type", "application/x-www-form-urlencoded")
                     .bodyValue(body == null ? "" : body)
                     .retrieve()
                     .bodyToMono(String.class);
-            return "Operacion exitosa " + response.block();  // Usar block con precaución
+            return "Operacion exitosa \n    " + response.block();  // Usar block con precaución
         } catch (Exception e) {
             return "Error al realizar la operacion POST: " + e.getMessage();
         }
@@ -55,9 +55,9 @@ public class MyCommands {
                     .uri(uri)
                     .retrieve()
                     .bodyToMono(String.class);
-            return "Operacion exitosa: " + response.block();  // Usar block con precaución
+            return "Operacion exitosa: \n" + response.block();  // Usar block con precaución
         } catch (Exception e) {
-            return "Error al realizar la operacion DELETE: " + e.getMessage();
+            return "Error al realizar la operacion DELETE: \n" + e.getMessage();
         }
     }
 

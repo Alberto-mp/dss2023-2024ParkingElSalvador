@@ -1,10 +1,10 @@
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Parking\Parking.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Informes\Informe.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Vehiculos\CarService.java
+C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Parking\ParkingRepositoryJPA.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Vehiculos\CarRepositoryInMemoryRepo.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Parking\QRservice.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Estancias\EstanciasService.java
-C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Parking\ParkingRepository.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Vehiculos\CarController.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Estancias\EstanciasRepositoryJPA.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Bonos\BonoInDatabaseRepo.java
@@ -12,11 +12,11 @@ C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss202
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Parking\ParkingElSalvador.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Vehiculos\CarRepositoryInDatabase.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Vehiculos\Vehiculo.java
+C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Pagos\Cajero.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Pagos\TipoPago.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Bonos\BonoTrimestral.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Parking\ParkingService.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Estancias\EstanciasController.java
-C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Informes\Cajero.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Pagos\PagoEfectivo.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Bonos\BonoRepository.java
 C:\Users\Alberto\Desktop\UNIVERSIDAD\3ºGII\2ºCuatri\DSS\Proyecto\Proyecto\dss2023-2024ParkingElSalvador\src\main\java\es\uca\ParkingElSalvador\Pagos\PagoTarjeta.java

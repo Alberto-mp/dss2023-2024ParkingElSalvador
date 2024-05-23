@@ -15,7 +15,7 @@ import es.uca.ParkingElSalvador.Bonos.BonoTrimestral;
 import es.uca.ParkingElSalvador.Estancias.Estancia;
 import es.uca.ParkingElSalvador.Estancias.EstanciasRepository;
 import es.uca.ParkingElSalvador.Estancias.EstanciasService;
-import es.uca.ParkingElSalvador.Informes.Cajero;
+import es.uca.ParkingElSalvador.Pagos.Cajero;
 import es.uca.ParkingElSalvador.Pagos.Estandar;
 import es.uca.ParkingElSalvador.Pagos.PagoBono;
 import es.uca.ParkingElSalvador.Pagos.PagoEstandar;
@@ -34,7 +34,7 @@ public class ParkingService {
     private BonoService bonos;
     private Cajero caja;
     @Autowired
-    private ParkingRepository park;
+    private ParkingRepositoryJPA park;
     @Autowired
     public ParkingService(Parking p, CarRepository c, EstanciasRepository e, BonoRepository b){
         this.p = p;
